@@ -4,13 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, NxWelcomeComponent, HomeComponent, LayoutComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
       [
+        {
+          path: '',
+          component: LayoutComponent,
+          children: [
+            { path: '', component: HomeComponent },
+          ]
+        },
         {
           path: 'register',
           loadChildren: () =>

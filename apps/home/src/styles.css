@@ -2170,7 +2170,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .nav-after {
-  /* background-image: url(../../images/vector-background.jpg); */
+  background-image: url(assets/vector-background.jpg);
 }
 
 input[type="radio"]+label span {
