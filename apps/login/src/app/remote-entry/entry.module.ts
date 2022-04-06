@@ -4,15 +4,16 @@ import { RouterModule } from '@angular/router';
 
 import { RemoteEntryComponent } from './entry.component';
 import { AppComponent } from '../app.component';
+import { LoginComponent } from './login.component';
 
 @NgModule({
-  declarations: [RemoteEntryComponent],
+  declarations: [RemoteEntryComponent, LoginComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: AppComponent,
+        component: LoginComponent,
       },
     ]),
   ],
