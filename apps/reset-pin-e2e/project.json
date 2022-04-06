@@ -1,0 +1,28 @@
+{
+  "root": "apps/reset-pin-e2e",
+  "sourceRoot": "apps/reset-pin-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/reset-pin-e2e/cypress.json",
+        "devServerTarget": "reset-pin:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "reset-pin:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/reset-pin-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["reset-pin"]
+}

@@ -1,7 +1,19 @@
 {
   "version": 2,
   "projects": {
+    "forgot-pin": "apps/forgot-pin",
+    "forgot-pin-e2e": "apps/forgot-pin-e2e",
+    "home": "apps/home",
+    "home-e2e": "apps/home-e2e",
+    "login": "apps/login",
+    "login-e2e": "apps/login-e2e",
     "mobiquity": "apps/mobiquity",
-    "mobiquity-e2e": "apps/mobiquity-e2e"
+    "mobiquity-e2e": "apps/mobiquity-e2e",
+    "otp": "apps/otp",
+    "otp-e2e": "apps/otp-e2e",
+    "register": "apps/register",
+    "register-e2e": "apps/register-e2e",
+    "reset-pin": "apps/reset-pin",
+    "reset-pin-e2e": "apps/reset-pin-e2e"
   }
 }

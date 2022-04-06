@@ -1,0 +1,103 @@
+{
+  "projectType": "application",
+  "root": "apps/reset-pin",
+  "sourceRoot": "apps/reset-pin/src",
+  "prefix": "mobiquity",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/reset-pin",
+        "index": "apps/reset-pin/src/index.html",
+        "main": "apps/reset-pin/src/main.ts",
+        "polyfills": "apps/reset-pin/src/polyfills.ts",
+        "tsConfig": "apps/reset-pin/tsconfig.app.json",
+        "assets": [
+          "apps/reset-pin/src/favicon.ico",
+          "apps/reset-pin/src/assets"
+        ],
+        "styles": ["apps/reset-pin/src/styles.css"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/reset-pin/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/reset-pin/src/environments/environment.ts",
+              "with": "apps/reset-pin/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/reset-pin/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "reset-pin:build:production"
+        },
+        "development": {
+          "browserTarget": "reset-pin:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4206,
+        "publicHost": "http://localhost:4206"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "reset-pin:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/reset-pin/src/**/*.ts",
+          "apps/reset-pin/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/reset-pin"],
+      "options": {
+        "jestConfig": "apps/reset-pin/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

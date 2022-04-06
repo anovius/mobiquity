@@ -1,0 +1,28 @@
+{
+  "root": "apps/forgot-pin-e2e",
+  "sourceRoot": "apps/forgot-pin-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/forgot-pin-e2e/cypress.json",
+        "devServerTarget": "forgot-pin:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "forgot-pin:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/forgot-pin-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["forgot-pin"]
+}

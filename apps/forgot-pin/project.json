@@ -1,0 +1,103 @@
+{
+  "projectType": "application",
+  "root": "apps/forgot-pin",
+  "sourceRoot": "apps/forgot-pin/src",
+  "prefix": "mobiquity",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/forgot-pin",
+        "index": "apps/forgot-pin/src/index.html",
+        "main": "apps/forgot-pin/src/main.ts",
+        "polyfills": "apps/forgot-pin/src/polyfills.ts",
+        "tsConfig": "apps/forgot-pin/tsconfig.app.json",
+        "assets": [
+          "apps/forgot-pin/src/favicon.ico",
+          "apps/forgot-pin/src/assets"
+        ],
+        "styles": ["apps/forgot-pin/src/styles.css"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/forgot-pin/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/forgot-pin/src/environments/environment.ts",
+              "with": "apps/forgot-pin/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/forgot-pin/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "forgot-pin:build:production"
+        },
+        "development": {
+          "browserTarget": "forgot-pin:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4205,
+        "publicHost": "http://localhost:4205"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "forgot-pin:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/forgot-pin/src/**/*.ts",
+          "apps/forgot-pin/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/forgot-pin"],
+      "options": {
+        "jestConfig": "apps/forgot-pin/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
