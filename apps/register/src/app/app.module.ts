@@ -10,9 +10,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
+import { AddressComponent } from './address/address.component';
+import { KycDetailsComponent } from './kyc-details/kyc-details.component';
+import { KycDetailSuccessComponent } from './kyc-detail-success/kyc-detail-success.component';
+import { SetPinComponent } from './set-pin/set-pin.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, NxWelcomeComponent, AddressComponent, KycDetailsComponent, KycDetailSuccessComponent, SetPinComponent, LayoutComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),

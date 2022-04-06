@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { RemoteEntryComponent } from './entry.component';
+import { AppComponent } from '../app.component';
 
 @NgModule({
   declarations: [RemoteEntryComponent],
@@ -11,7 +12,7 @@ import { RemoteEntryComponent } from './entry.component';
     RouterModule.forChild([
       {
         path: '',
-        component: RemoteEntryComponent,
+        component: AppComponent,
       },
     ]),
   ],
