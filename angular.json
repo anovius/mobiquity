@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "mobiquity": "apps/mobiquity",
+    "mobiquity-e2e": "apps/mobiquity-e2e"
+  }
+}

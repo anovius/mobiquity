@@ -1,0 +1,93 @@
+{
+  "projectType": "application",
+  "root": "apps/mobiquity",
+  "sourceRoot": "apps/mobiquity/src",
+  "prefix": "mobiquity",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/mobiquity",
+        "index": "apps/mobiquity/src/index.html",
+        "main": "apps/mobiquity/src/main.ts",
+        "polyfills": "apps/mobiquity/src/polyfills.ts",
+        "tsConfig": "apps/mobiquity/tsconfig.app.json",
+        "assets": [
+          "apps/mobiquity/src/favicon.ico",
+          "apps/mobiquity/src/assets"
+        ],
+        "styles": ["apps/mobiquity/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/mobiquity/src/environments/environment.ts",
+              "with": "apps/mobiquity/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "mobiquity:build:production"
+        },
+        "development": {
+          "browserTarget": "mobiquity:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "mobiquity:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/mobiquity/src/**/*.ts",
+          "apps/mobiquity/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/mobiquity"],
+      "options": {
+        "jestConfig": "apps/mobiquity/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
