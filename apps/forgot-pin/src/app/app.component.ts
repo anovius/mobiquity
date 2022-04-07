@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'forgot-pin';
+
+  goBack(){
+    window.history.back();
+  }
 }
