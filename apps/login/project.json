@@ -6,15 +6,23 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/login",
         "index": "apps/login/src/index.html",
         "main": "apps/login/src/main.ts",
         "polyfills": "apps/login/src/polyfills.ts",
         "tsConfig": "apps/login/tsconfig.app.json",
-        "assets": ["apps/login/src/favicon.ico", "apps/login/src/assets"],
-        "styles": ["apps/login/src/styles.css"],
+        "assets": [
+          "apps/login/src/favicon.ico",
+          "apps/login/src/assets"
+        ],
+        "styles": [
+          "apps/login/src/styles.css",
+          "../node_modules/ngx-simple-modal/styles/simple-modal.css"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/login/webpack.config.js"
@@ -89,7 +97,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/login"],
+      "outputs": [
+        "coverage/apps/login"
+      ],
       "options": {
         "jestConfig": "apps/login/jest.config.js",
         "passWithNoTests": true

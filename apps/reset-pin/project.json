@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/reset-pin",
         "index": "apps/reset-pin/src/index.html",
@@ -17,7 +19,9 @@
           "apps/reset-pin/src/favicon.ico",
           "apps/reset-pin/src/assets"
         ],
-        "styles": ["apps/reset-pin/src/styles.css"],
+        "styles": [
+          "apps/reset-pin/src/styles.css"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/reset-pin/webpack.config.js"
@@ -92,7 +96,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/reset-pin"],
+      "outputs": [
+        "coverage/apps/reset-pin"
+      ],
       "options": {
         "jestConfig": "apps/reset-pin/jest.config.js",
         "passWithNoTests": true

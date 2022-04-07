@@ -6,15 +6,22 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/register",
         "index": "apps/register/src/index.html",
         "main": "apps/register/src/main.ts",
         "polyfills": "apps/register/src/polyfills.ts",
         "tsConfig": "apps/register/tsconfig.app.json",
-        "assets": ["apps/register/src/favicon.ico", "apps/register/src/assets"],
-        "styles": ["apps/register/src/styles.css"],
+        "assets": [
+          "apps/register/src/favicon.ico",
+          "apps/register/src/assets"
+        ],
+        "styles": [
+          "apps/register/src/styles.css"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/register/webpack.config.js"
@@ -89,7 +96,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/register"],
+      "outputs": [
+        "coverage/apps/register"
+      ],
       "options": {
         "jestConfig": "apps/register/jest.config.js",
         "passWithNoTests": true

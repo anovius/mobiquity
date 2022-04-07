@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/forgot-pin",
         "index": "apps/forgot-pin/src/index.html",
@@ -17,7 +19,9 @@
           "apps/forgot-pin/src/favicon.ico",
           "apps/forgot-pin/src/assets"
         ],
-        "styles": ["apps/forgot-pin/src/styles.css"],
+        "styles": [
+          "apps/forgot-pin/src/styles.css"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/forgot-pin/webpack.config.js"
@@ -92,7 +96,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/forgot-pin"],
+      "outputs": [
+        "coverage/apps/forgot-pin"
+      ],
       "options": {
         "jestConfig": "apps/forgot-pin/jest.config.js",
         "passWithNoTests": true

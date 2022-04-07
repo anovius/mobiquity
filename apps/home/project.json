@@ -6,15 +6,22 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/home",
         "index": "apps/home/src/index.html",
         "main": "apps/home/src/main.ts",
         "polyfills": "apps/home/src/polyfills.ts",
         "tsConfig": "apps/home/tsconfig.app.json",
-        "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
-        "styles": ["apps/home/src/styles.css"],
+        "assets": [
+          "apps/home/src/favicon.ico",
+          "apps/home/src/assets"
+        ],
+        "styles": [
+          "apps/home/src/styles.css"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/home/webpack.config.js"
@@ -80,12 +87,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/home/src/**/*.ts", "apps/home/src/**/*.html"]
+        "lintFilePatterns": [
+          "apps/home/src/**/*.ts",
+          "apps/home/src/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/home"],
+      "outputs": [
+        "coverage/apps/home"
+      ],
       "options": {
         "jestConfig": "apps/home/jest.config.js",
         "passWithNoTests": true

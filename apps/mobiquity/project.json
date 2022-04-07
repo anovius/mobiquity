@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/mobiquity",
         "index": "apps/mobiquity/src/index.html",
@@ -17,7 +19,10 @@
           "apps/mobiquity/src/favicon.ico",
           "apps/mobiquity/src/assets"
         ],
-        "styles": ["apps/mobiquity/src/styles.css"],
+        "styles": [
+          "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "apps/mobiquity/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -82,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/mobiquity"],
+      "outputs": [
+        "coverage/apps/mobiquity"
+      ],
       "options": {
         "jestConfig": "apps/mobiquity/jest.config.js",
         "passWithNoTests": true

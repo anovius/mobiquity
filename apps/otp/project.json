@@ -6,15 +6,22 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/otp",
         "index": "apps/otp/src/index.html",
         "main": "apps/otp/src/main.ts",
         "polyfills": "apps/otp/src/polyfills.ts",
         "tsConfig": "apps/otp/tsconfig.app.json",
-        "assets": ["apps/otp/src/favicon.ico", "apps/otp/src/assets"],
-        "styles": ["apps/otp/src/styles.css"],
+        "assets": [
+          "apps/otp/src/favicon.ico",
+          "apps/otp/src/assets"
+        ],
+        "styles": [
+          "apps/otp/src/styles.css"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/otp/webpack.config.js"
@@ -81,12 +88,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/otp/src/**/*.ts", "apps/otp/src/**/*.html"]
+        "lintFilePatterns": [
+          "apps/otp/src/**/*.ts",
+          "apps/otp/src/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/otp"],
+      "outputs": [
+        "coverage/apps/otp"
+      ],
       "options": {
         "jestConfig": "apps/otp/jest.config.js",
         "passWithNoTests": true
