@@ -18,25 +18,14 @@
   "login": {
     "title": "Login via mobile number",
     "tagline": "Enter your mobile number and PIN to login.",
-    "paragraphs": [
-      "Enter OTP sent to",
-      "Resend OTP in 00:38",
-      "Attempts left 4"
-    ],
-    "spans": [
-      {
-        "title": "+91 9872819277"
-      }
-    ],
-    "buttons": [
-      {
-        "title": "Verify"
-      }
-    ]
+    "label": ["Mobile number", "PIN"],
+    "a": ["Forgot PIN?", "Register"],
+    "b": ["LOGIN"],
+    "p": ["Don’t have an account?"]
   },
   "otp": {
     "title": "Mobile number verification",
-    "headings": { "title": "Verification" },
+    "headings": ["Verification"],
     "paragraphs": [
       "Enter OTP sent to ",
       "Resend OTP in 00:38",

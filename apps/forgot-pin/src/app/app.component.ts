@@ -8,10 +8,9 @@ import { TranslationService } from '@mobiquity/shared';
 })
 export class AppComponent implements OnInit {
   title = 'forgot-pin';
+  translation: any;
 
   constructor(private translationService: TranslationService) {}
-
-  translation: any;
 
   ngOnInit() {
     this.translationService.get().subscribe((data: any) => {

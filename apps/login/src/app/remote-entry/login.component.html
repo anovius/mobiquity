@@ -97,16 +97,16 @@
 
         </div>
         <div class="login-form flex-1 pl-8 pt-4">
-            <h3 class="text-xl text-dropdown-custom mb-3 font-medium">Login via mobile number</h3>
-            <p class="text-gray-400 mb-3 text-sm">Enter your mobile number and PIN to login.</p>
+            <h3 class="text-xl text-dropdown-custom mb-3 font-medium">{{translation?.title}}</h3>
+            <p class="text-gray-400 mb-3 text-sm">{{translation?.tagline}}</p>
             <div class="flex flex-col mt-6">
-                <label class="text-blue text-sm mb-2" for="">Mobile number</label>
+                <label class="text-blue text-sm mb-2" for="">{{translation?.label[0]}}</label>
                 <input
                     class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                     type="text" placeholder="Enter mobile number">
             </div>
             <div class="mt-6 flex flex-col relative">
-                <label class="text-dropdown-custom text-sm mb-2" for="">PIN</label>
+                <label class="text-dropdown-custom text-sm mb-2" for="">{{translation?.label[1]}}</label>
                 <input
                     class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                     type="password" placeholder="Enter PIN">
@@ -123,20 +123,19 @@
                         <path d="M13.8123 1.44813L12.8564 0.482605L0.908845 12.5516L1.86465 13.5171L13.8123 1.44813Z"
                             stroke="white" />
                     </svg>
-
-
                 </div>
             </div>
             <div class="text-right mt-1">
-                <a class="text-sm" routerLink="/forgot-pin">Forgot PIN?</a>
+                <a class="text-sm" routerLink="/forgot-pin">{{translation?.a[0]}}</a>
             </div>
             <div class="text-center my-6">
                 <button
-                    class="bg-login-btn-custom px-14 text-sm text-indigo-900 rounded-md py-3 hover:bg-indigo-900 hover:text-indigo-200 transition-all">LOGIN</button>
+                    class="bg-login-btn-custom px-14 text-sm text-indigo-900 rounded-md py-3 hover:bg-indigo-900 hover:text-indigo-200 transition-all">{{translation?.b[0]}}</button>
             </div>
 
             <div class="text-center text-sm my-4">
-                <p>Don’t have an account? <a class="text-login-custom" routerLink="/register"> Register</a></p>
+                <p>{{translation?.p[0]}}? <a class="text-login-custom" routerLink="/register">
+                        {{translation?.a[1]}}</a></p>
             </div>
         </div>
 
