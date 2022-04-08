@@ -13,8 +13,14 @@ export class AppComponent implements OnInit {
     private translationService: TranslationService
   ) {}
 
+  translation : any;
+
   ngOnInit() {
-    
+    this.translationService.get().subscribe(
+      (data:any) => {
+        this.translation = data.forgotPin;
+      }
+    );
   }
 
   goBack(){
