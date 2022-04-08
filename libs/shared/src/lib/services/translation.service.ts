@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  test(){
-    return 'test';
+  get(language: string){
+    return "ok12"
   }
 }

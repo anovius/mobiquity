@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from '@mobiquity/shared';
 
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
@@ -14,6 +15,7 @@ import { FooterComponent } from './layout/footer/footer.component';
   declarations: [AppComponent, NxWelcomeComponent, HomeComponent, LayoutComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     RouterModule.forRoot(
       [
         {
