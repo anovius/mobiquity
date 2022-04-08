@@ -1,6 +1,7 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslationService } from '@mobiquity/shared';
 import { LoginService } from './login.service';
 
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     private translationService: TranslationService,
     private loginService: LoginService,
     private fb: FormBuilder,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -49,7 +51,11 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loginService.login({...this.loginForm.value, language: this.language}).subscribe(res =>{
-      console.log(res)
+      if(res.status === "FAILED"){
+        if(res.errors[0].code === "FTL01"){
+          this.router.navigate(['/reset-pin']);
+        }
+      }
     });
   }
 }
