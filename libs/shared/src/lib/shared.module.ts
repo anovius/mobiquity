@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslationService } from './services/translation.service';
 import { ApiService } from './services/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NumberOnlyDirective } from './directives/number-only.directive';
 @NgModule({
   imports: [CommonModule, HttpClientModule,
     FormsModule,
@@ -17,6 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NumberOnlyDirective,
+  ],
+  declarations: [
+    NumberOnlyDirective
   ]
   })
 export class SharedModule {}

@@ -103,13 +103,13 @@
                 <p class="text-gray-400 mb-3 text-sm">{{translation?.tagline}}</p>
                 <div class="flex flex-col mt-6">
                     <label class="text-blue text-sm mb-2" for="">{{translation?.label[0]}}</label>
-                    <input formControlName="mobile"
+                    <input formControlName="mobile" maxlength="10" mobiquityNumberOnly
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         type="text" placeholder="Enter mobile number">
                 </div>
                 <div class="mt-6 flex flex-col relative">
                     <label class="text-dropdown-custom text-sm mb-2" for="">{{translation?.label[1]}}</label>
-                    <input formControlName="pin"
+                    <input formControlName="pin" maxlength="4" mobiquityNumberOnly
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         type="password" placeholder="Enter PIN">
                     <div class="absolute bottom-4 right-4">
