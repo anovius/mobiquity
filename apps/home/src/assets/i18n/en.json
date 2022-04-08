@@ -1,17 +1,43 @@
 {
-    "forgotPin": {
-        "title": "Pin Reset",
-        "tagline": "Enter the mobile number associated with the account",
-        "fields": [
-            {
-                "label": "Mobile number",
-                "placeholder": "Enter mobile number"
-            }
-        ],
-        "buttons": [
-            {
-                "title": "Proceed"
-            }
-        ]
-    }
+  "forgotPin": {
+    "title": "Pin Reset",
+    "tagline": "Enter the mobile number associated with the account",
+    "fields": [
+      {
+        "label": "Mobile number",
+        "placeholder": "Enter mobile number"
+      }
+    ],
+    "buttons": [
+      {
+        "title": "Proceed"
+      }
+    ]
+  },
+  "home": {},
+  "otp": {
+    "title": "Mobile number verification",
+    "headings": { "title": "Verification" },
+    "paragraphs": [
+      {
+        "title": "Enter OTP sent to"
+      },
+      {
+        "title": "Resend OTP in 00:38"
+      },
+      {
+        "title": "Attempts left 4"
+      }
+    ],
+    "spans": [
+      {
+        "title": "+91 9872819277"
+      }
+    ],
+    "buttons": [
+      {
+        "title": "Verify"
+      }
+    ]
+  }
 }
