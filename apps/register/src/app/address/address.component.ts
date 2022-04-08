@@ -14,7 +14,6 @@ export class AddressComponent implements OnInit {
   ngOnInit() {
     this.translationService.get().subscribe((data: any) => {
       this.translation = data.register;
-      console.log(this.translation);
     });
   }
 }

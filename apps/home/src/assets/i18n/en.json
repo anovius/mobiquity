@@ -37,7 +37,7 @@
   "register": {
     "cols": [
       {
-        "feilds": [
+        "fields": [
           { "p": "Contact & ", "br": "Personal details" },
           { "p": "Address", "br": "Details" },
           { "p": "KYC", "br": "Details" },
