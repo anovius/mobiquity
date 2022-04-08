@@ -17,4 +17,8 @@ export class TranslationService {
   get(){
     return this.http.get(`assets/i18n/${this.language.value}.json`);
   }
+
+  getLang(){
+    return this.language.asObservable();
+  }
 }

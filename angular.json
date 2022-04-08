@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "analytics": "315a42bf-0462-4b2a-ba9f-a2f1596f4cd0"
+  },
   "version": 2,
   "projects": {
     "forgot-pin": "apps/forgot-pin",

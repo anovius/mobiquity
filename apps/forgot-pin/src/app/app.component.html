@@ -696,7 +696,7 @@
     <div style="max-width: 480px; background-color: white" class="rounded-md border border-gray-300 shadow-sm shadow-gray-300 mt-9 mx-auto p-7">
         <div class="border-b border-b-gray-200 flex items-center justify-between pb-5 pt-1">
             <div>
-                <h3 class="font-bold text-base text-mobile-ver">{{translation.title}}</h3>
+                <h3 class="font-bold text-base text-mobile-ver">{{translation?.title}}</h3>
             </div>
             <div class="flex items-center">
                 <a class="mx-3" href="customer-support.html">
@@ -720,16 +720,16 @@
             </div>
         </div>
         <div>
-            <p class="text-earn-reward text-sm font-semibold my-4">{{translation.tagline}}
+            <p class="text-earn-reward text-sm font-semibold my-4">{{translation?.tagline}}
             </p>
             <div class="p-3 w-full">
-                <label class="text-blue font-medium text-sm my-3" for="">{{translation.fields[0].label}}</label>
+                <label class="text-blue font-medium text-sm my-3" for="">{{translation?.fields[0]?.label}}</label>
                 <input class="text-sm p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="{{translation.fields[0].placeholder}}">
+                    type="text" placeholder="{{translation?.fields[0]?.placeholder}}">
             </div>
             <div class="text-center mt-6 mb-2">
                 <button
-                    class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation.buttons[0].title}}</button>
+                    class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.buttons[0].title}}</button>
             </div>
         </div>
     </div>
