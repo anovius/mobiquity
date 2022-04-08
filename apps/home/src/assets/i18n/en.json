@@ -33,5 +33,32 @@
     ],
     "spans": ["+91 9872819277"],
     "buttons": ["Verify"]
+  },
+  "register": {
+    "cols": [
+      {
+        "feilds": [
+          { "p": "Contact & ", "br": "Personal details" },
+          { "p": "Address", "br": "Details" },
+          { "p": "KYC", "br": "Details" },
+          { "p": "Set", "br": "PIN" }
+        ],
+        "label": ["Mobile number", "PIN"],
+        "a": ["Forgot PIN?", "Login"],
+        "b": ["REGISTER"]
+      },
+      {
+        "label": ["Mobile number", "PIN"],
+        "a": ["Forgot PIN?", "Login"],
+        "b": ["REGISTER"],
+        "p": ["Already have an account?"]
+      },
+      {
+        "label": ["Mobile number", "PIN"],
+        "a": ["Forgot PIN?", "Login"],
+        "b": ["REGISTER"],
+        "p": ["Already have an account?"]
+      }
+    ]
   }
 }
