@@ -14,6 +14,7 @@
     "register": "apps/register",
     "register-e2e": "apps/register-e2e",
     "reset-pin": "apps/reset-pin",
-    "reset-pin-e2e": "apps/reset-pin-e2e"
+    "reset-pin-e2e": "apps/reset-pin-e2e",
+    "shared": "libs/shared"
   }
 }
