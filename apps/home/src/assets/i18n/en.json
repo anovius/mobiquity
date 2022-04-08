@@ -42,10 +42,7 @@
           { "p": "Address", "br": "Details" },
           { "p": "KYC", "br": "Details" },
           { "p": "Set", "br": "PIN" }
-        ],
-        "label": ["Mobile number", "PIN"],
-        "a": ["Forgot PIN?", "Login"],
-        "b": ["REGISTER"]
+        ]
       },
       {
         "label": ["Mobile number", "PIN"],
@@ -54,10 +51,9 @@
         "p": ["Already have an account?"]
       },
       {
-        "label": ["Mobile number", "PIN"],
-        "a": ["Forgot PIN?", "Login"],
-        "b": ["REGISTER"],
-        "p": ["Already have an account?"]
+        "h": ["Get upto ", "30%cashback", " on bill payments"],
+        "p": ["Automate your bill pay and get 30% cashback"],
+        "div": ["Pay now"]
       }
     ]
   }
