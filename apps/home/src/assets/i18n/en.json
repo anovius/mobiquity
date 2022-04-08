@@ -208,6 +208,18 @@
             ],
             "a": ["Add", "Next"],
             "p": ["(Upload file upto 5MB in PNG, JPEG, PDF format)"]
+          },
+          {
+            "a": ["Next", "View"],
+            "h": "KYC Details",
+            "cards": [
+              {
+                "p": ["Document 1 - Passport", "Rahul Bose- H2004536"]
+              },
+              {
+                "p": ["Document 2 - PAN Card", "Rahul Bose- FXMPS6100Q"]
+              }
+            ]
           }
         ]
       },
