@@ -28,7 +28,7 @@
             <div class="register-progress flex flex-col flex-1 md:flex-row items-center text-center">
                 <div
                     class="rounded-full w-6 h-6 md:w-10 md:h-10 bg-progress text-xs md:text-sm flex justify-center text-white border border-gray-400 items-center">
-                    3
+                    {{translation?.cols[1]?.parts[1]?.num[2]}}
                 </div>
                 <p class="md:ml-2.5 text-xs font-bold text-gray-400">
                     {{translation?.cols[0]?.fields[2]?.p}}<br>{{translation?.cols[0]?.fields[2]?.br}}</p>
@@ -36,13 +36,12 @@
             <div class="register-progress flex flex-col flex-1 md:flex-row items-center text-center">
                 <div
                     class="rounded-full w-6 h-6 md:w-10 md:h-10 bg-white text-xs md:text-sm flex justify-center text-gray-400 border border-gray-400 items-center">
-                    4
+                    {{translation?.cols[1]?.parts[1]?.num[3]}}
                 </div>
                 <p class="md:ml-2.5 text-xs font-bold text-gray-400">
                     {{translation?.cols[0]?.fields[3]?.p}}<br>{{translation?.cols[0]?.fields[3]?.br}}</p>
             </div>
         </div>
-
     </div>
 
     <div class="md:w-8/12">
@@ -60,39 +59,43 @@
 
                         </a>
                     </div>
-                    <h4 class="text-xl font-bold text-dropdown-custom">KYC Details</h4>
+                    <h4 class="text-xl font-bold text-dropdown-custom">{{translation?.cols[1]?.parts[2]?.h}}</h4>
                 </div>
 
             </div>
-            <p class="pl-3 text-xs font-medium">Document 1</p>
+            <p class="pl-3 text-xs font-medium">{{translation?.cols[1]?.parts[2]?.sh[0]}}</p>
             <div class="flex flex-wrap">
                 <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Document type</label>
+                    <label class="text-dropdown-custom text-xs mb-2 font-medium"
+                        for="">{{translation?.cols[1]?.parts[2]?.fields[0]?.label}}</label>
                     <select name="Document" id="" class="p-3 border rounded-md bg-input-custom outline-none w-full">
-                        <option value="">Select document</option>
-                        <option value="">Document One</option>
-                        <option value="">Document Two</option>
-                        <option value="">Document Three</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[0]?.options[0]}}</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[0]?.options[1]}}</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[0]?.options[2]}}</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[0]?.options[3]}}</option>
                     </select>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">ID number</label>
+                    <label class="text-dropdown-custom text-xs mb-2 font-medium"
+                        for="">{{translation?.cols[1]?.parts[2]?.fields[1]?.label}}</label>
                     <input class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" placeholder="Enter address">
+                        type="text" placeholder="{{translation?.cols[1]?.parts[2]?.fields[1]?.placeholder}}">
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Document holder name</label>
+                    <label class="text-dropdown-custom text-xs mb-2 font-medium"
+                        for="">{{translation?.cols[1]?.parts[2]?.fields[2]?.label}}</label>
                     <select name="Document" id="" class="p-3 border rounded-md bg-input-custom outline-none w-full">
-                        <option value="">Enter name</option>
-                        <option value="">Name One</option>
-                        <option value="">Name Two</option>
-                        <option value="">Name Three</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[2]?.options[0]}}</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[2]?.options[1]}}</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[2]?.options[2]}}</option>
+                        <option value="">{{translation?.cols[1]?.parts[2]?.fields[2]?.options[3]}}</option>
                     </select>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2 relative">
-                    <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Expiry date</label>
+                    <label class="text-dropdown-custom text-xs mb-2 font-medium"
+                        for="">{{translation?.cols[1]?.parts[2]?.fields[3]?.label}}</label>
                     <input class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" placeholder="Select date">
+                        type="text" placeholder="{{translation?.cols[1]?.parts[2]?.fields[3]?.placeholder}}">
                     <div class="absolute bottom-7 right-7">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_1000_19472)">
@@ -116,65 +119,60 @@
                                 </clipPath>
                             </defs>
                         </svg>
-
                     </div>
                 </div>
                 <div class="w-full ml-3">
-                    <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Upload file</label>
+                    <label class="text-dropdown-custom text-xs mb-2 font-medium"
+                        for="">{{translation?.cols[1]?.parts[2]?.sh[1]}}</label>
                 </div>
                 <div class="p-3 w-full md:w-1/3">
-                    <label class="text-black font-medium text-small mb-2 flex items-center" for="">Front
-                        View</label>
+                    <label class="text-black font-medium text-small mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[2]?.fields[4]?.label}}</label>
                     <div class="my-2">
                         <div
                             class="relative h-20 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
                             <div class="absolute">
                                 <div class="flex flex-col items-center ">
-                                    <span class="block text-gray-400 text-small font-normal">Click here or drop here
-                                        to
-                                        upload</span>
-                                    <span class="block text-dropdown-custom font-medium text-xs mt-2">CHOOSE
-                                        FILE</span>
+                                    <span
+                                        class="block text-gray-400 text-small font-normal">{{translation?.cols[1]?.parts[2]?.fields[4]?.spans[0]}}</span>
+                                    <span
+                                        class="block text-dropdown-custom font-medium text-xs mt-2">{{translation?.cols[1]?.parts[2]?.fields[4]?.spans[1]}}</span>
                                 </div>
                             </div> <input type="file" class="cursor-pointer h-full w-full opacity-0" name="">
                         </div>
                     </div>
                 </div>
                 <div class="p-3 w-full md:w-1/3">
-                    <label class="text-black font-medium text-small mb-2 flex items-center" for="">Back View</label>
+                    <label class="text-black font-medium text-small mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[2]?.fields[5]?.label}}</label>
                     <div class="my-2">
                         <div
                             class="relative h-20 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
                             <div class="absolute">
                                 <div class="flex flex-col items-center ">
-                                    <span class="block text-gray-400 font-normal text-small">Click here or drop here
-                                        to
-                                        upload</span>
-                                    <span class="block text-dropdown-custom font-medium text-xs mt-2">CHOOSE
-                                        FILE</span>
+                                    <span
+                                        class="block text-gray-400 font-normal text-small">{{translation?.cols[1]?.parts[2]?.fields[5]?.spans[0]}}</span>
+                                    <span
+                                        class="block text-dropdown-custom font-medium text-xs mt-2">{{translation?.cols[1]?.parts[2]?.fields[5]?.spans[1]}}</span>
                                 </div>
                             </div> <input type="file" class="cursor-pointer h-full w-full opacity-0" name="">
                         </div>
                     </div>
                 </div>
                 <div class="w-full ml-3 -mt-3">
-                    <p class="text-xs text-gray-400">(Upload file upto 5MB in PNG, JPEG, PDF format)</p>
+                    <p class="text-xs text-gray-400">{{translation?.cols[1]?.parts[2]?.p}}</p>
                 </div>
                 <div class="text-center w-full my-6">
                     <a href=""
-                        class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">Add</a>
+                        class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[2]?.a[0]}}</a>
                 </div>
-
-
             </div>
-
         </div>
         <div class="my-4 bg-white rounded-md border-custom-border-gray border shadow-sm p-2 md:p-4">
             <div class="flex justify-between items-center cursor-pointer">
                 <div>
-                    <h3 class="text-dropdown-custom text-sm font-medium">Document 2
+                    <h3 class="text-dropdown-custom text-sm font-medium">{{translation?.cols[1]?.parts[2]?.sh[2]}}
                     </h3>
-
                 </div>
                 <div
                     class="mx-3 cursor-pointer w-8 md:w-5 h-5 rounded-full bg-round-arrow flex justify-center items-center">
@@ -184,7 +182,6 @@
                             d="M0.9375 5.03809L-4.14982e-08 4.08872L4 0.0380861L8 4.08872L7.0625 5.03809L4 1.93682L0.9375 5.03809Z"
                             fill="#627381"></path>
                     </svg>
-
                 </div>
             </div>
         </div>
@@ -193,12 +190,14 @@
         <div class="w-full set-slide border-custom-border-gray border py-8 px-5 lg:ml-8 rounded-lg">
             <div>
                 <h2 class="text-xl font-medium mb-2">
-                    Get upto <span class="text-red-400">30%cashback</span> on bill payments
+                    {{translation?.cols[1]?.parts[2]?.fields[6]?.h2[0]}}<span
+                        class="text-red-400">{{translation?.cols[1]?.parts[2]?.fields[6]?.span}}</span>
+                    {{translation?.cols[1]?.parts[2]?.fields[6]?.h2[1]}}
                 </h2>
-                <p class="text-gray-700 mb-5">Automate your bill pay and get 30% cashback</p>
+                <p class="text-gray-700 mb-5">{{translation?.cols[1]?.parts[2]?.fields[6]?.p}}</p>
                 <div class="mt-6">
-                    <button class="bg-white text-sm text-black py-2 px-4 rounded font-medium hover:shadow-sm">Pay
-                        now</button>
+                    <button
+                        class="bg-white text-sm text-black py-2 px-4 rounded font-medium hover:shadow-sm">{{translation?.cols[1]?.parts[2]?.fields[6]?.b}}</button>
                 </div>
             </div>
             <div class="mt-7">
@@ -209,13 +208,11 @@
                 <div class="mx-1 cursor-pointer my-2 w-2 h-2 rounded-full bg-gray-300"></div>
                 <div class="mx-1 cursor-pointer my-2 w-2 h-2 rounded-full bg-gray-300"></div>
                 <div class="mx-1 cursor-pointer my-2 w-2 h-2 rounded-full bg-gray-300"></div>
-
             </div>
         </div>
     </div>
-
 </div>
 <div class="text-center w-full my-6">
     <a routerLink="/register/kyc-details-success"
-        class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">Next</a>
+        class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[2]?.a[1]}}</a>
 </div>

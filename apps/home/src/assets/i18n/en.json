@@ -166,7 +166,49 @@
             "a": ["Skip", "Next"],
             "num": ["1", "2", "3", "4"]
           },
-          {}
+          {
+            "h": "KYC Details",
+            "sh": ["Document 1", "Upload file", "Document 2"],
+            "fields": [
+              {
+                "label": "Document type",
+                "options": [
+                  "Select document",
+                  "Document One",
+                  "Document Two",
+                  "Document Three"
+                ]
+              },
+              {
+                "label": "ID number",
+                "placeholder": "Enter ID number"
+              },
+              {
+                "label": "Document holder name",
+                "options": ["Enter name", "Name One", "Name Two", "Name Three"]
+              },
+              {
+                "label": "Expiry date",
+                "placeholder": "Select date"
+              },
+              {
+                "label": "Front View",
+                "spans": ["Click here or drop here to upload", "CHOOSE FILE"]
+              },
+              {
+                "label": "Back View",
+                "spans": ["Click here or drop here to upload", "CHOOSE FILE"]
+              },
+              {
+                "h2": ["Get upto ", " on bill payments"],
+                "span": "30%cashback",
+                "p": "Automate your bill pay and get 30% cashback",
+                "b": "Pay now"
+              }
+            ],
+            "a": ["Add", "Next"],
+            "p": ["(Upload file upto 5MB in PNG, JPEG, PDF format)"]
+          }
         ]
       },
       {
