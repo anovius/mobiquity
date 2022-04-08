@@ -15,19 +15,13 @@
     ]
   },
   "home": {},
-  "otp": {
-    "title": "Mobile number verification",
-    "headings": { "title": "Verification" },
+  "login": {
+    "title": "Login via mobile number",
+    "tagline": "Enter your mobile number and PIN to login.",
     "paragraphs": [
-      {
-        "title": "Enter OTP sent to"
-      },
-      {
-        "title": "Resend OTP in 00:38"
-      },
-      {
-        "title": "Attempts left 4"
-      }
+      "Enter OTP sent to",
+      "Resend OTP in 00:38",
+      "Attempts left 4"
     ],
     "spans": [
       {
@@ -39,5 +33,16 @@
         "title": "Verify"
       }
     ]
+  },
+  "otp": {
+    "title": "Mobile number verification",
+    "headings": { "title": "Verification" },
+    "paragraphs": [
+      "Enter OTP sent to ",
+      "Resend OTP in 00:38",
+      "Attempts left 4"
+    ],
+    "spans": ["+91 9872819277"],
+    "buttons": ["Verify"]
   }
 }

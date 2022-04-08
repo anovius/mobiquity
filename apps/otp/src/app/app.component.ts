@@ -19,7 +19,6 @@ export class AppComponent {
   ngOnInit() {
     this.translationService.get().subscribe((data: any) => {
       this.translation = data.otp;
-      console.log(this.translation);
     });
   }
 
