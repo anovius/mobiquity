@@ -43,6 +43,6 @@ export class LoginService {
       language: data.language,
     }
 
-    return this.apiService.post('/firstTimeLogin', body);
+    return this.apiService.post('/subscriberLogin', body);
   }
 }

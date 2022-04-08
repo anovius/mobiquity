@@ -56,6 +56,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/reset-pin']);
         }
       }
+      else if(res.status === "PAUSED"){
+        //sendOTP here first
+        this.router.navigate(['/otp']);
+      }
     });
   }
 }
