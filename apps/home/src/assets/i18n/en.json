@@ -1,17 +1,64 @@
 {
-    "forgotPin": {
-        "title": "Pin Reset",
-        "tagline": "Enter the mobile number associated with the account",
-        "fields": [
-            {
-                "label": "Mobile number",
-                "placeholder": "Enter mobile number"
-            }
+  "forgotPin": {
+    "title": "Pin Reset",
+    "tagline": "Enter the mobile number associated with the account",
+    "fields": [
+      {
+        "label": "Mobile number",
+        "placeholder": "Enter mobile number"
+      }
+    ],
+    "buttons": [
+      {
+        "title": "Proceed"
+      }
+    ]
+  },
+  "home": {},
+  "login": {
+    "title": "Login via mobile number",
+    "tagline": "Enter your mobile number and PIN to login.",
+    "label": ["Mobile number", "PIN"],
+    "a": ["Forgot PIN?", "Register"],
+    "b": ["LOGIN"],
+    "p": ["Don’t have an account?"]
+  },
+  "otp": {
+    "title": "Mobile number verification",
+    "headings": ["Verification"],
+    "paragraphs": [
+      "Enter OTP sent to ",
+      "Resend OTP in 00:38",
+      "Attempts left 4"
+    ],
+    "spans": ["+91 9872819277"],
+    "buttons": ["Verify"]
+  },
+  "register": {
+    "cols": [
+      {
+        "feilds": [
+          { "p": "Contact & ", "br": "Personal details" },
+          { "p": "Address", "br": "Details" },
+          { "p": "KYC", "br": "Details" },
+          { "p": "Set", "br": "PIN" }
         ],
-        "buttons": [
-            {
-                "title": "Proceed"
-            }
-        ]
-    }
+        "label": ["Mobile number", "PIN"],
+        "a": ["Forgot PIN?", "Login"],
+        "b": ["REGISTER"]
+      },
+      {
+        "label": ["Mobile number", "PIN"],
+        "a": ["Forgot PIN?", "Login"],
+        "b": ["REGISTER"],
+        "p": ["Already have an account?"]
+      },
+      {
+        "label": ["Mobile number", "PIN"],
+        "a": ["Forgot PIN?", "Login"],
+        "b": ["REGISTER"],
+        "p": ["Already have an account?"]
+      }
+    ]
+  }
 }

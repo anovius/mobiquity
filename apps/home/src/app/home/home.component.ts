@@ -5,9 +5,10 @@ import { TranslationService } from '@mobiquity/shared';
 @Component({
   selector: 'mobiquity-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  translation: any;
 
   constructor(
     private preLoginService: PreloginService,
@@ -32,5 +33,4 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
 }
