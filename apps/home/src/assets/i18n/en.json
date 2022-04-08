@@ -102,7 +102,71 @@
             ],
             "a": ["Next", "Login"],
             "p": ["Already have an account?"]
-          }
+          },
+          {
+            "fields": [
+              {
+                "p": "Contact & ",
+                "br": "Personal details"
+              },
+              {
+                "p": "Address",
+                "br": "Details"
+              },
+              {
+                "p": "KYC",
+                "br": "Details"
+              },
+              {
+                "p": "Set",
+                "br": "PIN"
+              },
+              {
+                "label": "Address Line 1",
+                "placeholder": "Enter address"
+              },
+              {
+                "label": "Address Line 2",
+                "placeholder": "Enter address"
+              },
+              {
+                "label": "Country",
+                "option1": "Select country",
+                "option2": "Pakistan",
+                "option3": "England",
+                "option4": "Oman"
+              },
+              {
+                "label": "Postal Code",
+                "placeholder": "Enter Postal Code"
+              },
+              {
+                "label": "State",
+                "option1": "Select state",
+                "option2": "State A",
+                "option3": "State B",
+                "option4": "State C"
+              },
+              {
+                "label": "City",
+                "placeholder": "Select city",
+                "option1": "Select city",
+                "option2": "city A",
+                "option3": "city B",
+                "option4": "city C"
+              },
+              {
+                "h2": ["Get upto ", " on bill payments"],
+                "span": "30%cashback",
+                "p": "Automate your bill pay and get 30% cashback",
+                "b": "Pay now"
+              }
+            ],
+            "h": "Address Details",
+            "a": ["Skip", "Next"],
+            "num": ["1", "2", "3", "4"]
+          },
+          {}
         ]
       },
       {
