@@ -60,6 +60,11 @@ export class LoginComponent implements OnInit {
         //sendOTP here first
         this.router.navigate(['/otp']);
       }
+
+      else if(res.status === "SUCCEEDED"){
+        //TODO
+        //call 4 apis and make user service
+      }
     });
   }
 }
