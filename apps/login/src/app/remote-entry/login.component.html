@@ -97,46 +97,49 @@
 
         </div>
         <div class="login-form flex-1 pl-8 pt-4">
-            <h3 class="text-xl text-dropdown-custom mb-3 font-medium">{{translation?.title}}</h3>
-            <p class="text-gray-400 mb-3 text-sm">{{translation?.tagline}}</p>
-            <div class="flex flex-col mt-6">
-                <label class="text-blue text-sm mb-2" for="">{{translation?.label[0]}}</label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="Enter mobile number">
-            </div>
-            <div class="mt-6 flex flex-col relative">
-                <label class="text-dropdown-custom text-sm mb-2" for="">{{translation?.label[1]}}</label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="password" placeholder="Enter PIN">
-                <div class="absolute bottom-4 right-4">
-                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M14.9048 7.01769C14.7696 6.83267 11.5782 2.4837 7.50005 2.4837C3.42192 2.4837 0.229162 6.82926 0.0953424 7.01769C0.0333905 7.1033 0 7.20659 0 7.31263C0 7.41867 0.0333905 7.52196 0.0953424 7.60757C0.230514 7.79259 3.42192 12.1416 7.50005 12.1416C11.5782 12.1416 14.7709 7.79259 14.9048 7.60757C14.9668 7.52201 15.0003 7.4187 15.0003 7.31263C15.0003 7.20656 14.9668 7.10326 14.9048 7.01769ZM7.50207 11.142C4.49856 11.142 1.8965 8.25548 1.1267 7.31195C1.89245 6.36774 4.48977 3.4839 7.50207 3.4839C10.5144 3.4839 13.107 6.36979 13.8774 7.314C13.1063 8.25753 10.5103 11.142 7.50207 11.142Z"
-                            fill="#BBBBBB" />
-                        <path
-                            d="M7.50022 4.31543C6.9134 4.31543 6.33976 4.4912 5.85184 4.82054C5.36392 5.14987 4.98362 5.61796 4.75906 6.16562C4.53449 6.71329 4.47573 7.31592 4.59021 7.89732C4.7047 8.47871 4.98728 9.01275 5.40222 9.43191C5.81717 9.85107 6.34584 10.1365 6.92139 10.2522C7.49693 10.3678 8.0935 10.3085 8.63565 10.0816C9.1778 9.85478 9.64118 9.47062 9.96721 8.97774C10.2932 8.48486 10.4672 7.90539 10.4672 7.3126C10.4655 6.51826 10.1523 5.75696 9.59625 5.19527C9.04022 4.63358 8.28658 4.31723 7.50022 4.31543ZM7.50022 9.31094C7.10896 9.31094 6.72649 9.19373 6.40117 8.97415C6.07585 8.75457 5.8223 8.44247 5.67257 8.07732C5.52284 7.71218 5.48367 7.31038 5.56 6.92274C5.63633 6.5351 5.82474 6.17903 6.1014 5.89956C6.37806 5.62009 6.73055 5.42976 7.11429 5.35266C7.49803 5.27555 7.89579 5.31511 8.25726 5.46636C8.61874 5.61761 8.9277 5.87375 9.14507 6.20238C9.36244 6.531 9.47846 6.91737 9.47846 7.3126C9.47793 7.84243 9.26934 8.35039 8.89846 8.72504C8.52759 9.09968 8.02472 9.3104 7.50022 9.31094Z"
-                            fill="#BBBBBB" />
-                        <path d="M13.3343 1.44815L12.8564 0.965393L1.38675 12.5517L1.86465 13.0344L13.3343 1.44815Z"
-                            fill="#BBBBBB" />
-                        <path d="M13.8123 1.44813L12.8564 0.482605L0.908845 12.5516L1.86465 13.5171L13.8123 1.44813Z"
-                            stroke="white" />
-                    </svg>
-                </div>
-            </div>
-            <div class="text-right mt-1">
-                <a class="text-sm" routerLink="/forgot-pin">{{translation?.a[0]}}</a>
-            </div>
-            <div class="text-center my-6">
-                <button
-                    class="bg-login-btn-custom px-14 text-sm text-indigo-900 rounded-md py-3 hover:bg-indigo-900 hover:text-indigo-200 transition-all">{{translation?.b[0]}}</button>
-            </div>
+            <form [formGroup]="loginForm">
 
-            <div class="text-center text-sm my-4">
-                <p>{{translation?.p[0]}}? <a class="text-login-custom" routerLink="/register">
-                        {{translation?.a[1]}}</a></p>
-            </div>
+                <h3 class="text-xl text-dropdown-custom mb-3 font-medium">{{translation?.title}}</h3>
+                <p class="text-gray-400 mb-3 text-sm">{{translation?.tagline}}</p>
+                <div class="flex flex-col mt-6">
+                    <label class="text-blue text-sm mb-2" for="">{{translation?.label[0]}}</label>
+                    <input formControlName="mobile"
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="text" placeholder="Enter mobile number">
+                </div>
+                <div class="mt-6 flex flex-col relative">
+                    <label class="text-dropdown-custom text-sm mb-2" for="">{{translation?.label[1]}}</label>
+                    <input formControlName="pin"
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="password" placeholder="Enter PIN">
+                    <div class="absolute bottom-4 right-4">
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.9048 7.01769C14.7696 6.83267 11.5782 2.4837 7.50005 2.4837C3.42192 2.4837 0.229162 6.82926 0.0953424 7.01769C0.0333905 7.1033 0 7.20659 0 7.31263C0 7.41867 0.0333905 7.52196 0.0953424 7.60757C0.230514 7.79259 3.42192 12.1416 7.50005 12.1416C11.5782 12.1416 14.7709 7.79259 14.9048 7.60757C14.9668 7.52201 15.0003 7.4187 15.0003 7.31263C15.0003 7.20656 14.9668 7.10326 14.9048 7.01769ZM7.50207 11.142C4.49856 11.142 1.8965 8.25548 1.1267 7.31195C1.89245 6.36774 4.48977 3.4839 7.50207 3.4839C10.5144 3.4839 13.107 6.36979 13.8774 7.314C13.1063 8.25753 10.5103 11.142 7.50207 11.142Z"
+                                fill="#BBBBBB" />
+                            <path
+                                d="M7.50022 4.31543C6.9134 4.31543 6.33976 4.4912 5.85184 4.82054C5.36392 5.14987 4.98362 5.61796 4.75906 6.16562C4.53449 6.71329 4.47573 7.31592 4.59021 7.89732C4.7047 8.47871 4.98728 9.01275 5.40222 9.43191C5.81717 9.85107 6.34584 10.1365 6.92139 10.2522C7.49693 10.3678 8.0935 10.3085 8.63565 10.0816C9.1778 9.85478 9.64118 9.47062 9.96721 8.97774C10.2932 8.48486 10.4672 7.90539 10.4672 7.3126C10.4655 6.51826 10.1523 5.75696 9.59625 5.19527C9.04022 4.63358 8.28658 4.31723 7.50022 4.31543ZM7.50022 9.31094C7.10896 9.31094 6.72649 9.19373 6.40117 8.97415C6.07585 8.75457 5.8223 8.44247 5.67257 8.07732C5.52284 7.71218 5.48367 7.31038 5.56 6.92274C5.63633 6.5351 5.82474 6.17903 6.1014 5.89956C6.37806 5.62009 6.73055 5.42976 7.11429 5.35266C7.49803 5.27555 7.89579 5.31511 8.25726 5.46636C8.61874 5.61761 8.9277 5.87375 9.14507 6.20238C9.36244 6.531 9.47846 6.91737 9.47846 7.3126C9.47793 7.84243 9.26934 8.35039 8.89846 8.72504C8.52759 9.09968 8.02472 9.3104 7.50022 9.31094Z"
+                                fill="#BBBBBB" />
+                            <path d="M13.3343 1.44815L12.8564 0.965393L1.38675 12.5517L1.86465 13.0344L13.3343 1.44815Z"
+                                fill="#BBBBBB" />
+                            <path d="M13.8123 1.44813L12.8564 0.482605L0.908845 12.5516L1.86465 13.5171L13.8123 1.44813Z"
+                                stroke="white" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-right mt-1">
+                    <a class="text-sm" routerLink="/forgot-pin">{{translation?.a[0]}}</a>
+                </div>
+                <div class="text-center my-6">
+                    <button (click)="login()"
+                        class="bg-login-btn-custom px-14 text-sm text-indigo-900 rounded-md py-3 hover:bg-indigo-900 hover:text-indigo-200 transition-all" [disabled]="loginForm.invalid">{{translation?.b[0]}}</button>
+                </div>
+    
+                <div class="text-center text-sm my-4">
+                    <p>{{translation?.p[0]}}? <a class="text-login-custom" routerLink="/register">
+                            {{translation?.a[1]}}</a></p>
+                </div>
+            </form>
         </div>
 
     </div>

@@ -7,12 +7,14 @@ import { AppComponent } from '../app.component';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home/home.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
+import { SharedModule } from '@mobiquity/shared';
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [RemoteEntryComponent, LoginComponent, HomeComponent],
   imports: [
     CommonModule,
-    SimpleModalModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',
@@ -20,6 +22,8 @@ import { SimpleModalModule } from 'ngx-simple-modal';
       },
     ]),
   ],
-  providers: [],
+  providers: [
+    LoginService
+  ],
 })
 export class RemoteEntryModule {}

@@ -4,12 +4,14 @@ import { Observable ,  throwError } from 'rxjs';
 import { environment } from '../../../../../environment';
 
 import { catchError } from 'rxjs/operators';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 
 @Injectable()
 export class ApiService {
   constructor(
     private http: HttpClient,
+    private deviceService: DeviceDetectorService
   ) {}
 
   private formatErrors(error: any) {
@@ -39,5 +41,9 @@ export class ApiService {
     return this.http.delete(
       `${environment.apiUrl}${path}`
     ).pipe(catchError(this.formatErrors));
+  }
+
+  deviceInfo(){
+    return this.deviceService.getDeviceInfo();
   }
 }
