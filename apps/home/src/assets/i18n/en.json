@@ -45,10 +45,65 @@
         ]
       },
       {
-        "label": ["Mobile number", "PIN"],
-        "a": ["Forgot PIN?", "Login"],
-        "b": ["REGISTER"],
-        "p": ["Already have an account?"]
+        "parts": [
+          {
+            "h": "Contact Details",
+            "sh": "Personal Details",
+            "div": [
+              {
+                "label": "Mobile number",
+                "span": "*",
+                "placeholder": "Enter mobile number"
+              },
+              {
+                "label": "Email ID",
+                "placeholder": "Enter Email ID (Optional)"
+              },
+              {
+                "label": "Referral Code",
+                "placeholder": "Enter (Optional)"
+              },
+              {
+                "label": "First name",
+                "span": "*",
+                "placeholder": "Enter first name"
+              },
+              {
+                "label": "Middle name",
+                "placeholder": "Enter middle name(Optional)"
+              },
+              {
+                "label": "Last name",
+                "span": "*",
+                "placeholder": "Enter last name"
+              },
+              {
+                "label": "Date of Birth",
+                "placeholder": "Select date (Optional)"
+              },
+              {
+                "label": "Payment ID",
+                "placeholder": "Enter payment ID (Optional)"
+              },
+              {
+                "label": "Gender",
+                "radio1": "Male",
+                "radio2": "Female",
+                "radio3": "Other"
+              },
+              {
+                "span": "It can contain 7 - 30 characters, numerics or special character from &, *, !"
+              },
+              {
+                "label": "Upload profile picture",
+                "span": ["Click here or drop here to upload", "CHOOSE FILE"],
+                "p": "(Upload file upto 5MB in PNG, JPEG, PDF format)"
+              }
+            ],
+            "a": ["Next", "Login"],
+            "p": ["Already have an account?"]
+          }
+        ]
       },
       {
         "h": ["Get upto ", "30%cashback", " on bill payments"],
