@@ -12,12 +12,15 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
   ) { }
 
-  isLoggedIn = false;
+  isLoggedIn: any;
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(res=> {
-      console.log(res);
-    });
+    this.isLoggedIn = window.localStorage.getItem('isLoggedIn');
+  }
+
+  logout(){
+    window.localStorage.removeItem('isLoggedIn');
+    this.isLoggedIn = false;
   }
 
 }

@@ -34,6 +34,7 @@ export class UserService {
           this.isLoggedIn.next(true);
 
           this.router.navigate(['/']);
+          window.localStorage.setItem('isLoggedIn', 'true');
         });
 
       })
