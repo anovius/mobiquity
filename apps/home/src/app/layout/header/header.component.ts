@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '@mobiquity/shared';
 
 @Component({
   selector: 'mobiquity-header',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+  ) { }
+
+  isLoggedIn = false;
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe(res=> {
+      console.log(res);
+    });
   }
 
 }

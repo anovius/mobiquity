@@ -54,7 +54,6 @@ export class AppComponent {
         window.localStorage.setItem("access_token", res.token.access_token);
         window.localStorage.setItem("refresh_token", res.token.refresh_token);
         await this.userService.onSuccessLogin();
-        this.router.navigate(['/']);
       }
     });
   }

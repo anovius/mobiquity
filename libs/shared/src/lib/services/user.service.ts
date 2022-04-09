@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from './api.service';
 import { environment } from '../../../../../environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +15,30 @@ export class UserService {
   private securityProfile = new BehaviorSubject<any>(null);
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router,
   ) { }
 
   async onSuccessLogin(){
-    await this.apiService.get('https://demo9362630.mockable.io/authorizationProfile').subscribe((res: any) => {
+
+    this.apiService.get('https://demo9362630.mockable.io/authorizationProfile').subscribe((res: any) => {
       this.authorizationProfile.next(res);
+
+      //TODO hard coded mobile as api was not working
+      this.apiService.get(`https://demo9362630.mockable.io/securityProfile?workspace=${environment.constants.workspaceId}&identifierValue=7774678209&identifierType=${environment.constants.identifierType}`).subscribe((res: any) => {
+        this.securityProfile.next(res.securityProfile);
+
+        this.apiService.get('https://demo9362630.mockable.io/selfAccounts').subscribe((res: any) => {
+          this.user.next(res);
+
+          this.isLoggedIn.next(true);
+
+          this.router.navigate(['/']);
+        });
+
+      })
+
     })
-
-    //TODO hard coded mobile as api was not working
-    await this.apiService.get(`https://demo9362630.mockable.io/securityProfile?workspace=${environment.constants.workspaceId}&identifierValue=7774678209&identifierType=${environment.constants.identifierType}`).subscribe((res: any) => {
-      this.securityProfile.next(res.securityProfile);
-    })
-
-    await this.apiService.get('https://demo9362630.mockable.io/selfAccounts').subscribe((res: any) => {
-      this.user.next(res);
-    });
-
-    this.isLoggedIn.next(true);
   }
 
   getAuthorizationProfile(){
@@ -46,7 +53,7 @@ export class UserService {
     return this.user.asObservable();
   }
 
-  getIsLoggedIn(){
-    return this.isLoggedIn.asObservable();
+  get getIsLoggedIn(){
+    return this.isLoggedIn.value;
   }
 }
