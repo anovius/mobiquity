@@ -4,11 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { RemoteEntryComponent } from './entry.component';
 import { AppComponent } from '../app.component';
+import { ForgotPinService } from './forgot-pin.service';
+import { SharedModule } from '@mobiquity/shared';
 
 @NgModule({
   declarations: [RemoteEntryComponent],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',
@@ -16,6 +19,8 @@ import { AppComponent } from '../app.component';
       },
     ]),
   ],
-  providers: [],
+  providers: [
+    ForgotPinService
+  ],
 })
 export class RemoteEntryModule {}

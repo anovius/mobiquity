@@ -719,26 +719,13 @@
             </p>
             <div class="p-3 w-full">
                 <label class="text-blue font-medium text-sm my-3" for="">{{translation?.fields[0]?.label}}</label>
-                <input class="text-sm p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="{{translation?.fields[0]?.placeholder}}">
+                <input class="text-sm p-3 border rounded-md bg-input-custom outline-none w-full border-input-border" maxlength="10" mobiquityNumberOnly
+                    type="text" placeholder="{{translation?.fields[0]?.placeholder}}" [(ngModel)]="mobile">
             </div>
             <div class="text-center mt-6 mb-2">
-                <button
+                <button (click) = "forgotPin()"
                     class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.buttons[0].title}}</button>
             </div>
         </div>
-    </div>
-    <div>
-      <p class="text-earn-reward text-sm font-semibold my-4">{{translation.tagline}}
-      </p>
-      <div class="p-3 w-full">
-        <label class="text-blue font-medium text-sm my-3" for="">{{translation.fields[0].label}}</label>
-        <input class="text-sm p-3 border rounded-md bg-input-custom outline-none w-full border-input-border" type="text"
-          placeholder="{{translation.fields[0].placeholder}}">
-      </div>
-      <div class="text-center mt-6 mb-2">
-        <button
-          class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation.buttons[0].title}}</button>
-      </div>
     </div>
   </div>
