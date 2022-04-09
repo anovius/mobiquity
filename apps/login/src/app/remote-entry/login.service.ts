@@ -43,6 +43,6 @@ export class LoginService {
       language: data.language,
     }
 
-    return this.apiService.post('/subscriberLogin', body);
+    return this.apiService.post('https://demo9362630.mockable.io/firstTimeLogin', body);
   }
 }

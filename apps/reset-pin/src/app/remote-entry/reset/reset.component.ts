@@ -32,7 +32,7 @@ export class ResetComponent implements OnInit {
     this.init();
 
     this.mobile = window.localStorage.getItem('mobile');
-    window.localStorage.removeItem('mobile');
+    // window.localStorage.removeItem('mobile');
 
     this.translationService.getLang().subscribe(
       lang => {
@@ -66,10 +66,17 @@ export class ResetComponent implements OnInit {
 
   reset(){
     if(this.resetForm.invalid || this.hasErrors) return;
-    console.log(this.resetForm.value);
-    // this.resetService.reset({...this.resetForm.value, language: this.language, mobile: this.mobile}).subscribe(res =>{
-
-    // });
+    this.resetService.reset({...this.resetForm.value, language: this.language, mobile: this.mobile}).subscribe(res =>{
+      if(res.status === "FAILED"){
+        //TODO  
+        //show error message
+      }
+      else if(res.status === "SUCCEEDED"){
+        //TODO
+        //show success message
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
 }

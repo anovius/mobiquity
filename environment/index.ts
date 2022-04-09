@@ -1,11 +1,12 @@
 export const environment = {
-    apiUrl: 'https://demo9362630.mockable.io', //mock api
+    apiUrl: '', //mock api
 
     constants: {
         "bearerCode": "WEB",
         "workspaceId": "SUBSCRIBER",
         "identifierType": "MSISDN",
         "isTokenRequired": "Y",
+        "requestedBy": "SELF",
         "deviceInfo": {
             "appName": "mobilePay",
             "appVersion": 10.2,
