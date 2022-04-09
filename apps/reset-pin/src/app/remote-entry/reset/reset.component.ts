@@ -3,15 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslationService } from '@mobiquity/shared';
-import { ResetService } from './remote-entry/reset.service';
+import { ResetService } from '../reset.service';
+
 
 @Component({
-  selector: 'mobiquity-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'mobiquity-reset',
+  templateUrl: './reset.component.html',
+  styleUrls: ['./reset.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'reset-pin';
+export class ResetComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -24,6 +24,9 @@ export class AppComponent implements OnInit {
   mobile: any;
   language: any;
   resetForm!: FormGroup; 
+
+  hasErrors = false;
+  errorMessage = "";
 
   ngOnInit() {
     this.init();
@@ -49,10 +52,24 @@ export class AppComponent implements OnInit {
     window.history.back();
   }
 
+  onFocusOutEvent(event: any){
+    if(this.resetForm.value.confirmPin === '' || this.resetForm.value.pin === '') return;
+    if(this.resetForm.value.pin !== this.resetForm.value.confirmPin){
+      this.hasErrors = true;
+      this.errorMessage = "PIN doesn't match.";
+    }
+    else{
+      this.hasErrors = false;
+      this.errorMessage = "";
+    }
+  }
+
   reset(){
+    if(this.resetForm.invalid || this.hasErrors) return;
     console.log(this.resetForm.value);
     // this.resetService.reset({...this.resetForm.value, language: this.language, mobile: this.mobile}).subscribe(res =>{
 
     // });
   }
+
 }

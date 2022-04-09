@@ -4,18 +4,24 @@ import { RouterModule } from '@angular/router';
 
 import { RemoteEntryComponent } from './entry.component';
 import { AppComponent } from '../app.component';
+import { SharedModule } from '@mobiquity/shared';
+import { ResetService } from './reset.service';
+import { ResetComponent } from './reset/reset.component';
 
 @NgModule({
-  declarations: [RemoteEntryComponent],
+  declarations: [RemoteEntryComponent, ResetComponent],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',
-        component: AppComponent,
+        component: ResetComponent,
       },
     ]),
   ],
-  providers: [],
+  providers: [
+    ResetService
+  ],
 })
 export class RemoteEntryModule {}

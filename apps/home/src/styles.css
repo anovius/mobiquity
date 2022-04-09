@@ -2776,3 +2776,18 @@ input:checked+.slider:after {
     border-width: 0px;
   }
 }
+
+
+.disabled{
+  pointer-events: none;
+}
+
+.borderError{
+  border: 2px solid red !important;
+}
+
+.error-message{
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+}

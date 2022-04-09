@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login({...this.loginForm.value, language: this.language}).subscribe(res =>{
       if(res.status === "FAILED"){
         if(res.errors[0].code === "FTL01"){
+          window.localStorage.setItem('mobile', this.loginForm.value.mobile);
           this.router.navigate(['/reset-pin']);
         }
       }
