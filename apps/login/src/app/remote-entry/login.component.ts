@@ -65,6 +65,9 @@ export class LoginComponent implements OnInit {
         //TODO
         //call 4 apis and make user service
       }
+      else{
+        //show error of invalid username and password
+      }
     });
   }
 }
