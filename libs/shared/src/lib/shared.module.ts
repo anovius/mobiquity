@@ -5,6 +5,8 @@ import { TranslationService } from './services/translation.service';
 import { ApiService } from './services/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NumberOnlyDirective } from './directives/number-only.directive';
+import { SuccessPopComponent } from './components/success-pop/success-pop.component';
+import { ErrorPopComponent } from './components/error-pop/error-pop.component';
 @NgModule({
   imports: [CommonModule, HttpClientModule,
     FormsModule,
@@ -19,9 +21,12 @@ import { NumberOnlyDirective } from './directives/number-only.directive';
     FormsModule,
     ReactiveFormsModule,
     NumberOnlyDirective,
+    SuccessPopComponent,
   ],
   declarations: [
-    NumberOnlyDirective
+    NumberOnlyDirective,
+    SuccessPopComponent,
+    ErrorPopComponent
   ]
   })
 export class SharedModule {}

@@ -26,6 +26,7 @@ export class ResetComponent implements OnInit {
   resetForm!: FormGroup; 
 
   hasErrors = false;
+  isSuccess = false;
   errorMessage = "";
 
   ngOnInit() {
@@ -72,9 +73,7 @@ export class ResetComponent implements OnInit {
         //show error message
       }
       else if(res.status === "SUCCEEDED"){
-        //TODO
-        //show success message
-        this.router.navigate(['/login']);
+        this.isSuccess = true;
       }
     });
   }

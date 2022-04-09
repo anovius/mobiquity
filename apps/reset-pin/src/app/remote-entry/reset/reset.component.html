@@ -689,8 +689,7 @@
       </div>
     </div>
   </footer>
-<div class="modal-full">
-  
+<div class="modal-full" *ngIf="!isSuccess">
 
     <div style="max-width: 480px; background-color: white" class="rounded-md border border-gray-300 shadow-sm shadow-gray-300 mt-9 mx-auto p-7">
       <form [formGroup]="resetForm">
@@ -735,4 +734,8 @@
   </div>
 
 
+</div>
+
+<div class="modal-full" *ngIf="isSuccess">
+    <mobiquity-success-pop message="PIN Changed Successfully" buttonText="Login" path="/login"></mobiquity-success-pop>
 </div>
