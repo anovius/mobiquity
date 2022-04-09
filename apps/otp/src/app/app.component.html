@@ -706,18 +706,19 @@
     <div class="pt-6 flex flex-col justify-center items-center">
       <h4 class="text-dropdown-custom text-base mb-4 font-bold">{{translation?.headings[0]}}</h4>
       <p class="text-sm font-medium">{{translation?.paragraphs[0]}}<span
-          class="text-round-edit-2">{{translation?.spans[0]}}</span></p>
-      <div class="flex justify-center">
-        <input type="text" class="m-3 p-3 text-center border-b border-black w-1/6">
-        <input type="text" class="m-3 p-3 text-center border-b border-black w-1/6">
-        <input type="text" class="m-3 p-3 text-center border-b border-black w-1/6">
-        <input type="text" class="m-3 p-3 text-center border-b border-black w-1/6">
-
+          class="text-round-edit-2">{{mobile}}</span></p>
+      <div class="flex justify-center mt-4">
+        <!-- <input type="text" maxlength="1" mobiquityNumberOnly class="m-3 p-3 text-center border-b border-black w-1/6">
+        <input type="text" maxlength="1" mobiquityNumberOnly class="m-3 p-3 text-center border-b border-black w-1/6">
+        <input type="text" maxlength="1" mobiquityNumberOnly class="m-3 p-3 text-center border-b border-black w-1/6">
+        <input type="text" maxlength="1" mobiquityNumberOnly class="m-3 p-3 text-center border-b border-black w-1/6"> -->
+        <ng-otp-input  (onInputChange)="onOtpChange($event)" mobiquityNumberOnly [config]="{length:4, inputClass:'m-3 p-3 text-center border-b border-black w-1/6'}"></ng-otp-input>
       </div>
+      <p *ngIf="hasError" class="error-message">Please enter a valid OTP</p>
       <p class="pt-8 text-xs text-gray-500 font-medium">{{translation?.paragraphs[1]}}</p>
       <p class="pt-3 text-xs text-gray-500 font-medium">{{translation?.paragraphs[2]}}</p>
       <div class="text-center w-full mt-16">
-        <button
+        <button (click) = "verify()"
           class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.buttons[0]}}</button>
       </div>
     </div>
