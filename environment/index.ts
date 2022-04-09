@@ -5,6 +5,7 @@ export const environment = {
         "bearerCode": "WEB",
         "workspaceId": "SUBSCRIBER",
         "identifierType": "MSISDN",
+        "otpServiceCode":"SUBREG",
         "isTokenRequired": "Y",
         "requestedBy": "SELF",
         "deviceInfo": {

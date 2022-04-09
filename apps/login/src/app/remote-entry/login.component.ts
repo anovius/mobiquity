@@ -51,15 +51,17 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loginService.login({...this.loginForm.value, language: this.language}).subscribe(res =>{
+      window.localStorage.setItem('mobile', this.loginForm.value.mobile);
       if(res.status === "FAILED"){
         if(res.errors[0].code === "FTL01"){
-          window.localStorage.setItem('mobile', this.loginForm.value.mobile);
           this.router.navigate(['/reset-pin']);
         }
       }
       else if(res.status === "PAUSED"){
-        //sendOTP here first
-        this.router.navigate(['/otp']);
+        this.loginService.generateOtp(this.loginForm.value.mobile).subscribe(res =>{
+          window.localStorage.setItem('serviceRequestId', res.serviceRequestId);
+          this.router.navigate(['/otp']);
+        });
       }
 
       else if(res.status === "SUCCEEDED"){

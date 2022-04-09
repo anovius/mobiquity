@@ -43,6 +43,17 @@ export class LoginService {
       language: data.language,
     }
 
-    return this.apiService.post('https://demo9362630.mockable.io/firstTimeLogin', body);
+    // return this.apiService.post('https://demo9362630.mockable.io/firstTimeLogin', body);
+    return this.apiService.post('https://demo9362630.mockable.io/subscriberLogin', body);
+  }
+
+
+  generateOtp(phone: any){
+    let body = {
+      identifierType: environment.constants.identifierType,
+      otpServiceCode: environment.constants.otpServiceCode,
+      identifierValue: phone,
+    }
+    return this.apiService.post('https://demo5894535.mockable.io/generateOTP', body);
   }
 }
