@@ -8,7 +8,7 @@ import { environment } from '../../../../environment';
 export class OtpService {
 
   constructor(
-    private apiService: ApiService,
+    private apiService: ApiService
   ) { }
 
   verify(body:any){

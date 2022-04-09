@@ -8,6 +8,7 @@ import { NumberOnlyDirective } from './directives/number-only.directive';
 import { SuccessPopComponent } from './components/success-pop/success-pop.component';
 import { ErrorPopComponent } from './components/error-pop/error-pop.component';
 import { HttpTokenInterceptor } from './intercepter';
+import { UserService } from './services/user.service';
 @NgModule({
   imports: [CommonModule, HttpClientModule,
     FormsModule,
@@ -16,6 +17,7 @@ import { HttpTokenInterceptor } from './intercepter';
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
     HttpClient,
     TranslationService,
+    UserService,
     ApiService,
   ],
   exports: [
