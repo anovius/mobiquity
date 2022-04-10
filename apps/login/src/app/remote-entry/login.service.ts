@@ -44,7 +44,7 @@ export class LoginService {
     }
 
     // return this.apiService.post('https://demo9362630.mockable.io/firstTimeLogin', body);
-    return this.apiService.post('https://demo9362630.mockable.io/subscriberLogin', body);
+    return this.apiService.post('https://demo9362630.mockable.io/subscriberLogin', body); 
   }
 
 
