@@ -15,6 +15,7 @@ export class AppComponent {
   mobile: any;
   otp: any;
   hasError = false;
+  isLoading = false;
 
   isForgotPassword = false;
 
@@ -52,7 +53,10 @@ export class AppComponent {
       resumeServiceRequestId: window.localStorage.getItem('serviceRequestId'),
     }
 
+    this.isLoading = true;
+
     this.otpService.verify(body).subscribe( async (res: any) => {
+      this.isLoading = false;
       if(res.status === "FAILED"){
         this.hasError = true;
       }

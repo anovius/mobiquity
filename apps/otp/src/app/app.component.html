@@ -719,7 +719,11 @@
       <p class="pt-3 text-xs text-gray-500 font-medium">{{translation?.paragraphs[2]}}</p>
       <div class="text-center w-full mt-16">
         <button (click) = "verify()"
-          class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.buttons[0]}}</button>
+          class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">
+         
+          <span *ngIf="!isLoading"> {{translation?.buttons[0]}}</span>
+          <span *ngIf="isLoading"><div class="sp sp-circle"></div></span>
+        </button>
       </div>
     </div>
   </div>

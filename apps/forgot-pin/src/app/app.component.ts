@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   translation: any;
   mobile: any;
   language: any;
+  isLoading = false;
 
   constructor(
     private translationService: TranslationService,
@@ -36,9 +37,11 @@ export class AppComponent implements OnInit {
 
   forgotPin(){
     window.localStorage.setItem('mobile', this.mobile);
+    this.isLoading = true;
     this.forgotPinService.forgotPin({mobile: this.mobile, language: this.language}).subscribe((res: any) => {
       if(res.status === "PAUSED"){
         this.forgotPinService.generateOtp(this.mobile).subscribe((res: any) => {
+          this.isLoading = false;
           if(res.status === "SUCCEEDED"){
             window.localStorage.setItem('serviceRequestId', res.serviceRequestId);
             this.router.navigate(['/otp'], {queryParams: {isForgotPassword: true }});

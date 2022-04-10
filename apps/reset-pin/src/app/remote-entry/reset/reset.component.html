@@ -725,8 +725,11 @@
                     <p class="error-message" *ngIf="hasErrors">{{errorMessage}}</p>
             </div>
             <div class="text-center mt-6 mb-2">
-                <a (click)="reset()"
-                    class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">Proceed</a>
+                <button (click)="reset()"
+                    class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">
+                    <span *ngIf="!isLoading">Proceed</span>
+                    <span *ngIf="isLoading"><div class="sp sp-circle"></div></span>
+            </button>
             </div>
         </div>
 
