@@ -13,6 +13,7 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   translation: any;
   language: any;
+  isLoading = false;
 
   loginForm !: FormGroup;
 
@@ -51,7 +52,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.isLoading = true;
     this.loginService.login({...this.loginForm.value, language: this.language}).subscribe(async (res) =>{
+      this.isLoading = false;
       window.localStorage.setItem('mobile', this.loginForm.value.mobile);
       if(res.status === "FAILED"){
         if(res.errors[0].code === "FTL01"){
@@ -59,7 +62,9 @@ export class LoginComponent implements OnInit {
         }
       }
       else if(res.status === "PAUSED"){
+        this.isLoading = true;
         this.loginService.generateOtp(this.loginForm.value.mobile).subscribe(res =>{
+          this.isLoading = false;
           window.localStorage.setItem('serviceRequestId', res.serviceRequestId);
           this.router.navigate(['/otp']);
         });
