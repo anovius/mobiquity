@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
         this.forgotPinService.generateOtp(this.mobile).subscribe((res: any) => {
           if(res.status === "SUCCEEDED"){
             window.localStorage.setItem('serviceRequestId', res.serviceRequestId);
-            this.router.navigate(['/otp']);
+            this.router.navigate(['/otp'], {queryParams: {isForgotPassword: true }});
           }
         })
       }

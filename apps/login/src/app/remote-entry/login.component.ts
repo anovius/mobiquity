@@ -2,7 +2,7 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslationService } from '@mobiquity/shared';
+import { TranslationService, UserService } from '@mobiquity/shared';
 import { LoginService } from './login.service';
 
 @Component({
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private fb: FormBuilder,
     private router: Router,
+    private userService: UserService,
   ) {}
 
   ngOnInit() {
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.loginService.login({...this.loginForm.value, language: this.language}).subscribe(res =>{
+    this.loginService.login({...this.loginForm.value, language: this.language}).subscribe(async (res) =>{
       window.localStorage.setItem('mobile', this.loginForm.value.mobile);
       if(res.status === "FAILED"){
         if(res.errors[0].code === "FTL01"){
@@ -65,8 +66,9 @@ export class LoginComponent implements OnInit {
       }
 
       else if(res.status === "SUCCEEDED"){
-        //TODO
-        //call 4 apis and make user service
+          window.localStorage.setItem("access_token", res.token.access_token);
+          window.localStorage.setItem("refresh_token", res.token.refresh_token);
+          await this.userService.onSuccessLogin();
       }
       else{
         //show error of invalid username and password

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslationService, UserService } from '@mobiquity/shared';
 import { OtpService } from './otp.service';
 
@@ -16,8 +16,11 @@ export class AppComponent {
   otp: any;
   hasError = false;
 
+  isForgotPassword = false;
+
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private translationService: TranslationService,
     private otpService: OtpService,
     private userService: UserService,
@@ -29,6 +32,10 @@ export class AppComponent {
     });
 
     this.mobile = window.localStorage.getItem('mobile');
+
+    this.route.queryParams.subscribe((res: any) => {
+      this.isForgotPassword =  res.isForgotPassword;
+    })
   }
 
   goBack() {
@@ -50,10 +57,18 @@ export class AppComponent {
         this.hasError = true;
       }
       else if(res.status === "SUCCEEDED"){
-        //Successfully Login
-        window.localStorage.setItem("access_token", res.token.access_token);
-        window.localStorage.setItem("refresh_token", res.token.refresh_token);
-        await this.userService.onSuccessLogin();
+
+        if(this.isForgotPassword){
+          this.router.navigate(['/reset-pin']);
+        }
+
+        else{
+          //Successfully Login
+          window.localStorage.setItem("access_token", res.token.access_token);
+          window.localStorage.setItem("refresh_token", res.token.refresh_token);
+          await this.userService.onSuccessLogin();
+        }
+
       }
     });
   }
