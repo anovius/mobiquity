@@ -243,5 +243,11 @@
         "div": ["Pay now"]
       }
     ]
+  },
+  "resetPin": {
+    "h": "Reset PIN",
+    "sh": "Set new PIN",
+    "inputs": ["Enter new PIN", "Confirm new PIN"],
+    "a": ["Proceed"]
   }
 }
