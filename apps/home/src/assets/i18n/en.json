@@ -220,6 +220,20 @@
                 "p": ["Document 2 - PAN Card", "Rahul Bose- FXMPS6100Q"]
               }
             ]
+          },
+          {
+            "h": "Set PIN",
+            "fields": [
+              {
+                "label": "Enter PIN",
+                "placeholder": "Enter PIN"
+              },
+              {
+                "label": "Confirm PIN",
+                "placeholder": "Confirm PIN"
+              }
+            ],
+            "b": ["Save & Register"]
           }
         ]
       },
