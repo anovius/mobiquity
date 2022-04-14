@@ -122,7 +122,8 @@
                                 fill="#BBBBBB" />
                             <path d="M13.3343 1.44815L12.8564 0.965393L1.38675 12.5517L1.86465 13.0344L13.3343 1.44815Z"
                                 fill="#BBBBBB" />
-                            <path d="M13.8123 1.44813L12.8564 0.482605L0.908845 12.5516L1.86465 13.5171L13.8123 1.44813Z"
+                            <path
+                                d="M13.8123 1.44813L12.8564 0.482605L0.908845 12.5516L1.86465 13.5171L13.8123 1.44813Z"
                                 stroke="white" />
                         </svg>
                     </div>
@@ -132,12 +133,15 @@
                 </div>
                 <div class="text-center my-6">
                     <button (click)="login()"
-                        class="bg-login-btn-custom px-14 text-sm text-indigo-900 rounded-md py-3 hover:bg-indigo-900 hover:text-indigo-200 transition-all" [disabled]="loginForm.invalid">
+                        class="bg-login-btn-custom px-14 text-sm text-indigo-900 rounded-md py-3 hover:bg-indigo-900 hover:text-indigo-200 transition-all"
+                        [disabled]="loginForm.invalid">
                         <span *ngIf="!isLoading">{{translation?.b[0]}}</span>
-                        <span *ngIf="isLoading"><div class="sp sp-circle"></div></span>
+                        <span *ngIf="isLoading">
+                            <div class="sp sp-circle"></div>
+                        </span>
                     </button>
                 </div>
-    
+
                 <div class="text-center text-sm my-4">
                     <p>{{translation?.p[0]}}? <a class="text-login-custom" routerLink="/register">
                             {{translation?.a[1]}}</a></p>

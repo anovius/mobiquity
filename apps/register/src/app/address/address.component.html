@@ -67,63 +67,84 @@
             </div>
         </div>
         <div class="flex flex-wrap">
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-xs font-medium mb-2"
-                    for="">{{translation?.cols[1]?.parts[1]?.fields[4]?.label}}</label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="{{translation?.cols[1]?.parts[1]?.fields[4]?.placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-xs font-medium mb-2"
-                    for="">{{translation?.cols[1]?.parts[1]?.fields[5]?.label}}</label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="{{translation?.cols[1]?.parts[1]?.fields[5]?.placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-xs font-medium mb-2"
-                    for="">{{translation?.cols[1]?.parts[1]?.fields[6]?.label}}</label>
-                <select name="Country" id="" class="p-3 border rounded-md bg-input-custom outline-none w-full">
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[6]?.option1}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[6]?.option2}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[6]?.option3}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[6]?.option4}}</option>
-                </select>
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-xs font-medium mb-2"
-                    for="">{{translation?.cols[1]?.parts[1]?.fields[7]?.label}}</label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="{{translation?.cols[1]?.parts[1]?.fields[7]?.placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-xs font-medium mb-2"
-                    for="">{{translation?.cols[1]?.parts[1]?.fields[8]?.label}}</label>
-                <select name="Country" id="" class="p-3 border rounded-md bg-input-custom outline-none w-full">
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[8]?.option1}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[8]?.option2}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[8]?.option3}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[8]?.option4}}</option>
-                </select>
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-xs font-medium mb-2"
-                    for="">{{translation?.cols[1]?.parts[1]?.fields[9]?.label}}</label>
-                <select name="Country" id="" class="p-3 border rounded-md bg-input-custom outline-none w-full">
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[9]?.option1}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[9]?.option2}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[9]?.option3}}</option>
-                    <option value="">{{translation?.cols[1]?.parts[1]?.fields[9]?.option4}}</option>
-                </select>
-            </div>
-            <div class="text-center w-full my-6">
-                <a routerLink="/register/kyc-details"
-                    class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[1]?.a[1]}}</a>
-            </div>
+            <form [formGroup]="registerForm">
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2"
+                        for="">{{translation?.cols[1]?.parts[1]?.fields[4]?.label}}</label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        formControlName="address1" type="text"
+                        placeholder="{{translation?.cols[1]?.parts[1]?.fields[4]?.placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2"
+                        for="">{{translation?.cols[1]?.parts[1]?.fields[5]?.label}}</label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        formControlName="address2" type="text"
+                        placeholder="{{translation?.cols[1]?.parts[1]?.fields[5]?.placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2"
+                        for="">{{translation?.cols[1]?.parts[1]?.fields[6]?.label}}</label>
+                    <select formControlName="country" name="country" id=""
+                        class="p-3 border rounded-md bg-input-custom outline-none w-full">
+                        <option value="select country">
+                            {{translation?.cols[1]?.parts[1]?.fields[6]?.option1}}</option>
+                        <option value="pakistan">
+                            {{translation?.cols[1]?.parts[1]?.fields[6]?.option2}}</option>
+                        <option value="england">
+                            {{translation?.cols[1]?.parts[1]?.fields[6]?.option3}}</option>
+                        <option value="oman">
+                            {{translation?.cols[1]?.parts[1]?.fields[6]?.option4}}</option>
+                    </select>
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2"
+                        for="">{{translation?.cols[1]?.parts[1]?.fields[7]?.label}}</label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        formControlName="postalCode" type="text"
+                        placeholder="{{translation?.cols[1]?.parts[1]?.fields[7]?.placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2"
+                        for="">{{translation?.cols[1]?.parts[1]?.fields[8]?.label}}</label>
+                    <select formControlName="state" name="state" id=""
+                        class="p-3 border rounded-md bg-input-custom outline-none w-full">
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[8]?.option1}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[8]?.option1}}</option>
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[8]?.option2}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[8]?.option2}}</option>
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[8]?.option3}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[8]?.option3}}</option>
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[8]?.option4}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[8]?.option4}}</option>
+                    </select>
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2"
+                        for="">{{translation?.cols[1]?.parts[1]?.fields[9]?.label}}</label>
+                    <select name="city" formControlName="city" id=""
+                        class="p-3 border rounded-md bg-input-custom outline-none w-full">
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[9]?.option1}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[9]?.option1}}</option>
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[9]?.option2}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[9]?.option2}}</option>
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[9]?.option3}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[9]?.option3}}</option>
+                        <option value="{{translation?.cols[1]?.parts[1]?.fields[9]?.option4}}">
+                            {{translation?.cols[1]?.parts[1]?.fields[9]?.option4}}</option>
+                    </select>
+                </div>
+                <div class="text-center w-full my-6">
+                    <a (click)="next()"
+                        class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[1]?.a[1]}}</a>
+                </div>
+            </form>
         </div>
     </div>
+
     <div class="md:w-2/12">
         <div class="w-full set-slide border-custom-border-gray border py-8 px-5 lg:ml-8 rounded-lg">
             <div>

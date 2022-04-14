@@ -39,141 +39,154 @@
         </div>
     </div>
     <div class="md:w-8/12 border rounded-md shadow-sm shadow-gray-200 p-9 mx-2 mb-12">
-        <div class="p-3">
-            <h4 class="text-xl font-bold text-dropdown-custom">{{translation?.cols[1]?.parts[0].h}}</h4>
-        </div>
-        <div class="flex flex-wrap">
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2"
-                    for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
-                        class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
+        <form [formGroup]="registerForm">
+            <div class="p-3">
+                <h4 class="text-xl font-bold text-dropdown-custom">{{translation?.cols[1]?.parts[0].h}}</h4>
             </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2"
-                    for="">{{translation?.cols[1]?.parts[0].div[1].label}}</label>
-                <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full" type="email"
-                    placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
+            <div class="flex flex-wrap">
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
+                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="text" formControlName="mobile"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[1].label}}</label>
+                    <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full"
+                        formControlName="email" type="email"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[0].div[2].label}} <span class="ml-2 cursor-pointer">
+                            <svg width="14" height="14" viewBox="0 0 10 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5 1C3.93913 1 2.92172 1.42143 2.17157 2.17157C1.42143 2.92172 1 3.93913 1 5C1 6.06087 1.42143 7.07828 2.17157 7.82843C2.92172 8.57857 3.93913 9 5 9C6.06087 9 7.07828 8.57857 7.82843 7.82843C8.57857 7.07828 9 6.06087 9 5C9 3.93913 8.57857 2.92172 7.82843 2.17157C7.07828 1.42143 6.06087 1 5 1ZM0 5C0 2.2385 2.2385 0 5 0C7.7615 0 10 2.2385 10 5C10 7.7615 7.7615 10 5 10C2.2385 10 0 7.7615 0 5ZM5 7.5C5.13261 7.5 5.25979 7.44732 5.35355 7.35355C5.44732 7.25979 5.5 7.13261 5.5 7V5C5.5 4.86739 5.44732 4.74021 5.35355 4.64645C5.25979 4.55268 5.13261 4.5 5 4.5C4.86739 4.5 4.74021 4.55268 4.64645 4.64645C4.55268 4.74021 4.5 4.86739 4.5 5V7C4.5 7.13261 4.55268 7.25979 4.64645 7.35355C4.74021 7.44732 4.86739 7.5 5 7.5ZM5 2.5C4.86739 2.5 4.74021 2.55268 4.64645 2.64645C4.55268 2.74021 4.5 2.86739 4.5 3C4.5 3.13261 4.55268 3.25979 4.64645 3.35355C4.74021 3.44732 4.86739 3.5 5 3.5H5.005C5.13761 3.5 5.26479 3.44732 5.35855 3.35355C5.45232 3.25979 5.505 3.13261 5.505 3C5.505 2.86739 5.45232 2.74021 5.35855 2.64645C5.26479 2.55268 5.13761 2.5 5.005 2.5H5Z"
+                                    fill="#B5B5B5" />
+                            </svg>
+                        </span></label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        formControlName="refCode" type="email"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[2].placeholder}}">
+                </div>
             </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2 flex items-center"
-                    for="">{{translation?.cols[1]?.parts[0].div[2].label}} <span class="ml-2 cursor-pointer">
-                        <svg width="14" height="14" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5 1C3.93913 1 2.92172 1.42143 2.17157 2.17157C1.42143 2.92172 1 3.93913 1 5C1 6.06087 1.42143 7.07828 2.17157 7.82843C2.92172 8.57857 3.93913 9 5 9C6.06087 9 7.07828 8.57857 7.82843 7.82843C8.57857 7.07828 9 6.06087 9 5C9 3.93913 8.57857 2.92172 7.82843 2.17157C7.07828 1.42143 6.06087 1 5 1ZM0 5C0 2.2385 2.2385 0 5 0C7.7615 0 10 2.2385 10 5C10 7.7615 7.7615 10 5 10C2.2385 10 0 7.7615 0 5ZM5 7.5C5.13261 7.5 5.25979 7.44732 5.35355 7.35355C5.44732 7.25979 5.5 7.13261 5.5 7V5C5.5 4.86739 5.44732 4.74021 5.35355 4.64645C5.25979 4.55268 5.13261 4.5 5 4.5C4.86739 4.5 4.74021 4.55268 4.64645 4.64645C4.55268 4.74021 4.5 4.86739 4.5 5V7C4.5 7.13261 4.55268 7.25979 4.64645 7.35355C4.74021 7.44732 4.86739 7.5 5 7.5ZM5 2.5C4.86739 2.5 4.74021 2.55268 4.64645 2.64645C4.55268 2.74021 4.5 2.86739 4.5 3C4.5 3.13261 4.55268 3.25979 4.64645 3.35355C4.74021 3.44732 4.86739 3.5 5 3.5H5.005C5.13761 3.5 5.26479 3.44732 5.35855 3.35355C5.45232 3.25979 5.505 3.13261 5.505 3C5.505 2.86739 5.45232 2.74021 5.35855 2.64645C5.26479 2.55268 5.13761 2.5 5.005 2.5H5Z"
-                                fill="#B5B5B5" />
-                        </svg>
-
-                    </span></label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="email" placeholder="{{translation?.cols[1]?.parts[0].div[2].placeholder}}">
+            <div class="p-3">
+                <h4 class="text-xl">{{translation?.cols[1]?.parts[0].sh}}</h4>
             </div>
-        </div>
-        <div class="p-3">
-            <h4 class="text-xl">{{translation?.cols[1]?.parts[0].sh}}</h4>
-        </div>
-        <div class="flex flex-wrap">
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2"
-                    for="">{{translation?.cols[1]?.parts[0].div[3].label}}<span
-                        class="text-red-700">{{translation?.cols[1]?.parts[0].div[3].span}}</span></label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="text" placeholder="{{translation?.cols[1]?.parts[0].div[3].placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2"
-                    for="">{{translation?.cols[1]?.parts[0].div[4].label}}</label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="email" placeholder="{{translation?.cols[1]?.parts[0].div[4].placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2 flex items-center"
-                    for="">{{translation?.cols[1]?.parts[0].div[5].label}}<span
-                        class="text-red-700">{{translation?.cols[1]?.parts[0].div[5].span}}</span> </label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="email" placeholder="{{translation?.cols[1]?.parts[0].div[5].placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-sm mb-2" for="">{{translation?.cols[1]?.parts[0].div[6].label}}</label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="email" placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue text-sm mb-2 flex items-center"
-                    for="">{{translation?.cols[1]?.parts[0].div[7].label}}<span class="ml-2 cursor-pointer">
-                        <svg width="14" height="14" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5 1C3.93913 1 2.92172 1.42143 2.17157 2.17157C1.42143 2.92172 1 3.93913 1 5C1 6.06087 1.42143 7.07828 2.17157 7.82843C2.92172 8.57857 3.93913 9 5 9C6.06087 9 7.07828 8.57857 7.82843 7.82843C8.57857 7.07828 9 6.06087 9 5C9 3.93913 8.57857 2.92172 7.82843 2.17157C7.07828 1.42143 6.06087 1 5 1ZM0 5C0 2.2385 2.2385 0 5 0C7.7615 0 10 2.2385 10 5C10 7.7615 7.7615 10 5 10C2.2385 10 0 7.7615 0 5ZM5 7.5C5.13261 7.5 5.25979 7.44732 5.35355 7.35355C5.44732 7.25979 5.5 7.13261 5.5 7V5C5.5 4.86739 5.44732 4.74021 5.35355 4.64645C5.25979 4.55268 5.13261 4.5 5 4.5C4.86739 4.5 4.74021 4.55268 4.64645 4.64645C4.55268 4.74021 4.5 4.86739 4.5 5V7C4.5 7.13261 4.55268 7.25979 4.64645 7.35355C4.74021 7.44732 4.86739 7.5 5 7.5ZM5 2.5C4.86739 2.5 4.74021 2.55268 4.64645 2.64645C4.55268 2.74021 4.5 2.86739 4.5 3C4.5 3.13261 4.55268 3.25979 4.64645 3.35355C4.74021 3.44732 4.86739 3.5 5 3.5H5.005C5.13761 3.5 5.26479 3.44732 5.35855 3.35355C5.45232 3.25979 5.505 3.13261 5.505 3C5.505 2.86739 5.45232 2.74021 5.35855 2.64645C5.26479 2.55268 5.13761 2.5 5.005 2.5H5Z"
-                                fill="#B5B5B5" />
-                        </svg>
-                    </span></label>
-                <input
-                    class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                    type="email" placeholder="{{translation?.cols[1]?.parts[0].div[7].placeholder}}">
-            </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2 flex items-center"
-                    for="">{{translation?.cols[1]?.parts[0].div[8].label}}</label>
-                <div class="flex items-center mt-3">
-                    <div class="flex items-center mr-4 mb-4">
-                        <input id="radio1" type="radio" name="radio" class="hidden" checked />
-                        <label for="radio1" class="flex items-center cursor-pointer">
-                            <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
-                            {{translation?.cols[1]?.parts[0].div[8].radio1}}</label>
+            <div class="flex flex-wrap">
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[3].label}}<span
+                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[3].span}}</span></label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="text" formControlName="firstName"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[3].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[4].label}}</label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="email" formControlName="middleName"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[4].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[0].div[5].label}}<span
+                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[5].span}}</span> </label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="email" formControlName="lastName"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[5].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-sm mb-2" for="">{{translation?.cols[1]?.parts[0].div[6].label}}</label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        formControlName="dateOfBirth" type="email"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-sm mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[0].div[7].label}}<span class="ml-2 cursor-pointer">
+                            <svg width="14" height="14" viewBox="0 0 10 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5 1C3.93913 1 2.92172 1.42143 2.17157 2.17157C1.42143 2.92172 1 3.93913 1 5C1 6.06087 1.42143 7.07828 2.17157 7.82843C2.92172 8.57857 3.93913 9 5 9C6.06087 9 7.07828 8.57857 7.82843 7.82843C8.57857 7.07828 9 6.06087 9 5C9 3.93913 8.57857 2.92172 7.82843 2.17157C7.07828 1.42143 6.06087 1 5 1ZM0 5C0 2.2385 2.2385 0 5 0C7.7615 0 10 2.2385 10 5C10 7.7615 7.7615 10 5 10C2.2385 10 0 7.7615 0 5ZM5 7.5C5.13261 7.5 5.25979 7.44732 5.35355 7.35355C5.44732 7.25979 5.5 7.13261 5.5 7V5C5.5 4.86739 5.44732 4.74021 5.35355 4.64645C5.25979 4.55268 5.13261 4.5 5 4.5C4.86739 4.5 4.74021 4.55268 4.64645 4.64645C4.55268 4.74021 4.5 4.86739 4.5 5V7C4.5 7.13261 4.55268 7.25979 4.64645 7.35355C4.74021 7.44732 4.86739 7.5 5 7.5ZM5 2.5C4.86739 2.5 4.74021 2.55268 4.64645 2.64645C4.55268 2.74021 4.5 2.86739 4.5 3C4.5 3.13261 4.55268 3.25979 4.64645 3.35355C4.74021 3.44732 4.86739 3.5 5 3.5H5.005C5.13761 3.5 5.26479 3.44732 5.35855 3.35355C5.45232 3.25979 5.505 3.13261 5.505 3C5.505 2.86739 5.45232 2.74021 5.35855 2.64645C5.26479 2.55268 5.13761 2.5 5.005 2.5H5Z"
+                                    fill="#B5B5B5" />
+                            </svg>
+                        </span></label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="email" formControlName="paymentID"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[7].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[0].div[8].label}}</label>
+                    <div class="flex items-center mt-3">
+                        <div class="flex items-center mr-4 mb-4">
+                            <input id="radio1" type="radio" value="male" formControlName="gender" name="gender"
+                                class="hidden" checked />
+                            <label for="radio1" class="flex items-center cursor-pointer">
+                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+                                {{translation?.cols[1]?.parts[0].div[8].radio1}}</label>
+                        </div>
+                        <div class="flex items-center mr-4 mb-4">
+                            <input id="radio2" formControlName="gender" value="female" type="radio" name="gender"
+                                class="hidden" />
+                            <label for="radio2" class="flex items-center cursor-pointer">
+                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+                                {{translation?.cols[1]?.parts[0].div[8].radio2}}</label>
+                        </div>
+                        <div class="flex items-center mr-4 mb-4">
+                            <input id="radio3" formControlName="gender" value="other" type="radio" name="gender"
+                                class="hidden" />
+                            <label for="radio3" class="flex items-center cursor-pointer">
+                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+                                {{translation?.cols[1]?.parts[0].div[8].radio3}}</label>
+                        </div>
                     </div>
-                    <div class="flex items-center mr-4 mb-4">
-                        <input id="radio2" type="radio" name="radio" class="hidden" />
-                        <label for="radio2" class="flex items-center cursor-pointer">
-                            <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
-                            {{translation?.cols[1]?.parts[0].div[8].radio2}}</label>
-                    </div>
-                    <div class="flex items-center mr-4 mb-4">
-                        <input id="radio3" type="radio" name="radio" class="hidden" />
-                        <label for="radio3" class="flex items-center cursor-pointer">
-                            <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
-                            {{translation?.cols[1]?.parts[0].div[8].radio3}}</label>
+                </div>
+                <div class="flex items-start m-3 w-full md:w-1/2">
+                    <span class="text-xs text-gray-400 ml-1">{{translation?.cols[1]?.parts[0].div[9].span}}</span>
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[0].div[10].label}}</label>
+                    <div class="my-2">
+                        <div
+                            class="relative h-36 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
+                            <div class="absolute">
+                                <div class="flex flex-col items-center ">
+                                    <span
+                                        class="block text-gray-400 font-normal">{{translation?.cols[1]?.parts[0].div[10].span[0]}}</span>
+                                    <span
+                                        class="block text-blue-400 font-normal mt-2">{{translation?.cols[1]?.parts[0].div[10].span[1]}}</span>
+                                </div>
+                            </div> <input type="file" formControlName="profileImage"
+                                class="cursor-pointer h-full w-full opacity-0" name="">
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3">{{translation?.cols[1]?.parts[0].div[10].p}}</p>
                     </div>
                 </div>
             </div>
-            <div class="flex items-start m-3 w-full md:w-1/2">
-                <span class="text-xs text-gray-400 ml-1">{{translation?.cols[1]?.parts[0].div[9].span}}</span>
+            <div class="text-center my-6">
+                <a (click)="next()"
+                    class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[0].a[0]}}</a>
             </div>
-            <div class="flex flex-col p-3 w-full md:w-1/2">
-                <label class="text-blue font-medium text-sm mb-2 flex items-center"
-                    for="">{{translation?.cols[1]?.parts[0].div[10].label}}</label>
-                <div class="my-2">
-                    <div
-                        class="relative h-36 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
-                        <div class="absolute">
-                            <div class="flex flex-col items-center ">
-                                <span
-                                    class="block text-gray-400 font-normal">{{translation?.cols[1]?.parts[0].div[10].span[0]}}</span>
-                                <span
-                                    class="block text-blue-400 font-normal mt-2">{{translation?.cols[1]?.parts[0].div[10].span[1]}}</span>
-                            </div>
-                        </div> <input type="file" class="cursor-pointer h-full w-full opacity-0" name="">
-                    </div>
-                    <p class="text-sm text-gray-400 mt-3">{{translation?.cols[1]?.parts[0].div[10].p}}</p>
-                </div>
+            <div class="text-center text-sm my-4">
+                <p>{{translation?.cols[1]?.parts[0].p[0]}} <a class="text-login-custom" href="login-modal-2.html">
+                        {{translation?.cols[1]?.parts[0].a[1]}}</a></p>
             </div>
-
-        </div>
-        <div class="text-center my-6">
-            <a routerLink="/register/address"
-                class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[0].a[0]}}</a>
-        </div>
-        <div class="text-center text-sm my-4">
-            <p>{{translation?.cols[1]?.parts[0].p[0]}} <a class="text-login-custom" href="login-modal-2.html">
-                    {{translation?.cols[1]?.parts[0].a[1]}}</a></p>
-        </div>
-
+        </form>
     </div>
     <div class="md:w-2/12">
         <div class="w-full set-slide border-custom-border-gray border py-8 px-5 rounded-lg">
