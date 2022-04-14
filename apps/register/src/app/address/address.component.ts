@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslationService } from '@mobiquity/shared';
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'mobiquity-address',
@@ -9,11 +10,13 @@ import { TranslationService } from '@mobiquity/shared';
 export class AddressComponent implements OnInit {
   translation: any;
 
-  constructor(private translationService: TranslationService) {}
+  constructor(private translationService: TranslationService, private registerService: RegisterService) {}
 
   ngOnInit() {
     this.translationService.get().subscribe((data: any) => {
       this.translation = data.register;
     });
+
+    console.log(this.registerService.test());
   }
 }

@@ -15,11 +15,13 @@ import { KycDetailsComponent } from './kyc-details/kyc-details.component';
 import { KycDetailSuccessComponent } from './kyc-detail-success/kyc-detail-success.component';
 import { SetPinComponent } from './set-pin/set-pin.component';
 import { LayoutComponent } from './layout/layout.component';
+import { SharedModule } from '@mobiquity/shared';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, AddressComponent, KycDetailsComponent, KycDetailSuccessComponent, SetPinComponent, LayoutComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
   ],
   providers: [],
