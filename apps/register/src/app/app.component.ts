@@ -14,6 +14,17 @@ export class AppComponent implements OnInit {
 
   translation: any;
   registerForm: any;
+  isVerifyNumberCalled = false;
+  contactError: string = '';
+  showVerifyNumber = false;
+  contactNumber = '';
+  isContactVerified = false;
+  isLoading: boolean = false;
+  otp: any = '';
+  otpTranslation: any;
+  openModal: boolean = false;
+  hasError: boolean = false;
+  email = '';
 
   constructor(
     private translationService: TranslationService,
@@ -29,9 +40,79 @@ export class AppComponent implements OnInit {
 
     this.translationService.get().subscribe((data: any) => {
       this.translation = data.register;
+      this.otpTranslation = data.otp;
     });
 
     console.log(this.registerService.test());
+
+    this.mobileValueChanges();
+    this.emailValueChanges();
+  }
+
+  mobileValueChanges() {
+    this.registerForm.get('mobile')?.valueChanges.subscribe((res: any) => {
+      this.contactNumber = res;
+      if (res.length === 13) {
+        if (res[0] === '+') {
+          this.showVerifyNumber = true;
+        } else {
+          this.contactError = 'Invalid mobile number format';
+        }
+      } else {
+        this.showVerifyNumber = false;
+      }
+    });
+  }
+
+  emailValueChanges() {
+    this.registerForm.get('email')?.valueChanges.subscribe((res: any) => {
+      this.email = res;
+      if (res.length === 13) {
+        if (res[0] === '+') {
+          this.showVerifyNumber = true;
+        } else {
+          this.contactError = 'Invalid mobile number format';
+        }
+      } else {
+        this.showVerifyNumber = false;
+      }
+    });
+  }
+
+  showModal() {
+    this.openModal = true;
+  }
+
+  verifyNumber() {
+    this.isLoading = true;
+    this.isVerifyNumberCalled = true;
+    this.registerService
+      .verifyNumber(this.contactNumber)
+      .subscribe((res: any) => {
+        this.isLoading = false;
+        console.log(res);
+        if (res.status === 'SUCCEEDED') {
+          this.showVerifyNumber = false;
+          this.showModal();
+          // this.router.navigate(['/register/address']);
+        } else {
+          this.contactError = 'Mobile Number Already Exists';
+        }
+      });
+  }
+
+  verifyNumberOTP() {
+    this.isLoading = true;
+    this.registerService.verifyNumberOTP(this.otp).subscribe((res: any) => {
+      this.isLoading = false;
+      console.log('OTP RESPONSE', res);
+      if (res.status === 'FAILED') {
+        this.hasError = true;
+      } else if (res.status === 'SUCCEEDED') {
+        this.openModal = false;
+        this.isContactVerified = true;
+      }
+    });
   }
 
   setToken() {
@@ -61,6 +142,14 @@ export class AppComponent implements OnInit {
       gender: ['', Validators.required],
       profileImage: [''],
     });
+  }
+
+  goBack() {
+    this.router.navigate(['..']);
+  }
+
+  onOtpChange(otp: any) {
+    this.otp = otp;
   }
 
   next() {

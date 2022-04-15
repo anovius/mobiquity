@@ -11,12 +11,14 @@ import { SetPinComponent } from '../set-pin/set-pin.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { RegisterService } from '../register.service';
 import { SharedModule } from '@mobiquity/shared';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [RemoteEntryComponent],
   imports: [
     CommonModule,
     SharedModule,
+    NgOtpInputModule,
     RouterModule.forChild([
       {
         path: '',
@@ -28,26 +30,24 @@ import { SharedModule } from '@mobiquity/shared';
           },
           {
             path: 'address',
-            component: AddressComponent
+            component: AddressComponent,
           },
           {
             path: 'kyc-details',
-            component: KycDetailsComponent
+            component: KycDetailsComponent,
           },
           {
             path: 'kyc-details-success',
-            component: KycDetailSuccessComponent
+            component: KycDetailSuccessComponent,
           },
           {
             path: 'set-pin',
-            component: SetPinComponent
-          }
-        ]
+            component: SetPinComponent,
+          },
+        ],
       },
     ]),
   ],
-  providers: [
-    RegisterService
-  ],
+  providers: [RegisterService],
 })
 export class RemoteEntryModule {}

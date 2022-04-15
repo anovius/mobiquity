@@ -17,6 +17,18 @@ export class RegisterService {
     return this.apiService.post('https://demo5894535.mockable.io/token', body);
   }
 
+  verifyNumber(contactNumber: string) {
+    return this.apiService.get('https://demo2819413.mockable.io/UniqueMobile');
+  }
+
+  verifyNumberOTP(body: any) {
+    console.log(body);
+    return this.apiService.post(
+      'https://demo9362630.mockable.io/validateOTP',
+      body
+    );
+  }
+
   test() {
     return 'test is working';
   }

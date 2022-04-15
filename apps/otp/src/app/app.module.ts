@@ -5,7 +5,7 @@
  * */
 import { RemoteEntryModule } from './remote-entry/entry.module';
 import { NgModule } from '@angular/core';
-import { NgOtpInputModule } from  'ng-otp-input';
+import { NgOtpInputModule } from 'ng-otp-input';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -22,8 +22,7 @@ import { OtpService } from './otp.service';
     NgOtpInputModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

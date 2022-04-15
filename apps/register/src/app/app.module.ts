@@ -16,12 +16,22 @@ import { KycDetailSuccessComponent } from './kyc-detail-success/kyc-detail-succe
 import { SetPinComponent } from './set-pin/set-pin.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from '@mobiquity/shared';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, AddressComponent, KycDetailsComponent, KycDetailSuccessComponent, SetPinComponent, LayoutComponent],
+  declarations: [
+    AppComponent,
+    NxWelcomeComponent,
+    AddressComponent,
+    KycDetailsComponent,
+    KycDetailSuccessComponent,
+    SetPinComponent,
+    LayoutComponent,
+  ],
   imports: [
     BrowserModule,
     SharedModule,
+    NgOtpInputModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
   ],
   providers: [],
