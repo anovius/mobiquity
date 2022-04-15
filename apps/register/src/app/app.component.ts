@@ -57,14 +57,14 @@ export class AppComponent implements OnInit {
     this.registerForm = this.fb.group({
       mobile: ['', Validators.required],
       email: ['', [Validators.email]],
-      refCode: [''],
+      refCode: ['', Validators.required],
       firstName: ['', Validators.required],
-      middleName: [''],
+      middleName: ['', Validators.required],
       lastName: ['', Validators.required],
-      dateOfBirth: [''],
-      paymentID: [''],
+      dateOfBirth: ['', Validators.required],
+      paymentID: ['', Validators.required],
       gender: ['', Validators.required],
-      profileImage: [''],
+      profileImage: ['', Validators.required],
     });
   }
 
@@ -87,7 +87,6 @@ export class AppComponent implements OnInit {
     this.registerForm.get('email')?.valueChanges.subscribe((res: any) => {
       if (this.registerForm.get('email').status === 'VALID') {
         this.email = res;
-        this.checkUnique();
       }
     });
     this.registerForm.get('refCode')?.valueChanges.subscribe((res: any) => {
