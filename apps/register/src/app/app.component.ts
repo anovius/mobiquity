@@ -29,6 +29,54 @@ export class AppComponent implements OnInit {
   emailError: boolean = false;
   refCode = '';
   isEmailVerified = false;
+  // selectedTitle!: number;
+
+  titleOptions = [
+    {
+      value: 'Ms',
+      key: 'PR_MISS',
+    },
+    {
+      value: 'M/S',
+      key: 'PR_MS',
+    },
+    {
+      value: 'Mr',
+      key: 'PR_MR',
+    },
+    {
+      value: 'Mrs',
+      key: 'PR_MRS',
+    },
+  ];
+
+  preferredLanguageOptions = [
+    {
+      value: 'Ms',
+      key: 'PR_MISS',
+    },
+    {
+      value: 'M/S',
+      key: 'PR_MS',
+    },
+    {
+      value: 'Mr',
+      key: 'PR_MR',
+    },
+    {
+      value: 'Mrs',
+      key: 'PR_MRS',
+    },
+  ];
+
+  hasFirstNameError = false;
+  hasLastNameError = false;
+  firstNameError = '';
+  lastNameError = '';
+  hasProfilePhotoURIError: boolean = false;
+  profilePhotoURIError: string = '';
+  hasCifError: boolean = false;
+  cifError: string = '';
 
   constructor(
     private translationService: TranslationService,
@@ -49,22 +97,94 @@ export class AppComponent implements OnInit {
 
     console.log(this.registerService.test());
 
+    this.firstNameValueChanges();
+    this.lastNameValueChanges();
+    this.profilePhotoURIValueChanges();
+    this.cifValueChanges();
     this.mobileValueChanges();
     this.emailValueChanges();
   }
 
   init() {
     this.registerForm = this.fb.group({
-      mobile: ['', Validators.required],
-      email: ['', [Validators.email]],
-      refCode: ['', Validators.required],
+      title: [''],
       firstName: ['', Validators.required],
-      middleName: ['', Validators.required],
       lastName: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
-      paymentID: ['', Validators.required],
-      gender: ['', Validators.required],
-      profileImage: ['', Validators.required],
+      preferredLanguage: ['', Validators.required],
+      profilePhotoURI: [''],
+      CIF: [''],
+      loginId: ['', Validators.required],
+      dateOfBirth: [''],
+      emailId: [''],
+      mobileNumber: ['', Validators.required],
+      // refCode: ['', Validators.required],
+      // middleName: ['', Validators.required],
+      // paymentID: ['', Validators.required],
+      // gender: ['', Validators.required],
+    });
+  }
+
+  firstNameValueChanges() {
+    this.registerForm.get('firstName')?.valueChanges.subscribe((res: any) => {
+      this.hasFirstNameError = false;
+      this.firstNameError = '';
+      if (this.registerForm?.get('firstName')?.errors?.required) {
+        this.hasFirstNameError = true;
+        this.firstNameError += 'First Name is mandatory';
+      } else if (this.registerForm?.get('firstName')?.errors?.pattern) {
+        this.hasFirstNameError = true;
+        this.firstNameError += 'Only alphabets and space is allowed';
+      } else {
+        this.hasFirstNameError = false;
+        this.firstNameError = '';
+      }
+    });
+  }
+
+  lastNameValueChanges() {
+    this.registerForm.get('lastName')?.valueChanges.subscribe((res: any) => {
+      this.hasLastNameError = false;
+      this.lastNameError = '';
+      if (this.registerForm?.get('lastName')?.errors?.required) {
+        this.hasLastNameError = true;
+        this.lastNameError += 'First Name is mandatory';
+      } else if (this.registerForm?.get('lastName')?.errors?.pattern) {
+        this.hasLastNameError = true;
+        this.lastNameError += 'Only alphabets and space is allowed';
+      } else {
+        this.hasLastNameError = false;
+        this.lastNameError = '';
+      }
+    });
+  }
+
+  profilePhotoURIValueChanges() {
+    this.registerForm
+      .get('profilePhotoURI')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasProfilePhotoURIError = false;
+        this.profilePhotoURIError = '';
+        if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
+          this.hasProfilePhotoURIError = true;
+          this.profilePhotoURIError += 'Profile Photo URI is invalid';
+        } else {
+          this.hasProfilePhotoURIError = false;
+          this.profilePhotoURIError = '';
+        }
+      });
+  }
+
+  cifValueChanges() {
+    this.registerForm.get('cif')?.valueChanges.subscribe((res: any) => {
+      this.hasCifError = false;
+      this.cifError = '';
+      if (this.registerForm?.get('cif')?.errors?.pattern) {
+        this.hasCifError = true;
+        this.cifError += 'Only alphabets and digits are allowed';
+      } else {
+        this.hasCifError = false;
+        this.cifError = '';
+      }
     });
   }
 
@@ -148,7 +268,7 @@ export class AppComponent implements OnInit {
 
   setToken() {
     this.registerService.setToken().subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       window.localStorage.setItem('access_token', res.access_token);
     });
   }

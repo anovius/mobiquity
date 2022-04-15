@@ -43,14 +43,14 @@
             <div class="p-3">
                 <h4 class="text-xl font-bold text-dropdown-custom">{{translation?.cols[1]?.parts[0].h}}</h4>
             </div>
-            <div class="flex flex-wrap">
+            <!-- <div class="flex flex-wrap">
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2"
                         for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
                             class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" formControlName="mobile"
+                        type="text" formControlName="mobileNumber"
                         placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
                     <p (click)="verifyNumber()" style="color:red" *ngIf="showVerifyNumber">verify</p>
                     <p style="color:green" *ngIf="isContactVerified">ICON</p>
@@ -62,7 +62,7 @@
                     <label class="text-blue font-medium text-sm mb-2"
                         for="">{{translation?.cols[1]?.parts[0].div[1].label}}</label>
                     <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full"
-                        formControlName="email" type="email" (blur)="checkUnique()"
+                        formControlName="emailId" type="email" (blur)="checkUnique()"
                         placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
                     <p (click)="verifyEmail()" style="color:red" *ngIf="showVerifyEmail">verify</p>
                     <p *ngIf="emailError" class="error-message">Email already exists</p>
@@ -82,27 +82,25 @@
                         formControlName="refCode" type="email"
                         placeholder="{{translation?.cols[1]?.parts[0].div[2].placeholder}}">
                 </div>
-            </div>
+            </div> -->
             <div class="p-3">
                 <h4 class="text-xl">{{translation?.cols[1]?.parts[0].sh}}</h4>
             </div>
             <div class="flex flex-wrap">
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2" for="">Title</label>
+                    <ng-select [items]="titleOptions" bindLabel="key" bindValue="value" formControlName="title">
+                    </ng-select>
+                </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2"
                         for="">{{translation?.cols[1]?.parts[0].div[3].label}}<span
                             class="text-red-700">{{translation?.cols[1]?.parts[0].div[3].span}}</span></label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" formControlName="firstName"
+                        type="text" formControlName="firstName" pattern="^[a-zA-Z ]*$"
                         placeholder="{{translation?.cols[1]?.parts[0].div[3].placeholder}}">
-                </div>
-                <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-blue font-medium text-sm mb-2"
-                        for="">{{translation?.cols[1]?.parts[0].div[4].label}}</label>
-                    <input
-                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="email" formControlName="middleName"
-                        placeholder="{{translation?.cols[1]?.parts[0].div[4].placeholder}}">
+                    <p *ngIf="hasFirstNameError">{{firstNameError}}</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2 flex items-center"
@@ -110,8 +108,48 @@
                             class="text-red-700">{{translation?.cols[1]?.parts[0].div[5].span}}</span> </label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="email" formControlName="lastName"
+                        type="text" formControlName="lastName" pattern="^[a-zA-Z ]*$"
                         placeholder="{{translation?.cols[1]?.parts[0].div[5].placeholder}}">
+                    <p *ngIf="hasLastNameError">{{lastNameError}}</p>
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-xs font-medium mb-2" for="">Preferred Language</label>
+                    <ng-select [items]="preferredLanguageOptions" bindLabel="key" bindValue="value"
+                        formControlName="preferredLanguage">
+                    </ng-select>
+                </div>
+                <!-- <div class="flex items-start m-3 w-full md:w-1/2">
+                    <span class="text-xs text-gray-400 ml-1">{{translation?.cols[1]?.parts[0].div[9].span}}</span>
+                </div> -->
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[0].div[10].label}}</label>
+                    <div class="my-2">
+                        <div
+                            class="relative h-36 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
+                            <div class="absolute">
+                                <div class="flex flex-col items-center ">
+                                    <span
+                                        class="block text-gray-400 font-normal">{{translation?.cols[1]?.parts[0].div[10].span[0]}}</span>
+                                    <span
+                                        class="block text-blue-400 font-normal mt-2">{{translation?.cols[1]?.parts[0].div[10].span[1]}}</span>
+                                </div>
+                            </div> <input type="file" formControlName="profilePhotoURI" pattern="^[a-zA-Z0-9:/.-]*$"
+                                class="cursor-pointer h-full w-full opacity-0" name="">
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3">{{translation?.cols[1]?.parts[0].div[10].p}}</p>
+                        <p *ngIf="hasProfilePhotoURIError">{{profilePhotoURIError}}</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue text-sm mb-2" for="">CIF</label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        formControlName="cif" type="text" pattern="^[a-zA-Z0-9]*$"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
+                    <p *ngIf="hasCifError">{{cifError}}</p>
+
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue text-sm mb-2" for="">{{translation?.cols[1]?.parts[0].div[6].label}}</label>
@@ -119,6 +157,40 @@
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         formControlName="dateOfBirth" type="email"
                         placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
+                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="text" formControlName="mobileNumber"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
+                    <p (click)="verifyNumber()" style="color:red" *ngIf="showVerifyNumber">verify</p>
+                    <p style="color:green" *ngIf="isContactVerified">ICON</p>
+                    <div *ngIf="isLoading">
+                        <div class="sp sp-circle"></div>
+                    </div>
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[1].label}}</label>
+                    <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full"
+                        formControlName="emailId" type="email" (blur)="checkUnique()"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
+                    <p (click)="verifyEmail()" style="color:red" *ngIf="showVerifyEmail">verify</p>
+                    <p *ngIf="emailError" class="error-message">Email already exists</p>
+                </div>
+
+
+
+                <!-- <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[4].label}}</label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="email" formControlName="middleName"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[4].placeholder}}">
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue text-sm mb-2 flex items-center"
@@ -161,29 +233,7 @@
                                 {{translation?.cols[1]?.parts[0].div[8].radio3}}</label>
                         </div>
                     </div>
-                </div>
-                <div class="flex items-start m-3 w-full md:w-1/2">
-                    <span class="text-xs text-gray-400 ml-1">{{translation?.cols[1]?.parts[0].div[9].span}}</span>
-                </div>
-                <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
-                        for="">{{translation?.cols[1]?.parts[0].div[10].label}}</label>
-                    <div class="my-2">
-                        <div
-                            class="relative h-36 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
-                            <div class="absolute">
-                                <div class="flex flex-col items-center ">
-                                    <span
-                                        class="block text-gray-400 font-normal">{{translation?.cols[1]?.parts[0].div[10].span[0]}}</span>
-                                    <span
-                                        class="block text-blue-400 font-normal mt-2">{{translation?.cols[1]?.parts[0].div[10].span[1]}}</span>
-                                </div>
-                            </div> <input type="file" formControlName="profileImage"
-                                class="cursor-pointer h-full w-full opacity-0" name="">
-                        </div>
-                        <p class="text-sm text-gray-400 mt-3">{{translation?.cols[1]?.parts[0].div[10].p}}</p>
-                    </div>
-                </div>
+                </div> -->
             </div>
             <div class="text-center my-6">
                 <button [disabled]="!isContactVerified||!isEmailVerified" (click)="next()"

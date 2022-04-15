@@ -12,6 +12,8 @@ import { LayoutComponent } from '../layout/layout.component';
 import { RegisterService } from '../register.service';
 import { SharedModule } from '@mobiquity/shared';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [RemoteEntryComponent],
@@ -19,6 +21,8 @@ import { NgOtpInputModule } from 'ng-otp-input';
     CommonModule,
     SharedModule,
     NgOtpInputModule,
+    NgSelectModule,
+    FormsModule,
     RouterModule.forChild([
       {
         path: '',

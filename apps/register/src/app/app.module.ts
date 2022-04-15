@@ -17,6 +17,8 @@ import { SetPinComponent } from './set-pin/set-pin.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from '@mobiquity/shared';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { NgOtpInputModule } from 'ng-otp-input';
     BrowserModule,
     SharedModule,
     NgOtpInputModule,
+    NgSelectModule,
+    FormsModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
   ],
   providers: [],
