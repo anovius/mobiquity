@@ -62,8 +62,10 @@
                     <label class="text-blue font-medium text-sm mb-2"
                         for="">{{translation?.cols[1]?.parts[0].div[1].label}}</label>
                     <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full"
-                        formControlName="email" type="email"
+                        formControlName="email" type="email" (blur)="checkUnique()"
                         placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
+                    <p (click)="verifyEmail()" style="color:red" *ngIf="showVerifyEmail">verify</p>
+                    <p *ngIf="emailError" class="error-message">Email already exists</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2 flex items-center"
@@ -184,7 +186,7 @@
                 </div>
             </div>
             <div class="text-center my-6">
-                <button [disabled]="!isContactVerified" (click)="next()"
+                <button [disabled]="!isContactVerified||!isEmailVerified" (click)="next()"
                     class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[0].a[0]}}</button>
             </div>
             <div class="text-center text-sm my-4">

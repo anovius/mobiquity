@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   isVerifyNumberCalled = false;
   contactError: string = '';
   showVerifyNumber = false;
+  showVerifyEmail = false;
   contactNumber = '';
   isContactVerified = false;
   isLoading: boolean = false;
@@ -25,6 +26,9 @@ export class AppComponent implements OnInit {
   openModal: boolean = false;
   hasError: boolean = false;
   email = '';
+  emailError: boolean = false;
+  refCode = '';
+  isEmailVerified = false;
 
   constructor(
     private translationService: TranslationService,
@@ -49,6 +53,21 @@ export class AppComponent implements OnInit {
     this.emailValueChanges();
   }
 
+  init() {
+    this.registerForm = this.fb.group({
+      mobile: ['', Validators.required],
+      email: ['', [Validators.email]],
+      refCode: [''],
+      firstName: ['', Validators.required],
+      middleName: [''],
+      lastName: ['', Validators.required],
+      dateOfBirth: [''],
+      paymentID: [''],
+      gender: ['', Validators.required],
+      profileImage: [''],
+    });
+  }
+
   mobileValueChanges() {
     this.registerForm.get('mobile')?.valueChanges.subscribe((res: any) => {
       this.contactNumber = res;
@@ -66,16 +85,14 @@ export class AppComponent implements OnInit {
 
   emailValueChanges() {
     this.registerForm.get('email')?.valueChanges.subscribe((res: any) => {
-      this.email = res;
-      if (res.length === 13) {
-        if (res[0] === '+') {
-          this.showVerifyNumber = true;
-        } else {
-          this.contactError = 'Invalid mobile number format';
-        }
-      } else {
-        this.showVerifyNumber = false;
+      if (this.registerForm.get('email').status === 'VALID') {
+        this.email = res;
+        this.checkUnique();
       }
+    });
+    this.registerForm.get('refCode')?.valueChanges.subscribe((res: any) => {
+      this.refCode = res;
+      this.showVerifyEmail = true;
     });
   }
 
@@ -97,6 +114,21 @@ export class AppComponent implements OnInit {
           // this.router.navigate(['/register/address']);
         } else {
           this.contactError = 'Mobile Number Already Exists';
+        }
+      });
+  }
+
+  verifyEmail() {
+    this.isLoading = true;
+    this.isVerifyNumberCalled = true;
+    this.registerService
+      .verifyEmail(this.email, this.refCode)
+      .subscribe((res: any) => {
+        this.isLoading = false;
+        console.log(res);
+        if (res.status === 'SUCCEEDED') {
+          this.showVerifyNumber = false;
+          this.isEmailVerified = true;
         }
       });
   }
@@ -129,27 +161,22 @@ export class AppComponent implements OnInit {
     });
   }
 
-  init() {
-    this.registerForm = this.fb.group({
-      mobile: ['', Validators.required],
-      email: [''],
-      refCode: [''],
-      firstName: ['', Validators.required],
-      middleName: [''],
-      lastName: ['', Validators.required],
-      dateOfBirth: [''],
-      paymentID: [''],
-      gender: ['', Validators.required],
-      profileImage: [''],
-    });
-  }
-
   goBack() {
     this.router.navigate(['..']);
   }
 
   onOtpChange(otp: any) {
     this.otp = otp;
+  }
+
+  checkUnique() {
+    this.isLoading = true;
+    this.registerService.checkUnique().subscribe((res: any) => {
+      this.isLoading = false;
+      if (res.status === 'FAILED') {
+        this.emailError = true;
+      }
+    });
   }
 
   next() {

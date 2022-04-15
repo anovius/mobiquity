@@ -29,6 +29,19 @@ export class RegisterService {
     );
   }
 
+  checkUnique() {
+    return this.apiService.get(
+      'https://demo2819413.mockable.io/UniqueMobileError'
+    );
+  }
+
+  verifyEmail(email: string, refCode: string) {
+    return this.apiService.post(
+      'https://demo2819413.mockable.io/referralUser',
+      { workspaceId: 'SUBSCRIBER' }
+    );
+  }
+
   test() {
     return 'test is working';
   }
