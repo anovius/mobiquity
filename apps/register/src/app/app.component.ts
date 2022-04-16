@@ -87,6 +87,8 @@ export class AppComponent implements OnInit {
   genderInfoError: string = '';
   titleError: string = '';
   dateOfBirthError: string = '';
+  categoryProfileData: any;
+  uploadedFileUrl: any;
 
   constructor(
     private translationService: TranslationService,
@@ -151,6 +153,18 @@ export class AppComponent implements OnInit {
     });
   }
 
+  getCategoryProfile() {
+    this.registerService.getCategoryProfile().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.categoryProfileData = res;
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+  }
+
   registerFormValueChanges() {
     this.registerForm.valueChanges.subscribe((res: any) => {
       console.log(res);
@@ -163,8 +177,9 @@ export class AppComponent implements OnInit {
       this.fullNameValueChanges();
       this.preferredLanguageValueChanges();
       this.genderInfoValueChanges();
-      this.profilePhotoURIValueChanges();
       this.cifValueChanges();
+      this.profilePhotoURIValueChanges();
+      this.dateOfBirthValueChanges();
       // this.mobileValueChanges();
     });
   }
@@ -208,6 +223,7 @@ export class AppComponent implements OnInit {
       this.hasEmailIdError = true;
       this.emailIdError += 'Email Address is invalid';
     } else {
+      this.email = this.registerForm.get('emailId').value;
       this.hasEmailIdError = false;
       this.emailIdError = '';
     }
@@ -219,6 +235,8 @@ export class AppComponent implements OnInit {
     if (this.registerForm?.get('referralCode')?.errors?.pattern) {
       this.hasReferralCodeError = true;
       this.referralCodeError += 'Referral Code is Invalid';
+    } else if (this.registerForm?.get('referralCode')?.errors === null) {
+      this.showVerifyEmail = true;
     } else {
       this.hasReferralCodeError = false;
       this.referralCodeError = '';
@@ -316,6 +334,7 @@ export class AppComponent implements OnInit {
       this.hasProfilePhotoURIError = true;
       this.profilePhotoURIError += 'Profile Photo URI is invalid';
     } else {
+      this.uploadFile();
       this.hasProfilePhotoURIError = false;
       this.profilePhotoURIError = '';
     }
@@ -377,7 +396,6 @@ export class AppComponent implements OnInit {
       .verifyNumber(this.contactNumber)
       .subscribe((res: any) => {
         this.isLoading = false;
-        console.log(res);
         if (res.status === 'SUCCEEDED') {
           this.showVerifyNumber = false;
           this.showModal();
@@ -392,12 +410,11 @@ export class AppComponent implements OnInit {
     this.isLoading = true;
     this.isVerifyNumberCalled = true;
     this.registerService
-      .verifyEmail(this.email, this.refCode)
+      .verifyEmail(this.email, this.registerForm.value.referralCode)
       .subscribe((res: any) => {
         this.isLoading = false;
-        console.log(res);
         if (res.status === 'SUCCEEDED') {
-          this.showVerifyNumber = false;
+          this.showVerifyEmail = false;
           this.isEmailVerified = true;
         }
       });
@@ -407,7 +424,6 @@ export class AppComponent implements OnInit {
     this.isLoading = true;
     this.registerService.verifyNumberOTP(this.otp).subscribe((res: any) => {
       this.isLoading = false;
-      console.log('OTP RESPONSE', res);
       if (res.status === 'FAILED') {
         this.hasError = true;
       } else if (res.status === 'SUCCEEDED') {
@@ -419,8 +435,8 @@ export class AppComponent implements OnInit {
 
   setToken() {
     this.registerService.setToken().subscribe((res: any) => {
-      // console.log(res);
       window.localStorage.setItem('access_token', res.access_token);
+      this.getCategoryProfile();
     });
   }
 
@@ -441,6 +457,17 @@ export class AppComponent implements OnInit {
     this.router.navigate(['..']);
   }
 
+  uploadFile() {
+    this.registerService
+      .uploadFile(this.registerForm.value.profilePhotoURI)
+      .subscribe((res: any) => {
+        console.log(res);
+        if (res.status === 'SUCCEEDED') {
+          this.uploadedFileUrl = res.url;
+        }
+      });
+  }
+
   onOtpChange(otp: any) {
     this.otp = otp;
   }
@@ -451,6 +478,11 @@ export class AppComponent implements OnInit {
       this.isLoading = false;
       if (res.status === 'FAILED') {
         this.hasEmailIdError = true;
+        this.emailIdError = 'Email already exists';
+      }
+      if (res.status === 'SUCCEEDED') {
+        this.hasEmailIdError = false;
+        this.emailIdError = '';
       }
     });
   }

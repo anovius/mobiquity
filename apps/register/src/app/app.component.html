@@ -59,7 +59,7 @@
                     <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full"
                         formControlName="emailId" type="text" (blur)="checkUnique()"
                         placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
-                    <p (click)="verifyEmail()" style="color:red" *ngIf="showVerifyEmail">verify</p>
+                    <p (click)="verifyEmail()" class="error-message" *ngIf="showVerifyEmail&&email">verify</p>
                     <p *ngIf="hasEmailIdError" class="error-message">{{emailIdError}}</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
@@ -101,6 +101,8 @@
                     <label class="text-blue text-xs font-medium mb-2" for="">Title</label>
                     <ng-select [items]="titleOptions" bindLabel="key" bindValue="value" formControlName="title">
                     </ng-select>
+                    <p *ngIf="hasTitleError" class="error-message">{{titleError}}</p>
+
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2"
@@ -135,6 +137,7 @@
                     <ng-select [items]="preferredLanguageOptions" bindLabel="display" bindValue="name"
                         formControlName="preferredLanguage">
                     </ng-select>
+                    <p *ngIf="hasPreferredLanguageError" class="error-message">{{preferredLanguageError}}</p>
                 </div>
 
                 <div class="flex flex-col p-3 w-full md:w-1/2">
@@ -163,6 +166,7 @@
                                 {{translation?.cols[1]?.parts[0].div[8].radio3}}</label>
                         </div>
                     </div>
+                    <p *ngIf="hasGenderInfoError" class="error-message">{{genderInfoError}}</p>
                 </div>
 
                 <!-- <div class="flex items-start m-3 w-full md:w-1/2">
@@ -202,13 +206,10 @@
                     <label class="text-blue text-sm mb-2" for="">{{translation?.cols[1]?.parts[0].div[6].label}}</label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        formControlName="dateOfBirth" type="text"
+                        formControlName="dateOfBirth" type="date"
                         placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
+                    <p *ngIf="hasDateOfBirthError" class="error-message">{{dateOfBirthError}}</p>
                 </div>
-
-
-
-
 
                 <!-- <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2"

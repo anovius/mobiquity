@@ -17,6 +17,17 @@ export class RegisterService {
     return this.apiService.post('https://demo5894535.mockable.io/token', body);
   }
 
+  getCategoryProfile() {
+    return this.apiService.get(
+      'https://demo2819413.mockable.io/categoryProfile'
+    );
+  }
+
+  uploadFile(file: any) {
+    file = {};
+    return this.apiService.post('https://demo2819413.mockable.io/upload', file);
+  }
+
   verifyNumber(contactNumber: string) {
     return this.apiService.get('https://demo2819413.mockable.io/UniqueMobile');
   }
@@ -44,5 +55,12 @@ export class RegisterService {
 
   test() {
     return 'test is working';
+  }
+
+  register(body: any) {
+    return this.apiService.post(
+      'https://demo2819413.mockable.io/registerCustomer',
+      body
+    );
   }
 }

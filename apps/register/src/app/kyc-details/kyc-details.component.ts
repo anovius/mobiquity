@@ -61,6 +61,7 @@ export class KycDetailsComponent implements OnInit {
   kycImageUrlError: string = '';
   kycIdTypeError: string = '';
   isPrimaryKYCIdError: string = '';
+  uploadedFileUrl: any;
 
   constructor(
     private translationService: TranslationService,
@@ -243,6 +244,7 @@ export class KycDetailsComponent implements OnInit {
       this.hasKycImageUrlError = true;
       this.kycImageUrlError += 'Upload Documents is invalid';
     } else {
+      this.uploadFile();
       this.hasKycImageUrlError = false;
       this.kycImageUrlError = '';
     }
@@ -258,6 +260,17 @@ export class KycDetailsComponent implements OnInit {
       this.hasIsPrimaryKYCIdError = false;
       this.isPrimaryKYCIdError = '';
     }
+  }
+
+  uploadFile() {
+    this.registerService
+      .uploadFile(this.registerForm.value.profilePhotoURI)
+      .subscribe((res: any) => {
+        console.log(res);
+        if (res.status === 'SUCCEEDED') {
+          this.uploadedFileUrl = res.url;
+        }
+      });
   }
 
   next() {

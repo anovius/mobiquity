@@ -163,19 +163,19 @@ export class SetPinComponent implements OnInit {
     //     });
     // } else if (res.status === 'SUCCEEDED') {
 
-    if (this.registerForm.value.pin === this.registerForm.value.confirm) {
-      let retrievedObject: any = window.localStorage.getItem('register');
-      this.registerP4 = JSON.parse(retrievedObject);
-      let register = {
-        ...this.registerP4,
-        pin: this.registerForm.value.pin,
-      };
-      this.router.navigate(['/']);
-    } else {
-      alert('Pin and Confirm Pin does not match');
-    }
-    // } else {
-    //show error of invalid username and password
-    // }
+    let retrievedObject: any = window.localStorage.getItem('register');
+    this.registerP4 = JSON.parse(retrievedObject);
+    let register = {
+      ...this.registerP4,
+      pin: this.registerForm.value.pin,
+    };
+
+    this.registerService.register(register).subscribe((res) => {
+      if (res.status === 'FAILED') {
+        this.router.navigate(['/']);
+      } else if (res.status === 'SUCCEEDED') {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }
