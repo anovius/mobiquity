@@ -43,29 +43,24 @@
             <div class="p-3">
                 <h4 class="text-xl font-bold text-dropdown-custom">{{translation?.cols[1]?.parts[0].h}}</h4>
             </div>
-            <!-- <div class="flex flex-wrap">
+            <div class="flex flex-wrap">
                 <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-blue font-medium text-sm mb-2"
-                        for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
-                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
+                    <label class="text-blue font-medium text-sm mb-2" for="">Login ID<span
+                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[3].span}}</span></label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" formControlName="mobileNumber"
-                        placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
-                    <p (click)="verifyNumber()" style="color:red" *ngIf="showVerifyNumber">verify</p>
-                    <p style="color:green" *ngIf="isContactVerified">ICON</p>
-                    <div *ngIf="isLoading">
-                        <div class="sp sp-circle"></div>
-                    </div>
+                        type="text" formControlName="loginId" placeholder="Enter Login ID">
+                    <p *ngIf="hasLoginIdError">{{loginIdError}}</p>
                 </div>
+
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2"
                         for="">{{translation?.cols[1]?.parts[0].div[1].label}}</label>
                     <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full"
-                        formControlName="emailId" type="email" (blur)="checkUnique()"
+                        formControlName="emailId" type="text" (blur)="checkUnique()"
                         placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
                     <p (click)="verifyEmail()" style="color:red" *ngIf="showVerifyEmail">verify</p>
-                    <p *ngIf="emailError" class="error-message">Email already exists</p>
+                    <p *ngIf="hasEmailIdError" class="error-message">{{emailIdError}}</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2 flex items-center"
@@ -79,10 +74,25 @@
                         </span></label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        formControlName="refCode" type="email"
+                        formControlName="referralCode" type="text"
                         placeholder="{{translation?.cols[1]?.parts[0].div[2].placeholder}}">
+                    <p *ngIf="hasReferralCodeError">{{referralCodeError}}</p>
                 </div>
-            </div> -->
+                <!-- <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2"
+                        for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
+                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="text" formControlName="mobileNumber"
+                        placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
+                    <p (click)="verifyNumber()" style="color:red" *ngIf="showVerifyNumber">verify</p>
+                    <p style="color:green" *ngIf="isContactVerified">ICON</p>
+                    <div *ngIf="isLoading">
+                        <div class="sp sp-circle"></div>
+                    </div>
+                </div> -->
+            </div>
             <div class="p-3">
                 <h4 class="text-xl">{{translation?.cols[1]?.parts[0].sh}}</h4>
             </div>
@@ -98,7 +108,7 @@
                             class="text-red-700">{{translation?.cols[1]?.parts[0].div[3].span}}</span></label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" formControlName="firstName" pattern="^[a-zA-Z ]*$"
+                        type="text" formControlName="firstName"
                         placeholder="{{translation?.cols[1]?.parts[0].div[3].placeholder}}">
                     <p *ngIf="hasFirstNameError">{{firstNameError}}</p>
                 </div>
@@ -108,16 +118,53 @@
                             class="text-red-700">{{translation?.cols[1]?.parts[0].div[5].span}}</span> </label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" formControlName="lastName" pattern="^[a-zA-Z ]*$"
+                        type="text" formControlName="lastName"
                         placeholder="{{translation?.cols[1]?.parts[0].div[5].placeholder}}">
                     <p *ngIf="hasLastNameError">{{lastNameError}}</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2 flex items-center" for="">Full Name<span
+                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[5].span}}</span> </label>
+                    <input
+                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
+                        type="text" formControlName="fullName" placeholder="Enter Full Name">
+                    <p *ngIf="hasFullNameError">{{fullNameError}}</p>
+                </div>
+                <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue text-xs font-medium mb-2" for="">Preferred Language</label>
-                    <ng-select [items]="preferredLanguageOptions" bindLabel="key" bindValue="value"
+                    <ng-select [items]="preferredLanguageOptions" bindLabel="display" bindValue="name"
                         formControlName="preferredLanguage">
                     </ng-select>
                 </div>
+
+                <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
+                        for="">{{translation?.cols[1]?.parts[0].div[8].label}}</label>
+                    <div class="flex items-center mt-3">
+                        <div class="flex items-center mr-4 mb-4">
+                            <input id="radio1" type="radio" value="GEN_MAL" formControlName="genderInfo"
+                                name="genderInfo" class="hidden" checked />
+                            <label for="radio1" class="flex items-center cursor-pointer">
+                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+                                {{translation?.cols[1]?.parts[0].div[8].radio1}}</label>
+                        </div>
+                        <div class="flex items-center mr-4 mb-4">
+                            <input id="radio2" formControlName="genderInfo" value="GEN_FEM" type="radio"
+                                name="genderInfo" class="hidden" />
+                            <label for="radio2" class="flex items-center cursor-pointer">
+                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+                                {{translation?.cols[1]?.parts[0].div[8].radio2}}</label>
+                        </div>
+                        <div class="flex items-center mr-4 mb-4">
+                            <input id="radio3" formControlName="genderInfo" value="GEN_OTH" type="radio"
+                                name="genderInfo" class="hidden" />
+                            <label for="radio3" class="flex items-center cursor-pointer">
+                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+                                {{translation?.cols[1]?.parts[0].div[8].radio3}}</label>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- <div class="flex items-start m-3 w-full md:w-1/2">
                     <span class="text-xs text-gray-400 ml-1">{{translation?.cols[1]?.parts[0].div[9].span}}</span>
                 </div> -->
@@ -146,7 +193,7 @@
                     <label class="text-blue text-sm mb-2" for="">CIF</label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        formControlName="cif" type="text" pattern="^[a-zA-Z0-9]*$"
+                        formControlName="cif" type="text"
                         placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
                     <p *ngIf="hasCifError">{{cifError}}</p>
 
@@ -155,32 +202,11 @@
                     <label class="text-blue text-sm mb-2" for="">{{translation?.cols[1]?.parts[0].div[6].label}}</label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        formControlName="dateOfBirth" type="email"
+                        formControlName="dateOfBirth" type="text"
                         placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
                 </div>
-                <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-blue font-medium text-sm mb-2"
-                        for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
-                            class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
-                    <input
-                        class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="text" formControlName="mobileNumber"
-                        placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
-                    <p (click)="verifyNumber()" style="color:red" *ngIf="showVerifyNumber">verify</p>
-                    <p style="color:green" *ngIf="isContactVerified">ICON</p>
-                    <div *ngIf="isLoading">
-                        <div class="sp sp-circle"></div>
-                    </div>
-                </div>
-                <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-blue font-medium text-sm mb-2"
-                        for="">{{translation?.cols[1]?.parts[0].div[1].label}}</label>
-                    <input class="text-sm pr-9 p-3 border  rounded-md bg-input-custom outline-none w-full"
-                        formControlName="emailId" type="email" (blur)="checkUnique()"
-                        placeholder="{{translation?.cols[1]?.parts[0].div[1].placeholder}}">
-                    <p (click)="verifyEmail()" style="color:red" *ngIf="showVerifyEmail">verify</p>
-                    <p *ngIf="emailError" class="error-message">Email already exists</p>
-                </div>
+
+
 
 
 
@@ -189,7 +215,7 @@
                         for="">{{translation?.cols[1]?.parts[0].div[4].label}}</label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="email" formControlName="middleName"
+                        type="text" formControlName="middleName"
                         placeholder="{{translation?.cols[1]?.parts[0].div[4].placeholder}}">
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
@@ -204,36 +230,10 @@
                         </span></label>
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                        type="email" formControlName="paymentID"
+                        type="text" formControlName="paymentID"
                         placeholder="{{translation?.cols[1]?.parts[0].div[7].placeholder}}">
                 </div>
-                <div class="flex flex-col p-3 w-full md:w-1/2">
-                    <label class="text-blue font-medium text-sm mb-2 flex items-center"
-                        for="">{{translation?.cols[1]?.parts[0].div[8].label}}</label>
-                    <div class="flex items-center mt-3">
-                        <div class="flex items-center mr-4 mb-4">
-                            <input id="radio1" type="radio" value="male" formControlName="gender" name="gender"
-                                class="hidden" checked />
-                            <label for="radio1" class="flex items-center cursor-pointer">
-                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
-                                {{translation?.cols[1]?.parts[0].div[8].radio1}}</label>
-                        </div>
-                        <div class="flex items-center mr-4 mb-4">
-                            <input id="radio2" formControlName="gender" value="female" type="radio" name="gender"
-                                class="hidden" />
-                            <label for="radio2" class="flex items-center cursor-pointer">
-                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
-                                {{translation?.cols[1]?.parts[0].div[8].radio2}}</label>
-                        </div>
-                        <div class="flex items-center mr-4 mb-4">
-                            <input id="radio3" formControlName="gender" value="other" type="radio" name="gender"
-                                class="hidden" />
-                            <label for="radio3" class="flex items-center cursor-pointer">
-                                <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
-                                {{translation?.cols[1]?.parts[0].div[8].radio3}}</label>
-                        </div>
-                    </div>
-                </div> -->
+                 -->
             </div>
             <div class="text-center my-6">
                 <button [disabled]="!isContactVerified||!isEmailVerified" (click)="next()"

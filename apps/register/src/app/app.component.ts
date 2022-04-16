@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslationService, UserService } from '@mobiquity/shared';
 import { RegisterService } from './register.service';
@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
   openModal: boolean = false;
   hasError: boolean = false;
   email = '';
-  emailError: boolean = false;
   refCode = '';
   isEmailVerified = false;
   // selectedTitle!: number;
@@ -52,20 +51,12 @@ export class AppComponent implements OnInit {
 
   preferredLanguageOptions = [
     {
-      value: 'Ms',
-      key: 'PR_MISS',
+      name: 'en',
+      display: 'English',
     },
     {
-      value: 'M/S',
-      key: 'PR_MS',
-    },
-    {
-      value: 'Mr',
-      key: 'PR_MR',
-    },
-    {
-      value: 'Mrs',
-      key: 'PR_MRS',
+      name: 'ar',
+      display: 'Arabic',
     },
   ];
 
@@ -77,6 +68,16 @@ export class AppComponent implements OnInit {
   profilePhotoURIError: string = '';
   hasCifError: boolean = false;
   cifError: string = '';
+  hasFullNameError: boolean = false;
+  fullNameError: string = '';
+  hasReferralCodeError: boolean = false;
+  referralCodeError: string = '';
+  emailId: any;
+  referralCode: any;
+  hasLoginIdError: boolean = false;
+  loginIdError: string = '';
+  hasEmailIdError: boolean = false;
+  emailIdError: string = '';
 
   constructor(
     private translationService: TranslationService,
@@ -97,81 +98,155 @@ export class AppComponent implements OnInit {
 
     console.log(this.registerService.test());
 
-    this.firstNameValueChanges();
-    this.lastNameValueChanges();
-    this.profilePhotoURIValueChanges();
-    this.cifValueChanges();
-    this.mobileValueChanges();
-    this.emailValueChanges();
+    console.log(this.registerForm);
+
+    this.registerFormValueChanges();
   }
 
   init() {
     this.registerForm = this.fb.group({
-      title: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      loginId: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9]{3,20}$'),
+          this.duplicateEmailValidator.bind(this),
+        ],
+      ],
+      emailId: [
+        '',
+        [
+          Validators.pattern('^[a-zA-Z0-9@.]*$'),
+          this.duplicateEmailValidator.bind(this),
+        ],
+      ],
+      referralCode: ['', Validators.pattern('^[a-zA-Z0-9@.]*$')],
+
+      title: ['', [Validators.required]],
+      firstName: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-Z ]*$')],
+      ],
+      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      fullName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
       preferredLanguage: ['', Validators.required],
-      profilePhotoURI: [''],
-      CIF: [''],
-      loginId: ['', Validators.required],
-      dateOfBirth: [''],
-      emailId: [''],
+      genderInfo: ['GEN_MAL', Validators.required],
+      profilePhotoURI: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-Z0-9:/.-]*$')],
+      ],
+      cif: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]],
+      dateOfBirth: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-Z0-9:/.-]*$')],
+      ],
       mobileNumber: ['', Validators.required],
-      // refCode: ['', Validators.required],
       // middleName: ['', Validators.required],
       // paymentID: ['', Validators.required],
-      // gender: ['', Validators.required],
     });
+  }
+
+  registerFormValueChanges() {
+    this.registerForm.valueChanges.subscribe((res: any) => {
+      console.log(res);
+      this.firstNameValueChanges();
+      this.lastNameValueChanges();
+      this.fullNameValueChanges();
+      this.profilePhotoURIValueChanges();
+      this.cifValueChanges();
+      this.referralCodeValueChanges();
+      this.loginIdValueChanges();
+      // this.mobileValueChanges();
+      this.emailValueChanges();
+    });
+  }
+
+  duplicateEmailValidator(control: FormControl) {
+    let email = control.value;
+    // if (email && this.emailIds.includes(email)) {
+    //   return {
+    //     duplicateEmailId: {
+    //       email: email,
+    //     },
+    //   };
+    // }
+    return null;
+  }
+
+  resetForm() {
+    this.registerForm.reset();
+  }
+
+  loginIdValueChanges() {
+    this.hasLoginIdError = false;
+    this.loginIdError = '';
+    if (this.registerForm?.get('loginId')?.errors?.required) {
+      this.hasLoginIdError = true;
+      this.loginIdError += 'First Name is mandatory';
+    } else if (this.registerForm?.get('loginId')?.errors?.pattern) {
+      this.hasLoginIdError = true;
+      this.loginIdError += 'Only alphabets and space is allowed';
+    } else {
+      this.hasLoginIdError = false;
+      this.loginIdError = '';
+    }
   }
 
   firstNameValueChanges() {
-    this.registerForm.get('firstName')?.valueChanges.subscribe((res: any) => {
+    this.hasFirstNameError = false;
+    this.firstNameError = '';
+    if (this.registerForm?.get('firstName')?.errors?.required) {
+      this.hasFirstNameError = true;
+      this.firstNameError += 'First Name is mandatory';
+    } else if (this.registerForm?.get('firstName')?.errors?.pattern) {
+      this.hasFirstNameError = true;
+      this.firstNameError += 'Only alphabets and space is allowed';
+    } else {
       this.hasFirstNameError = false;
       this.firstNameError = '';
-      if (this.registerForm?.get('firstName')?.errors?.required) {
-        this.hasFirstNameError = true;
-        this.firstNameError += 'First Name is mandatory';
-      } else if (this.registerForm?.get('firstName')?.errors?.pattern) {
-        this.hasFirstNameError = true;
-        this.firstNameError += 'Only alphabets and space is allowed';
-      } else {
-        this.hasFirstNameError = false;
-        this.firstNameError = '';
-      }
-    });
+    }
   }
 
   lastNameValueChanges() {
-    this.registerForm.get('lastName')?.valueChanges.subscribe((res: any) => {
+    this.hasLastNameError = false;
+    this.lastNameError = '';
+    if (this.registerForm?.get('lastName')?.errors?.required) {
+      this.hasLastNameError = true;
+      this.lastNameError += 'Last Name is mandatory';
+    } else if (this.registerForm?.get('lastName')?.errors?.pattern) {
+      this.hasLastNameError = true;
+      this.lastNameError += 'Only alphabets and space is allowed';
+    } else {
       this.hasLastNameError = false;
       this.lastNameError = '';
-      if (this.registerForm?.get('lastName')?.errors?.required) {
-        this.hasLastNameError = true;
-        this.lastNameError += 'First Name is mandatory';
-      } else if (this.registerForm?.get('lastName')?.errors?.pattern) {
-        this.hasLastNameError = true;
-        this.lastNameError += 'Only alphabets and space is allowed';
-      } else {
-        this.hasLastNameError = false;
-        this.lastNameError = '';
-      }
-    });
+    }
+  }
+
+  fullNameValueChanges() {
+    this.hasFullNameError = false;
+    this.fullNameError = '';
+    if (this.registerForm?.get('fullName')?.errors?.required) {
+      this.hasFullNameError = true;
+      this.fullNameError += 'Full Name is mandatory';
+    } else if (this.registerForm?.get('fullName')?.errors?.pattern) {
+      this.hasFullNameError = true;
+      this.fullNameError += 'Only alphabets and space is allowed';
+    } else {
+      this.hasFullNameError = false;
+      this.fullNameError = '';
+    }
   }
 
   profilePhotoURIValueChanges() {
-    this.registerForm
-      .get('profilePhotoURI')
-      ?.valueChanges.subscribe((res: any) => {
-        this.hasProfilePhotoURIError = false;
-        this.profilePhotoURIError = '';
-        if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
-          this.hasProfilePhotoURIError = true;
-          this.profilePhotoURIError += 'Profile Photo URI is invalid';
-        } else {
-          this.hasProfilePhotoURIError = false;
-          this.profilePhotoURIError = '';
-        }
-      });
+    this.hasProfilePhotoURIError = false;
+    this.profilePhotoURIError = '';
+    if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
+      this.hasProfilePhotoURIError = true;
+      this.profilePhotoURIError += 'Profile Photo URI is invalid';
+    } else {
+      this.hasProfilePhotoURIError = false;
+      this.profilePhotoURIError = '';
+    }
   }
 
   cifValueChanges() {
@@ -186,6 +261,18 @@ export class AppComponent implements OnInit {
         this.cifError = '';
       }
     });
+  }
+
+  referralCodeValueChanges() {
+    this.hasReferralCodeError = false;
+    this.referralCodeError = '';
+    if (this.registerForm?.get('referralCode')?.errors?.pattern) {
+      this.hasReferralCodeError = true;
+      this.referralCodeError += 'Only alphabets and digits are allowed';
+    } else {
+      this.hasReferralCodeError = false;
+      this.referralCodeError = '';
+    }
   }
 
   mobileValueChanges() {
@@ -204,15 +291,18 @@ export class AppComponent implements OnInit {
   }
 
   emailValueChanges() {
-    this.registerForm.get('email')?.valueChanges.subscribe((res: any) => {
-      if (this.registerForm.get('email').status === 'VALID') {
-        this.email = res;
-      }
-    });
-    this.registerForm.get('refCode')?.valueChanges.subscribe((res: any) => {
-      this.refCode = res;
-      this.showVerifyEmail = true;
-    });
+    this.hasEmailIdError = false;
+    this.emailIdError = '';
+    if (this.registerForm?.get('emailId')?.errors?.required) {
+      this.hasEmailIdError = true;
+      this.emailIdError += 'First Name is mandatory';
+    } else if (this.registerForm?.get('emailId')?.errors?.pattern) {
+      this.hasEmailIdError = true;
+      this.emailIdError += 'Only alphabets and space is allowed';
+    } else {
+      this.hasEmailIdError = false;
+      this.emailIdError = '';
+    }
   }
 
   showModal() {
@@ -293,7 +383,7 @@ export class AppComponent implements OnInit {
     this.registerService.checkUnique().subscribe((res: any) => {
       this.isLoading = false;
       if (res.status === 'FAILED') {
-        this.emailError = true;
+        this.hasEmailIdError = true;
       }
     });
   }
@@ -319,7 +409,7 @@ export class AppComponent implements OnInit {
       JSON.stringify(this.registerForm.value)
     );
 
-    this.router.navigate(['/register/address']);
+    // this.router.navigate(['/register/address']);
     // } else {
     //show error of invalid username and password
     // }
