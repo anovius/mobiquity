@@ -14,6 +14,55 @@ export class SetPinComponent implements OnInit {
   registerForm: any;
   registerP4: any;
 
+  securityProfileOptions = [
+    {
+      name: 'subscriber',
+      value: 'SUBSCRIBER',
+    },
+    {
+      name: 'agent',
+      value: 'AGENT',
+    },
+  ];
+  authProfileOptions = [
+    {
+      name: 'subscriber',
+      value: 'SUBSCRIBER',
+    },
+    {
+      name: 'agent',
+      value: 'AGENT',
+    },
+  ];
+  regulatoryProfileOptions = [
+    {
+      name: 'subscriber',
+      value: 'SUBSCRIBER',
+    },
+    {
+      name: 'agent',
+      value: 'AGENT',
+    },
+  ];
+  marketingProfileOptions = [
+    {
+      name: 'subscriber',
+      value: 'SUBSCRIBER',
+    },
+    {
+      name: 'agent',
+      value: 'AGENT',
+    },
+  ];
+  hasSecurityProfileError: boolean = false;
+  hasRegulatoryProfileError: boolean = false;
+  hasAuthProfileError: boolean = false;
+  hasMarketingProfileError: boolean = false;
+  securityProfileError: string = '';
+  authProfileError: string = '';
+  regulatoryProfileError: string = '';
+  marketingProfileError: string = '';
+
   constructor(
     private translationService: TranslationService,
     private registerService: RegisterService,
@@ -27,13 +76,75 @@ export class SetPinComponent implements OnInit {
       this.translation = data.register;
     });
     this.init();
+
+    this.registerFormValueChanges();
   }
 
   init() {
     this.registerForm = this.fb.group({
-      pin: ['', Validators.required],
-      confirm: ['', Validators.required],
+      securityProfile: ['', Validators.required],
+      authProfile: ['', Validators.required],
+      regulatoryProfile: ['', Validators.required],
+      marketingProfile: ['', Validators.required],
     });
+  }
+
+  registerFormValueChanges() {
+    this.registerForm.valueChanges.subscribe((res: any) => {
+      console.log(res);
+      this.securityProfileValueChanges();
+      this.authProfileValueChanges();
+      this.regulatoryProfileValueChanges();
+      this.marketingProfileValueChanges();
+    });
+  }
+
+  securityProfileValueChanges() {
+    this.hasSecurityProfileError = false;
+    this.securityProfileError = '';
+    if (this.registerForm?.get('securityProfile')?.errors?.required) {
+      this.hasSecurityProfileError = true;
+      this.securityProfileError += 'Security profile is mandatory';
+    } else {
+      this.hasSecurityProfileError = false;
+      this.securityProfileError = '';
+    }
+  }
+
+  authProfileValueChanges() {
+    this.hasAuthProfileError = false;
+    this.authProfileError = '';
+    if (this.registerForm?.get('authProfile')?.errors?.required) {
+      this.hasAuthProfileError = true;
+      this.authProfileError += 'Authorisation profile is mandatory';
+    } else {
+      this.hasAuthProfileError = false;
+      this.authProfileError = '';
+    }
+  }
+
+  regulatoryProfileValueChanges() {
+    this.hasRegulatoryProfileError = false;
+    this.regulatoryProfileError = '';
+    if (this.registerForm?.get('regulatoryProfile')?.errors?.required) {
+      this.hasRegulatoryProfileError = true;
+      this.regulatoryProfileError += 'Regulatory mandatory is mandatory';
+    } else {
+      this.hasRegulatoryProfileError = false;
+      this.regulatoryProfileError = '';
+    }
+  }
+
+  marketingProfileValueChanges() {
+    this.hasMarketingProfileError = false;
+    this.marketingProfileError = '';
+    if (this.registerForm?.get('marketingProfile')?.errors?.required) {
+      this.hasMarketingProfileError = true;
+      this.marketingProfileError += 'Marketing profile is mandatory';
+    } else {
+      this.hasMarketingProfileError = false;
+      this.marketingProfileError = '';
+    }
   }
 
   submit() {
