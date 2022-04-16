@@ -78,6 +78,15 @@ export class AppComponent implements OnInit {
   loginIdError: string = '';
   hasEmailIdError: boolean = false;
   emailIdError: string = '';
+  authError: string = '';
+  hasTitleError: boolean = false;
+  hasPreferredLanguageError: boolean = false;
+  hasDateOfBirthError: boolean = false;
+  hasGenderInfoError: boolean = false;
+  preferredLanguageError: string = '';
+  genderInfoError: string = '';
+  titleError: string = '';
+  dateOfBirthError: string = '';
 
   constructor(
     private translationService: TranslationService,
@@ -95,10 +104,6 @@ export class AppComponent implements OnInit {
       this.translation = data.register;
       this.otpTranslation = data.otp;
     });
-
-    console.log(this.registerService.test());
-
-    console.log(this.registerForm);
 
     this.registerFormValueChanges();
   }
@@ -149,15 +154,18 @@ export class AppComponent implements OnInit {
   registerFormValueChanges() {
     this.registerForm.valueChanges.subscribe((res: any) => {
       console.log(res);
+      this.loginIdValueChanges();
+      this.emailValueChanges();
+      this.referralCodeValueChanges();
+      this.titleValueChanges();
       this.firstNameValueChanges();
       this.lastNameValueChanges();
       this.fullNameValueChanges();
+      this.preferredLanguageValueChanges();
+      this.genderInfoValueChanges();
       this.profilePhotoURIValueChanges();
       this.cifValueChanges();
-      this.referralCodeValueChanges();
-      this.loginIdValueChanges();
       // this.mobileValueChanges();
-      this.emailValueChanges();
     });
   }
 
@@ -182,13 +190,50 @@ export class AppComponent implements OnInit {
     this.loginIdError = '';
     if (this.registerForm?.get('loginId')?.errors?.required) {
       this.hasLoginIdError = true;
-      this.loginIdError += 'First Name is mandatory';
+      this.loginIdError += 'Login Id is mandatory';
     } else if (this.registerForm?.get('loginId')?.errors?.pattern) {
       this.hasLoginIdError = true;
-      this.loginIdError += 'Only alphabets and space is allowed';
+      this.loginIdError +=
+        'Only alphabets and digits are allowed and max length is 20';
     } else {
       this.hasLoginIdError = false;
       this.loginIdError = '';
+    }
+  }
+
+  emailValueChanges() {
+    this.hasEmailIdError = false;
+    this.emailIdError = '';
+    if (this.registerForm?.get('emailId')?.errors?.pattern) {
+      this.hasEmailIdError = true;
+      this.emailIdError += 'Email Address is invalid';
+    } else {
+      this.hasEmailIdError = false;
+      this.emailIdError = '';
+    }
+  }
+
+  referralCodeValueChanges() {
+    this.hasReferralCodeError = false;
+    this.referralCodeError = '';
+    if (this.registerForm?.get('referralCode')?.errors?.pattern) {
+      this.hasReferralCodeError = true;
+      this.referralCodeError += 'Referral Code is Invalid';
+    } else {
+      this.hasReferralCodeError = false;
+      this.referralCodeError = '';
+    }
+  }
+
+  titleValueChanges() {
+    this.hasTitleError = false;
+    this.titleError = '';
+    if (this.registerForm?.get('title')?.errors?.required) {
+      this.hasTitleError = true;
+      this.titleError += 'Title is mandatory';
+    } else {
+      this.hasTitleError = false;
+      this.titleError = '';
     }
   }
 
@@ -237,10 +282,37 @@ export class AppComponent implements OnInit {
     }
   }
 
+  preferredLanguageValueChanges() {
+    this.hasPreferredLanguageError = false;
+    this.preferredLanguageError = '';
+    if (this.registerForm?.get('preferredLanguage')?.errors?.required) {
+      this.hasPreferredLanguageError = true;
+      this.preferredLanguageError += 'Preferred language is mandatory';
+    } else {
+      this.hasPreferredLanguageError = false;
+      this.preferredLanguageError = '';
+    }
+  }
+
+  genderInfoValueChanges() {
+    this.hasGenderInfoError = false;
+    this.genderInfoError = '';
+    if (this.registerForm?.get('genderInfo')?.errors?.required) {
+      this.hasGenderInfoError = true;
+      this.genderInfoError += 'Gender is mandatory';
+    } else {
+      this.hasGenderInfoError = false;
+      this.genderInfoError = '';
+    }
+  }
+
   profilePhotoURIValueChanges() {
     this.hasProfilePhotoURIError = false;
     this.profilePhotoURIError = '';
-    if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
+    if (this.registerForm?.get('profilePhotoURI')?.errors?.required) {
+      this.hasProfilePhotoURIError = true;
+      this.profilePhotoURIError += 'Profile Photo URI is mendatory';
+    } else if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
       this.hasProfilePhotoURIError = true;
       this.profilePhotoURIError += 'Profile Photo URI is invalid';
     } else {
@@ -252,7 +324,10 @@ export class AppComponent implements OnInit {
   cifValueChanges() {
     this.hasCifError = false;
     this.cifError = '';
-    if (this.registerForm?.get('cif')?.errors?.pattern) {
+    if (this.registerForm?.get('cif')?.errors?.required) {
+      this.hasCifError = true;
+      this.cifError += 'CIF is mandatory';
+    } else if (this.registerForm?.get('cif')?.errors?.pattern) {
       this.hasCifError = true;
       this.cifError += 'Only alphabets and digits are allowed';
     } else {
@@ -261,15 +336,18 @@ export class AppComponent implements OnInit {
     }
   }
 
-  referralCodeValueChanges() {
-    this.hasReferralCodeError = false;
-    this.referralCodeError = '';
-    if (this.registerForm?.get('referralCode')?.errors?.pattern) {
-      this.hasReferralCodeError = true;
-      this.referralCodeError += 'Only alphabets and digits are allowed';
+  dateOfBirthValueChanges() {
+    this.hasDateOfBirthError = false;
+    this.dateOfBirthError = '';
+    if (this.registerForm?.get('dateOfBirth')?.errors?.required) {
+      this.hasDateOfBirthError = true;
+      this.dateOfBirthError += 'DOB is mandatory';
+    } else if (this.registerForm?.get('dateOfBirth')?.errors?.pattern) {
+      this.hasDateOfBirthError = true;
+      this.dateOfBirthError += 'dates format are allowed';
     } else {
-      this.hasReferralCodeError = false;
-      this.referralCodeError = '';
+      this.hasDateOfBirthError = false;
+      this.dateOfBirthError = '';
     }
   }
 
@@ -286,21 +364,6 @@ export class AppComponent implements OnInit {
         this.showVerifyNumber = false;
       }
     });
-  }
-
-  emailValueChanges() {
-    this.hasEmailIdError = false;
-    this.emailIdError = '';
-    if (this.registerForm?.get('emailId')?.errors?.required) {
-      this.hasEmailIdError = true;
-      this.emailIdError += 'First Name is mandatory';
-    } else if (this.registerForm?.get('emailId')?.errors?.pattern) {
-      this.hasEmailIdError = true;
-      this.emailIdError += 'Only alphabets and space is allowed';
-    } else {
-      this.hasEmailIdError = false;
-      this.emailIdError = '';
-    }
   }
 
   showModal() {
@@ -362,10 +425,16 @@ export class AppComponent implements OnInit {
   }
 
   refreshToken() {
-    this.registerService.refreshToken().subscribe((res: any) => {
-      console.log(res);
-      window.localStorage.setItem('refresh_token', res.refresh_token);
-    });
+    this.registerService.refreshToken().subscribe(
+      (res: any) => {
+        console.log(res);
+        window.localStorage.setItem('refresh_token', res.refresh_token);
+      },
+      (err) => {
+        console.log(err);
+        this.authError = 'NO Auth Token Found';
+      }
+    );
   }
 
   goBack() {
