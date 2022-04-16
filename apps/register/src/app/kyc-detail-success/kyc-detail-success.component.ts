@@ -13,6 +13,8 @@ export class KycDetailSuccessComponent implements OnInit {
   translation: any;
   registerForm: any;
   registerP3: any;
+  openModal: boolean = false;
+  docImageUrl: any;
 
   constructor(
     private translationService: TranslationService,
@@ -26,6 +28,8 @@ export class KycDetailSuccessComponent implements OnInit {
     let retrievedObject: any = window.localStorage.getItem('register');
     this.registerP3 = JSON.parse(retrievedObject);
 
+    this.docImageUrl = this.registerP3.kycImageUrl;
+
     this.translationService.get().subscribe((data: any) => {
       this.translation = data.register;
     });
@@ -37,6 +41,14 @@ export class KycDetailSuccessComponent implements OnInit {
       frontView: [this.registerP3.frontView],
       backView: [this.registerP3.backView],
     });
+  }
+
+  showModal() {
+    this.openModal = true;
+  }
+
+  goBack() {
+    this.openModal = false;
   }
 
   next() {
@@ -54,10 +66,6 @@ export class KycDetailSuccessComponent implements OnInit {
     //       this.router.navigate(['/otp']);
     //     });
     // } else if (res.status === 'SUCCEEDED') {
-
-    let retrievedObject: any = window.localStorage.getItem('register');
-    this.registerP3 = JSON.parse(retrievedObject);
-
     this.router.navigate(['/register/set-pin']);
     // } else {
     //show error of invalid username and password
