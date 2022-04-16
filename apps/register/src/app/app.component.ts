@@ -250,17 +250,15 @@ export class AppComponent implements OnInit {
   }
 
   cifValueChanges() {
-    this.registerForm.get('cif')?.valueChanges.subscribe((res: any) => {
+    this.hasCifError = false;
+    this.cifError = '';
+    if (this.registerForm?.get('cif')?.errors?.pattern) {
+      this.hasCifError = true;
+      this.cifError += 'Only alphabets and digits are allowed';
+    } else {
       this.hasCifError = false;
       this.cifError = '';
-      if (this.registerForm?.get('cif')?.errors?.pattern) {
-        this.hasCifError = true;
-        this.cifError += 'Only alphabets and digits are allowed';
-      } else {
-        this.hasCifError = false;
-        this.cifError = '';
-      }
-    });
+    }
   }
 
   referralCodeValueChanges() {
@@ -409,7 +407,7 @@ export class AppComponent implements OnInit {
       JSON.stringify(this.registerForm.value)
     );
 
-    // this.router.navigate(['/register/address']);
+    this.router.navigate(['/register/address']);
     // } else {
     //show error of invalid username and password
     // }

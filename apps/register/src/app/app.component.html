@@ -236,8 +236,10 @@
                  -->
             </div>
             <div class="text-center my-6">
-                <button [disabled]="!isContactVerified||!isEmailVerified" (click)="next()"
+                <button (click)="next()"
                     class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[0].a[0]}}</button>
+                <!-- <button [disabled]="!isContactVerified||!isEmailVerified" (click)="next()"
+                    class="bg-login-btn-custom px-14 text-sm font-medium text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">{{translation?.cols[1]?.parts[0].a[0]}}</button> -->
             </div>
             <div class="text-center text-sm my-4">
                 <p>{{translation?.cols[1]?.parts[0].p[0]}} <a class="text-login-custom" href="login-modal-2.html">
