@@ -70,7 +70,7 @@
                         <ng-select [items]="kycIdTypeOptions" bindLabel="key" bindValue="value"
                             formControlName="kycIdType">
                         </ng-select>
-                        <p *ngIf="hasKycIdTypeError">{{kycIdTypeError}}</p>
+                        <p *ngIf="hasKycIdTypeError" class="error-message">{{kycIdTypeError}}</p>
 
                         <!-- <select name="document" formControlName="docType" id=""
                             class="p-3 border rounded-md bg-input-custom outline-none w-full">
@@ -91,7 +91,7 @@
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdValue" type="text"
                             placeholder="{{translation?.cols[1]?.parts[2]?.fields[1]?.placeholder}}">
-                        <p *ngIf="hasKycIdValueError">{{kycIdValueError}}</p>
+                        <p *ngIf="hasKycIdValueError" class="error-message">{{kycIdValueError}}</p>
                     </div>
                     <div class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">KYC Grace Period
@@ -99,36 +99,35 @@
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycGracePeriod" type="text" placeholder="Enter KYC Grace Period (Days)">
-                        <p *ngIf="hasKycGracePeriodError">{{kycGracePeriodError}}</p>
+                        <p *ngIf="hasKycGracePeriodError" class="error-message">{{kycGracePeriodError}}</p>
                     </div>
                     <div class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Country Issued In</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdIssueCountry" type="text" placeholder="Enter Country Issued In">
-                        <p *ngIf="hasKycIdIssueCountryError">{{kycIdIssueCountryError}}</p>
+                        <p *ngIf="hasKycIdIssueCountryError" class="error-message">{{kycIdIssueCountryError}}</p>
                     </div>
                     <div class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Date Issued On</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdIssueDate" type="date" placeholder="KYC ID Issued On">
-                        <p *ngIf="hasKycIdIssueDateError">{{kycIdIssueDateError}}</p>
+                        <p *ngIf="hasKycIdIssueDateError" class="error-message">{{kycIdIssueDateError}}</p>
                     </div>
                     <div class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Valid From</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdValidFrom" type="date" placeholder="KYC ID Valid From">
-                        <p *ngIf="hasKycIdValidFromError">{{kycIdValidFromError}}</p>
-
+                        <p *ngIf="hasKycIdValidFromError" class="error-message">{{kycIdValidFromError}}</p>
                     </div>
                     <div class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">DValid Thru</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdValidTo" type="date" placeholder="KYC ID Valid Till">
-                        <p *ngIf="hasKycIdValidToError">{{kycIdValidToError}}</p>
+                        <p *ngIf="hasKycIdValidToError" class="error-message">{{kycIdValidToError}}</p>
                     </div>
                     <div class="w-full ml-3">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Upload Documents</label>
@@ -147,7 +146,7 @@
                                 </div>
                                 <input formControlName="kycImageUrl" type="file"
                                     class="cursor-pointer h-full w-full opacity-0">
-                                <p *ngIf="hasKycImageUrlError">{{kycImageUrlError}}</p>
+                                <p *ngIf="hasKycImageUrlError" class="error-message">{{kycImageUrlError}}</p>
                             </div>
                         </div>
                     </div>
@@ -159,7 +158,7 @@
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="isPrimaryKYCId" type="checkbox">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Make this primary</label>
-                        <p *ngIf="hasIsPrimaryKYCIdError">{{isPrimaryKYCIdError}}</p>
+                        <p *ngIf="hasIsPrimaryKYCIdError" class="error-message">{{isPrimaryKYCIdError}}</p>
 
                     </div>
                     <div class="text-center w-full my-6">

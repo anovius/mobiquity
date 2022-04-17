@@ -50,7 +50,7 @@
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         type="text" formControlName="loginId" placeholder="Enter Login ID">
-                    <p *ngIf="hasLoginIdError">{{loginIdError}}</p>
+                    <p *ngIf="hasLoginIdError" class="error-message">{{loginIdError}}</p>
                 </div>
 
                 <div class="flex flex-col p-3 w-full md:w-1/2">
@@ -76,7 +76,7 @@
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         formControlName="referralCode" type="text"
                         placeholder="{{translation?.cols[1]?.parts[0].div[2].placeholder}}">
-                    <p *ngIf="hasReferralCodeError">{{referralCodeError}}</p>
+                    <p *ngIf="hasReferralCodeError" class="error-message">{{referralCodeError}}</p>
                 </div>
                 <!-- <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2"
@@ -112,7 +112,7 @@
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         type="text" formControlName="firstName"
                         placeholder="{{translation?.cols[1]?.parts[0].div[3].placeholder}}">
-                    <p *ngIf="hasFirstNameError">{{firstNameError}}</p>
+                    <p *ngIf="hasFirstNameError" class="error-message">{{firstNameError}}</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2 flex items-center"
@@ -122,7 +122,7 @@
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         type="text" formControlName="lastName"
                         placeholder="{{translation?.cols[1]?.parts[0].div[5].placeholder}}">
-                    <p *ngIf="hasLastNameError">{{lastNameError}}</p>
+                    <p *ngIf="hasLastNameError" class="error-message">{{lastNameError}}</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue font-medium text-sm mb-2 flex items-center" for="">Full Name<span
@@ -130,7 +130,7 @@
                     <input
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         type="text" formControlName="fullName" placeholder="Enter Full Name">
-                    <p *ngIf="hasFullNameError">{{fullNameError}}</p>
+                    <p *ngIf="hasFullNameError" class="error-message">{{fullNameError}}</p>
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
                     <label class="text-blue text-xs font-medium mb-2" for="">Preferred Language</label>
@@ -189,7 +189,7 @@
                                 class="cursor-pointer h-full w-full opacity-0" name="">
                         </div>
                         <p class="text-sm text-gray-400 mt-3">{{translation?.cols[1]?.parts[0].div[10].p}}</p>
-                        <p *ngIf="hasProfilePhotoURIError">{{profilePhotoURIError}}</p>
+                        <p *ngIf="hasProfilePhotoURIError" class="error-message">{{profilePhotoURIError}}</p>
                     </div>
                 </div>
 
@@ -199,7 +199,7 @@
                         class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                         formControlName="cif" type="text"
                         placeholder="{{translation?.cols[1]?.parts[0].div[6].placeholder}}">
-                    <p *ngIf="hasCifError">{{cifError}}</p>
+                    <p *ngIf="hasCifError" class="error-message">{{cifError}}</p>
 
                 </div>
                 <div class="flex flex-col p-3 w-full md:w-1/2">
