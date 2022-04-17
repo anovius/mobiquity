@@ -62,6 +62,7 @@ export class SetPinComponent implements OnInit {
   authProfileError: string = '';
   regulatoryProfileError: string = '';
   marketingProfileError: string = '';
+  flag = true;
 
   constructor(
     private translationService: TranslationService,
@@ -100,6 +101,7 @@ export class SetPinComponent implements OnInit {
     this.registerForm
       .get('securityProfile')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasSecurityProfileError = false;
         this.securityProfileError = '';
         if (this.registerForm?.get('securityProfile')?.errors?.required) {
@@ -114,6 +116,7 @@ export class SetPinComponent implements OnInit {
 
   authProfileValueChanges() {
     this.registerForm.get('authProfile')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasAuthProfileError = false;
       this.authProfileError = '';
       if (this.registerForm?.get('authProfile')?.errors?.required) {
@@ -130,6 +133,7 @@ export class SetPinComponent implements OnInit {
     this.registerForm
       .get('regulatoryProfile')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasRegulatoryProfileError = false;
         this.regulatoryProfileError = '';
         if (this.registerForm?.get('regulatoryProfile')?.errors?.required) {
@@ -146,6 +150,7 @@ export class SetPinComponent implements OnInit {
     this.registerForm
       .get('marketingProfile')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasMarketingProfileError = false;
         this.marketingProfileError = '';
         if (this.registerForm?.get('marketingProfile')?.errors?.required) {
