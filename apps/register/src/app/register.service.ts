@@ -8,8 +8,11 @@ export class RegisterService {
   constructor(private apiService: ApiService) {}
 
   setToken() {
-    let body = { grant_type: 'client_credentials' };
-    return this.apiService.post('https://demo5894535.mockable.io/token', body);
+    // let body = { grant_type: 'client_credentials' };
+    return this.apiService.get(
+      'http://172.25.48.35:9911/mobiquitypay/ums/v1/user/auth/web/system-token'
+    );
+    // return this.apiService.post('https://demo5894535.mockable.io/token', body);
   }
 
   refreshToken() {

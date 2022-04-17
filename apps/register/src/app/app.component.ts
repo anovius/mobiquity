@@ -477,7 +477,7 @@ export class AppComponent implements OnInit {
 
   setToken() {
     this.registerService.setToken().subscribe((res: any) => {
-      window.localStorage.setItem('access_token', res.access_token);
+      window.localStorage.setItem('access_token', res.token.access_token);
       this.getCategoryProfile();
     });
   }
