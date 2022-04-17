@@ -117,149 +117,178 @@ export class KycDetailsComponent implements OnInit {
   }
 
   registerFormValueChanges() {
-    this.registerForm.valueChanges.subscribe((res: any) => {
-      console.log(res);
-      this.kycIdTypeValueChanges();
-      this.kycIdValueValueChanges();
-      this.kycGracePeriodValueChanges();
-      this.kycIdIssueCountryValueChanges();
-      this.kycIdIssueDateValueChanges();
-      this.kycIdValidFromValueChanges();
-      this.kycIdValidToValueChanges();
-      this.kycImageUrlValueChanges();
-      this.isPrimaryKYCIdValueChanges();
-    });
+    this.kycIdTypeValueChanges();
+    this.kycIdValueValueChanges();
+    this.kycGracePeriodValueChanges();
+    this.kycIdIssueCountryValueChanges();
+    this.kycIdIssueDateValueChanges();
+    this.kycIdValidFromValueChanges();
+    this.kycIdValidToValueChanges();
+    this.kycImageUrlValueChanges();
+    this.isPrimaryKYCIdValueChanges();
   }
 
   kycIdTypeValueChanges() {
-    this.hasKycIdTypeError = false;
-    this.kycIdTypeError = '';
-    if (this.registerForm?.get('kycIdType')?.errors?.required) {
-      this.hasKycIdTypeError = true;
-      this.kycIdTypeError += 'KYC Id type is mandatory';
-    } else {
+    this.registerForm.get('kycIdType')?.valueChanges.subscribe((res: any) => {
       this.hasKycIdTypeError = false;
       this.kycIdTypeError = '';
-    }
+      if (this.registerForm?.get('kycIdType')?.errors?.required) {
+        this.hasKycIdTypeError = true;
+        this.kycIdTypeError += 'KYC Id type is mandatory';
+      } else {
+        this.hasKycIdTypeError = false;
+        this.kycIdTypeError = '';
+      }
+    });
   }
 
   kycIdValueValueChanges() {
-    this.hasKycIdValueError = false;
-    this.kycIdValueError = '';
-    if (this.registerForm?.get('kycIdValue')?.errors?.required) {
-      this.hasKycIdValueError = true;
-      this.kycIdValueError += 'KYC Id value is mandatory';
-    } else if (this.registerForm?.get('kycIdValue')?.errors?.pattern) {
-      this.hasKycIdValueError = true;
-      this.kycIdValueError +=
-        'Only alphabets,digits are allowed and the length should between 10 to 14 characters';
-    } else {
+    this.registerForm.get('kycIdValue')?.valueChanges.subscribe((res: any) => {
       this.hasKycIdValueError = false;
       this.kycIdValueError = '';
-    }
+      if (this.registerForm?.get('kycIdValue')?.errors?.required) {
+        this.hasKycIdValueError = true;
+        this.kycIdValueError += 'KYC Id value is mandatory';
+      } else if (this.registerForm?.get('kycIdValue')?.errors?.pattern) {
+        this.hasKycIdValueError = true;
+        this.kycIdValueError +=
+          'Only alphabets,digits are allowed and the length should between 10 to 14 characters';
+      } else {
+        this.hasKycIdValueError = false;
+        this.kycIdValueError = '';
+      }
+    });
   }
 
   kycGracePeriodValueChanges() {
-    this.hasKycGracePeriodError = false;
-    this.kycGracePeriodError = '';
-    if (this.registerForm?.get('kycGracePeriod')?.errors?.required) {
-      this.hasKycGracePeriodError = true;
-      this.kycGracePeriodError += 'Grace Period is mandatory';
-    } else if (this.registerForm?.get('kycGracePeriod')?.errors?.pattern) {
-      this.hasKycGracePeriodError = true;
-      this.kycGracePeriodError += 'only numeric values allowed';
-    } else {
-      this.hasKycGracePeriodError = false;
-      this.kycGracePeriodError = '';
-    }
+    this.registerForm
+      .get('kycGracePeriod')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasKycGracePeriodError = false;
+        this.kycGracePeriodError = '';
+        if (this.registerForm?.get('kycGracePeriod')?.errors?.required) {
+          this.hasKycGracePeriodError = true;
+          this.kycGracePeriodError += 'Grace Period is mandatory';
+        } else if (this.registerForm?.get('kycGracePeriod')?.errors?.pattern) {
+          this.hasKycGracePeriodError = true;
+          this.kycGracePeriodError += 'only numeric values allowed';
+        } else {
+          this.hasKycGracePeriodError = false;
+          this.kycGracePeriodError = '';
+        }
+      });
   }
 
   kycIdIssueCountryValueChanges() {
-    this.hasKycIdIssueCountryError = false;
-    this.kycIdIssueCountryError = '';
-    if (this.registerForm?.get('kycIdIssueCountry')?.errors?.required) {
-      this.hasKycIdIssueCountryError = true;
-      this.kycIdIssueCountryError += 'Mandatory';
-    } else if (this.registerForm?.get('kycIdIssueCountry')?.errors?.pattern) {
-      this.hasKycIdIssueCountryError = true;
-      this.kycIdIssueCountryError += 'Country Issued In is invalid';
-    } else {
-      this.hasKycIdIssueCountryError = false;
-      this.kycIdIssueCountryError = '';
-    }
+    this.registerForm
+      .get('kycIdIssueCountry')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasKycIdIssueCountryError = false;
+        this.kycIdIssueCountryError = '';
+        if (this.registerForm?.get('kycIdIssueCountry')?.errors?.required) {
+          this.hasKycIdIssueCountryError = true;
+          this.kycIdIssueCountryError += 'Mandatory';
+        } else if (
+          this.registerForm?.get('kycIdIssueCountry')?.errors?.pattern
+        ) {
+          this.hasKycIdIssueCountryError = true;
+          this.kycIdIssueCountryError += 'Country Issued In is invalid';
+        } else {
+          this.hasKycIdIssueCountryError = false;
+          this.kycIdIssueCountryError = '';
+        }
+      });
   }
 
   kycIdIssueDateValueChanges() {
-    this.hasKycIdIssueDateError = false;
-    this.kycIdIssueDateError = '';
-    if (this.registerForm?.get('kycIdIssueDate')?.errors?.required) {
-      this.hasKycIdIssueDateError = true;
-      this.kycIdIssueDateError += 'Mandatory';
-    } else if (this.registerForm?.get('kycIdIssueDate')?.errors?.pattern) {
-      this.hasKycIdIssueDateError = true;
-      this.kycIdIssueDateError += 'Country Issued In is invalid';
-    } else {
-      this.hasKycIdIssueDateError = false;
-      this.kycIdIssueDateError = '';
-    }
+    this.registerForm
+      .get('kycIdIssueDate')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasKycIdIssueDateError = false;
+        this.kycIdIssueDateError = '';
+        if (this.registerForm?.get('kycIdIssueDate')?.errors?.required) {
+          this.hasKycIdIssueDateError = true;
+          this.kycIdIssueDateError += 'Mandatory';
+        } else if (this.registerForm?.get('kycIdIssueDate')?.errors?.pattern) {
+          this.hasKycIdIssueDateError = true;
+          this.kycIdIssueDateError += 'Country Issued In is invalid';
+        } else {
+          this.hasKycIdIssueDateError = false;
+          this.kycIdIssueDateError = '';
+        }
+      });
   }
 
   kycIdValidFromValueChanges() {
-    this.hasKycIdValidFromError = false;
-    this.kycIdValidFromError = '';
-    if (this.registerForm?.get('kycIdValidFrom')?.errors?.required) {
-      this.hasKycIdValidFromError = true;
-      this.kycIdValidFromError += 'Mandatory';
-    } else if (this.registerForm?.get('kycIdValidFrom')?.errors?.pattern) {
-      this.hasKycIdValidFromError = true;
-      this.kycIdValidFromError += 'Country Issued In is invalid';
-    } else {
-      this.hasKycIdValidFromError = false;
-      this.kycIdValidFromError = '';
-    }
+    this.registerForm
+      .get('kycIdValidFrom')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasKycIdValidFromError = false;
+        this.kycIdValidFromError = '';
+        if (this.registerForm?.get('kycIdValidFrom')?.errors?.required) {
+          this.hasKycIdValidFromError = true;
+          this.kycIdValidFromError += 'Mandatory';
+        } else if (this.registerForm?.get('kycIdValidFrom')?.errors?.pattern) {
+          this.hasKycIdValidFromError = true;
+          this.kycIdValidFromError += 'Country Issued In is invalid';
+        } else {
+          this.hasKycIdValidFromError = false;
+          this.kycIdValidFromError = '';
+        }
+      });
   }
 
   kycIdValidToValueChanges() {
-    this.hasKycIdValidToError = false;
-    this.kycIdValidToError = '';
-    if (this.registerForm?.get('kycIdValidTo')?.errors?.required) {
-      this.hasKycIdValidToError = true;
-      this.kycIdValidToError += 'Mandatory';
-    } else if (this.registerForm?.get('kycIdValidTo')?.errors?.pattern) {
-      this.hasKycIdValidToError = true;
-      this.kycIdValidToError += 'Country Issued In is invalid';
-    } else {
-      this.hasKycIdValidToError = false;
-      this.kycIdValidToError = '';
-    }
+    this.registerForm
+      .get('kycIdValidTo')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasKycIdValidToError = false;
+        this.kycIdValidToError = '';
+        if (this.registerForm?.get('kycIdValidTo')?.errors?.required) {
+          this.hasKycIdValidToError = true;
+          this.kycIdValidToError += 'Mandatory';
+        } else if (this.registerForm?.get('kycIdValidTo')?.errors?.pattern) {
+          this.hasKycIdValidToError = true;
+          this.kycIdValidToError += 'Country Issued In is invalid';
+        } else {
+          this.hasKycIdValidToError = false;
+          this.kycIdValidToError = '';
+        }
+      });
   }
 
   kycImageUrlValueChanges() {
-    this.hasKycImageUrlError = false;
-    this.kycImageUrlError = '';
-    if (this.registerForm?.get('kycImageUrl')?.errors?.required) {
-      this.hasKycImageUrlError = true;
-      this.kycImageUrlError += 'Mandatory';
-    } else if (this.registerForm?.get('kycImageUrl')?.errors?.pattern) {
-      this.hasKycImageUrlError = true;
-      this.kycImageUrlError += 'Upload Documents is invalid';
-    } else {
-      this.uploadFile();
+    this.registerForm.get('kycImageUrl')?.valueChanges.subscribe((res: any) => {
       this.hasKycImageUrlError = false;
       this.kycImageUrlError = '';
-    }
+      if (this.registerForm?.get('kycImageUrl')?.errors?.required) {
+        this.hasKycImageUrlError = true;
+        this.kycImageUrlError += 'Mandatory';
+      } else if (this.registerForm?.get('kycImageUrl')?.errors?.pattern) {
+        this.hasKycImageUrlError = true;
+        this.kycImageUrlError += 'Upload Documents is invalid';
+      } else {
+        this.uploadFile();
+        this.hasKycImageUrlError = false;
+        this.kycImageUrlError = '';
+      }
+    });
   }
 
   isPrimaryKYCIdValueChanges() {
-    this.hasIsPrimaryKYCIdError = false;
-    this.isPrimaryKYCIdError = '';
-    if (this.registerForm?.get('isPrimaryKYCId')?.value === false) {
-      this.hasIsPrimaryKYCIdError = true;
-      this.isPrimaryKYCIdError += 'Make this primary is required';
-    } else {
-      this.hasIsPrimaryKYCIdError = false;
-      this.isPrimaryKYCIdError = '';
-    }
+    this.registerForm
+      .get('isPrimaryKYCId')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasIsPrimaryKYCIdError = false;
+        this.isPrimaryKYCIdError = '';
+        if (this.registerForm?.get('isPrimaryKYCId')?.value === false) {
+          this.hasIsPrimaryKYCIdError = true;
+          this.isPrimaryKYCIdError += 'Make this primary is required';
+        } else {
+          this.hasIsPrimaryKYCIdError = false;
+          this.isPrimaryKYCIdError = '';
+        }
+      });
   }
 
   uploadFile() {

@@ -166,22 +166,20 @@ export class AppComponent implements OnInit {
   }
 
   registerFormValueChanges() {
-    this.registerForm.valueChanges.subscribe((res: any) => {
-      console.log(res);
-      this.loginIdValueChanges();
-      this.emailValueChanges();
-      this.referralCodeValueChanges();
-      this.titleValueChanges();
-      this.firstNameValueChanges();
-      this.lastNameValueChanges();
-      this.fullNameValueChanges();
-      this.preferredLanguageValueChanges();
-      this.genderInfoValueChanges();
-      this.cifValueChanges();
-      this.profilePhotoURIValueChanges();
-      this.dateOfBirthValueChanges();
-      // this.mobileValueChanges();
-    });
+    this.loginIdValueChanges();
+    this.emailValueChanges();
+    this.referralCodeValueChanges();
+    this.titleValueChanges();
+    this.firstNameValueChanges();
+    this.lastNameValueChanges();
+    this.fullNameValueChanges();
+    this.preferredLanguageValueChanges();
+    this.genderInfoValueChanges();
+    this.cifValueChanges();
+    this.profilePhotoURIValueChanges();
+    this.dateOfBirthValueChanges();
+    // this.mobileValueChanges();
+    // });
   }
 
   duplicateEmailValidator(control: FormControl) {
@@ -201,173 +199,203 @@ export class AppComponent implements OnInit {
   }
 
   loginIdValueChanges() {
-    this.hasLoginIdError = false;
-    this.loginIdError = '';
-    if (this.registerForm?.get('loginId')?.errors?.required) {
-      this.hasLoginIdError = true;
-      this.loginIdError += 'Login Id is mandatory';
-    } else if (this.registerForm?.get('loginId')?.errors?.pattern) {
-      this.hasLoginIdError = true;
-      this.loginIdError +=
-        'Only alphabets and digits are allowed and max length is 20';
-    } else {
+    this.registerForm.get('loginId')?.valueChanges.subscribe((res: any) => {
       this.hasLoginIdError = false;
       this.loginIdError = '';
-    }
+      if (this.registerForm?.get('loginId')?.errors?.required) {
+        this.hasLoginIdError = true;
+        this.loginIdError += 'Login Id is mandatory';
+      } else if (this.registerForm?.get('loginId')?.errors?.pattern) {
+        this.hasLoginIdError = true;
+        this.loginIdError +=
+          'Only alphabets and digits are allowed and max length is 20';
+      } else {
+        this.hasLoginIdError = false;
+        this.loginIdError = '';
+      }
+    });
   }
 
   emailValueChanges() {
-    this.hasEmailIdError = false;
-    this.emailIdError = '';
-    if (this.registerForm?.get('emailId')?.errors?.pattern) {
-      this.hasEmailIdError = true;
-      this.emailIdError += 'Email Address is invalid';
-    } else {
-      this.email = this.registerForm.get('emailId').value;
+    this.registerForm.get('emailId')?.valueChanges.subscribe((res: any) => {
       this.hasEmailIdError = false;
       this.emailIdError = '';
-    }
+      if (this.registerForm?.get('emailId')?.errors?.pattern) {
+        this.hasEmailIdError = true;
+        this.emailIdError += 'Email Address is invalid';
+      } else {
+        this.email = this.registerForm.get('emailId').value;
+        this.hasEmailIdError = false;
+        this.emailIdError = '';
+      }
+    });
   }
 
   referralCodeValueChanges() {
-    this.hasReferralCodeError = false;
-    this.referralCodeError = '';
-    if (this.registerForm?.get('referralCode')?.errors?.pattern) {
-      this.hasReferralCodeError = true;
-      this.referralCodeError += 'Referral Code is Invalid';
-    } else if (this.registerForm?.get('referralCode')?.errors === null) {
-      this.showVerifyEmail = true;
-    } else {
-      this.hasReferralCodeError = false;
-      this.referralCodeError = '';
-    }
+    this.registerForm
+      .get('referralCode')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasReferralCodeError = false;
+        this.referralCodeError = '';
+        if (this.registerForm?.get('referralCode')?.errors?.pattern) {
+          this.hasReferralCodeError = true;
+          this.referralCodeError += 'Referral Code is Invalid';
+        } else if (this.registerForm?.get('referralCode')?.errors === null) {
+          this.showVerifyEmail = true;
+        } else {
+          this.hasReferralCodeError = false;
+          this.referralCodeError = '';
+        }
+      });
   }
 
   titleValueChanges() {
-    this.hasTitleError = false;
-    this.titleError = '';
-    if (this.registerForm?.get('title')?.errors?.required) {
-      this.hasTitleError = true;
-      this.titleError += 'Title is mandatory';
-    } else {
+    this.registerForm.get('title')?.valueChanges.subscribe((res: any) => {
       this.hasTitleError = false;
       this.titleError = '';
-    }
+      if (this.registerForm?.get('title')?.errors?.required) {
+        this.hasTitleError = true;
+        this.titleError += 'Title is mandatory';
+      } else {
+        this.hasTitleError = false;
+        this.titleError = '';
+      }
+    });
   }
 
   firstNameValueChanges() {
-    this.hasFirstNameError = false;
-    this.firstNameError = '';
-    if (this.registerForm?.get('firstName')?.errors?.required) {
-      this.hasFirstNameError = true;
-      this.firstNameError += 'First Name is mandatory';
-    } else if (this.registerForm?.get('firstName')?.errors?.pattern) {
-      this.hasFirstNameError = true;
-      this.firstNameError += 'Only alphabets and space is allowed';
-    } else {
+    this.registerForm.get('firstName')?.valueChanges.subscribe((res: any) => {
       this.hasFirstNameError = false;
       this.firstNameError = '';
-    }
+      if (this.registerForm?.get('firstName')?.errors?.required) {
+        this.hasFirstNameError = true;
+        this.firstNameError += 'First Name is mandatory';
+      } else if (this.registerForm?.get('firstName')?.errors?.pattern) {
+        this.hasFirstNameError = true;
+        this.firstNameError += 'Only alphabets and space is allowed';
+      } else {
+        this.hasFirstNameError = false;
+        this.firstNameError = '';
+      }
+    });
   }
 
   lastNameValueChanges() {
-    this.hasLastNameError = false;
-    this.lastNameError = '';
-    if (this.registerForm?.get('lastName')?.errors?.required) {
-      this.hasLastNameError = true;
-      this.lastNameError += 'Last Name is mandatory';
-    } else if (this.registerForm?.get('lastName')?.errors?.pattern) {
-      this.hasLastNameError = true;
-      this.lastNameError += 'Only alphabets and space is allowed';
-    } else {
+    this.registerForm.get('lastName')?.valueChanges.subscribe((res: any) => {
       this.hasLastNameError = false;
       this.lastNameError = '';
-    }
+      if (this.registerForm?.get('lastName')?.errors?.required) {
+        this.hasLastNameError = true;
+        this.lastNameError += 'Last Name is mandatory';
+      } else if (this.registerForm?.get('lastName')?.errors?.pattern) {
+        this.hasLastNameError = true;
+        this.lastNameError += 'Only alphabets and space is allowed';
+      } else {
+        this.hasLastNameError = false;
+        this.lastNameError = '';
+      }
+    });
   }
 
   fullNameValueChanges() {
-    this.hasFullNameError = false;
-    this.fullNameError = '';
-    if (this.registerForm?.get('fullName')?.errors?.required) {
-      this.hasFullNameError = true;
-      this.fullNameError += 'Full Name is mandatory';
-    } else if (this.registerForm?.get('fullName')?.errors?.pattern) {
-      this.hasFullNameError = true;
-      this.fullNameError += 'Only alphabets and space is allowed';
-    } else {
+    this.registerForm.get('fullName')?.valueChanges.subscribe((res: any) => {
       this.hasFullNameError = false;
       this.fullNameError = '';
-    }
+      if (this.registerForm?.get('fullName')?.errors?.required) {
+        this.hasFullNameError = true;
+        this.fullNameError += 'Full Name is mandatory';
+      } else if (this.registerForm?.get('fullName')?.errors?.pattern) {
+        this.hasFullNameError = true;
+        this.fullNameError += 'Only alphabets and space is allowed';
+      } else {
+        this.hasFullNameError = false;
+        this.fullNameError = '';
+      }
+    });
   }
 
   preferredLanguageValueChanges() {
-    this.hasPreferredLanguageError = false;
-    this.preferredLanguageError = '';
-    if (this.registerForm?.get('preferredLanguage')?.errors?.required) {
-      this.hasPreferredLanguageError = true;
-      this.preferredLanguageError += 'Preferred language is mandatory';
-    } else {
-      this.hasPreferredLanguageError = false;
-      this.preferredLanguageError = '';
-    }
+    this.registerForm
+      .get('preferredLanguage')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasPreferredLanguageError = false;
+        this.preferredLanguageError = '';
+        if (this.registerForm?.get('preferredLanguage')?.errors?.required) {
+          this.hasPreferredLanguageError = true;
+          this.preferredLanguageError += 'Preferred language is mandatory';
+        } else {
+          this.hasPreferredLanguageError = false;
+          this.preferredLanguageError = '';
+        }
+      });
   }
 
   genderInfoValueChanges() {
-    this.hasGenderInfoError = false;
-    this.genderInfoError = '';
-    if (this.registerForm?.get('genderInfo')?.errors?.required) {
-      this.hasGenderInfoError = true;
-      this.genderInfoError += 'Gender is mandatory';
-    } else {
+    this.registerForm.get('genderInfo')?.valueChanges.subscribe((res: any) => {
       this.hasGenderInfoError = false;
       this.genderInfoError = '';
-    }
+      if (this.registerForm?.get('genderInfo')?.errors?.required) {
+        this.hasGenderInfoError = true;
+        this.genderInfoError += 'Gender is mandatory';
+      } else {
+        this.hasGenderInfoError = false;
+        this.genderInfoError = '';
+      }
+    });
   }
 
   profilePhotoURIValueChanges() {
-    this.hasProfilePhotoURIError = false;
-    this.profilePhotoURIError = '';
-    if (this.registerForm?.get('profilePhotoURI')?.errors?.required) {
-      this.hasProfilePhotoURIError = true;
-      this.profilePhotoURIError += 'Profile Photo URI is mendatory';
-    } else if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
-      this.hasProfilePhotoURIError = true;
-      this.profilePhotoURIError += 'Profile Photo URI is invalid';
-    } else {
-      this.uploadFile();
-      this.hasProfilePhotoURIError = false;
-      this.profilePhotoURIError = '';
-    }
+    this.registerForm
+      .get('profilePhotoURI')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasProfilePhotoURIError = false;
+        this.profilePhotoURIError = '';
+        if (this.registerForm?.get('profilePhotoURI')?.errors?.required) {
+          this.hasProfilePhotoURIError = true;
+          this.profilePhotoURIError += 'Profile Photo URI is mendatory';
+        } else if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
+          this.hasProfilePhotoURIError = true;
+          this.profilePhotoURIError += 'Profile Photo URI is invalid';
+        } else {
+          this.uploadFile();
+          this.hasProfilePhotoURIError = false;
+          this.profilePhotoURIError = '';
+        }
+      });
   }
 
   cifValueChanges() {
-    this.hasCifError = false;
-    this.cifError = '';
-    if (this.registerForm?.get('cif')?.errors?.required) {
-      this.hasCifError = true;
-      this.cifError += 'CIF is mandatory';
-    } else if (this.registerForm?.get('cif')?.errors?.pattern) {
-      this.hasCifError = true;
-      this.cifError += 'Only alphabets and digits are allowed';
-    } else {
+    this.registerForm.get('cif')?.valueChanges.subscribe((res: any) => {
       this.hasCifError = false;
       this.cifError = '';
-    }
+      if (this.registerForm?.get('cif')?.errors?.required) {
+        this.hasCifError = true;
+        this.cifError += 'CIF is mandatory';
+      } else if (this.registerForm?.get('cif')?.errors?.pattern) {
+        this.hasCifError = true;
+        this.cifError += 'Only alphabets and digits are allowed';
+      } else {
+        this.hasCifError = false;
+        this.cifError = '';
+      }
+    });
   }
 
   dateOfBirthValueChanges() {
-    this.hasDateOfBirthError = false;
-    this.dateOfBirthError = '';
-    if (this.registerForm?.get('dateOfBirth')?.errors?.required) {
-      this.hasDateOfBirthError = true;
-      this.dateOfBirthError += 'DOB is mandatory';
-    } else if (this.registerForm?.get('dateOfBirth')?.errors?.pattern) {
-      this.hasDateOfBirthError = true;
-      this.dateOfBirthError += 'dates format are allowed';
-    } else {
+    this.registerForm.get('dateOfBirth')?.valueChanges.subscribe((res: any) => {
       this.hasDateOfBirthError = false;
       this.dateOfBirthError = '';
-    }
+      if (this.registerForm?.get('dateOfBirth')?.errors?.required) {
+        this.hasDateOfBirthError = true;
+        this.dateOfBirthError += 'DOB is mandatory';
+      } else if (this.registerForm?.get('dateOfBirth')?.errors?.pattern) {
+        this.hasDateOfBirthError = true;
+        this.dateOfBirthError += 'dates format are allowed';
+      } else {
+        this.hasDateOfBirthError = false;
+        this.dateOfBirthError = '';
+      }
+    });
   }
 
   mobileValueChanges() {

@@ -90,61 +90,72 @@ export class SetPinComponent implements OnInit {
   }
 
   registerFormValueChanges() {
-    this.registerForm.valueChanges.subscribe((res: any) => {
-      console.log(res);
-      this.securityProfileValueChanges();
-      this.authProfileValueChanges();
-      this.regulatoryProfileValueChanges();
-      this.marketingProfileValueChanges();
-    });
+    this.securityProfileValueChanges();
+    this.authProfileValueChanges();
+    this.regulatoryProfileValueChanges();
+    this.marketingProfileValueChanges();
   }
 
   securityProfileValueChanges() {
-    this.hasSecurityProfileError = false;
-    this.securityProfileError = '';
-    if (this.registerForm?.get('securityProfile')?.errors?.required) {
-      this.hasSecurityProfileError = true;
-      this.securityProfileError += 'Security profile is mandatory';
-    } else {
-      this.hasSecurityProfileError = false;
-      this.securityProfileError = '';
-    }
+    this.registerForm
+      .get('securityProfile')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasSecurityProfileError = false;
+        this.securityProfileError = '';
+        if (this.registerForm?.get('securityProfile')?.errors?.required) {
+          this.hasSecurityProfileError = true;
+          this.securityProfileError += 'Security profile is mandatory';
+        } else {
+          this.hasSecurityProfileError = false;
+          this.securityProfileError = '';
+        }
+      });
   }
 
   authProfileValueChanges() {
-    this.hasAuthProfileError = false;
-    this.authProfileError = '';
-    if (this.registerForm?.get('authProfile')?.errors?.required) {
-      this.hasAuthProfileError = true;
-      this.authProfileError += 'Authorisation profile is mandatory';
-    } else {
+    this.registerForm.get('authProfile')?.valueChanges.subscribe((res: any) => {
       this.hasAuthProfileError = false;
       this.authProfileError = '';
-    }
+      if (this.registerForm?.get('authProfile')?.errors?.required) {
+        this.hasAuthProfileError = true;
+        this.authProfileError += 'Authorisation profile is mandatory';
+      } else {
+        this.hasAuthProfileError = false;
+        this.authProfileError = '';
+      }
+    });
   }
 
   regulatoryProfileValueChanges() {
-    this.hasRegulatoryProfileError = false;
-    this.regulatoryProfileError = '';
-    if (this.registerForm?.get('regulatoryProfile')?.errors?.required) {
-      this.hasRegulatoryProfileError = true;
-      this.regulatoryProfileError += 'Regulatory mandatory is mandatory';
-    } else {
-      this.hasRegulatoryProfileError = false;
-      this.regulatoryProfileError = '';
-    }
+    this.registerForm
+      .get('regulatoryProfile')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasRegulatoryProfileError = false;
+        this.regulatoryProfileError = '';
+        if (this.registerForm?.get('regulatoryProfile')?.errors?.required) {
+          this.hasRegulatoryProfileError = true;
+          this.regulatoryProfileError += 'Regulatory mandatory is mandatory';
+        } else {
+          this.hasRegulatoryProfileError = false;
+          this.regulatoryProfileError = '';
+        }
+      });
   }
 
   marketingProfileValueChanges() {
-    this.hasMarketingProfileError = false;
-    this.marketingProfileError = '';
-    if (this.registerForm?.get('marketingProfile')?.errors?.required) {
-      this.hasMarketingProfileError = true;
-      this.marketingProfileError += 'Marketing profile is mandatory';
-    } else {
-      this.hasMarketingProfileError = false;
-      this.marketingProfileError = '';
-    }
+    this.registerForm
+      .get('marketingProfile')
+      ?.valueChanges.subscribe((res: any) => {
+        this.hasMarketingProfileError = false;
+        this.marketingProfileError = '';
+        if (this.registerForm?.get('marketingProfile')?.errors?.required) {
+          this.hasMarketingProfileError = true;
+          this.marketingProfileError += 'Marketing profile is mandatory';
+        } else {
+          this.hasMarketingProfileError = false;
+          this.marketingProfileError = '';
+        }
+      });
   }
 
   submit() {
