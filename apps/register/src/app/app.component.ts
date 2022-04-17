@@ -24,11 +24,11 @@ export class AppComponent implements OnInit {
   otp: any = '';
   otpTranslation: any;
   openModal: boolean = false;
-  hasError: boolean = false;
   email = '';
   refCode = '';
   isEmailVerified = false;
   // selectedTitle!: number;
+  hasError: boolean = false;
 
   titleOptions = [
     {
@@ -62,33 +62,34 @@ export class AppComponent implements OnInit {
 
   hasFirstNameError = false;
   hasLastNameError = false;
-  firstNameError = '';
-  lastNameError = '';
   hasProfilePhotoURIError: boolean = false;
-  profilePhotoURIError: string = '';
   hasCifError: boolean = false;
-  cifError: string = '';
-  hasFullNameError: boolean = false;
-  fullNameError: string = '';
   hasReferralCodeError: boolean = false;
-  referralCodeError: string = '';
-  emailId: any;
-  referralCode: any;
+  hasFullNameError: boolean = false;
   hasLoginIdError: boolean = false;
-  loginIdError: string = '';
   hasEmailIdError: boolean = false;
-  emailIdError: string = '';
-  authError: string = '';
   hasTitleError: boolean = false;
   hasPreferredLanguageError: boolean = false;
   hasDateOfBirthError: boolean = false;
   hasGenderInfoError: boolean = false;
+  firstNameError = '';
+  lastNameError = '';
+  profilePhotoURIError: string = '';
+  cifError: string = '';
+  fullNameError: string = '';
+  referralCodeError: string = '';
+  emailId: any;
+  referralCode: any;
+  loginIdError: string = '';
+  emailIdError: string = '';
+  authError: string = '';
   preferredLanguageError: string = '';
   genderInfoError: string = '';
   titleError: string = '';
   dateOfBirthError: string = '';
   categoryProfileData: any;
   uploadedFileUrl: any;
+  flag = true;
 
   constructor(
     private translationService: TranslationService,
@@ -202,6 +203,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('loginId')?.valueChanges.subscribe((res: any) => {
       this.hasLoginIdError = false;
       this.loginIdError = '';
+      this.flag = false;
       if (this.registerForm?.get('loginId')?.errors?.required) {
         this.hasLoginIdError = true;
         this.loginIdError += 'Login Id is mandatory';
@@ -220,6 +222,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('emailId')?.valueChanges.subscribe((res: any) => {
       this.hasEmailIdError = false;
       this.emailIdError = '';
+      this.flag = false;
       if (this.registerForm?.get('emailId')?.errors?.pattern) {
         this.hasEmailIdError = true;
         this.emailIdError += 'Email Address is invalid';
@@ -235,6 +238,7 @@ export class AppComponent implements OnInit {
     this.registerForm
       .get('referralCode')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasReferralCodeError = false;
         this.referralCodeError = '';
         if (this.registerForm?.get('referralCode')?.errors?.pattern) {
@@ -253,6 +257,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('title')?.valueChanges.subscribe((res: any) => {
       this.hasTitleError = false;
       this.titleError = '';
+      this.flag = false;
       if (this.registerForm?.get('title')?.errors?.required) {
         this.hasTitleError = true;
         this.titleError += 'Title is mandatory';
@@ -267,6 +272,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('firstName')?.valueChanges.subscribe((res: any) => {
       this.hasFirstNameError = false;
       this.firstNameError = '';
+      this.flag = false;
       if (this.registerForm?.get('firstName')?.errors?.required) {
         this.hasFirstNameError = true;
         this.firstNameError += 'First Name is mandatory';
@@ -284,6 +290,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('lastName')?.valueChanges.subscribe((res: any) => {
       this.hasLastNameError = false;
       this.lastNameError = '';
+      this.flag = false;
       if (this.registerForm?.get('lastName')?.errors?.required) {
         this.hasLastNameError = true;
         this.lastNameError += 'Last Name is mandatory';
@@ -301,6 +308,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('fullName')?.valueChanges.subscribe((res: any) => {
       this.hasFullNameError = false;
       this.fullNameError = '';
+      this.flag = false;
       if (this.registerForm?.get('fullName')?.errors?.required) {
         this.hasFullNameError = true;
         this.fullNameError += 'Full Name is mandatory';
@@ -318,6 +326,7 @@ export class AppComponent implements OnInit {
     this.registerForm
       .get('preferredLanguage')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasPreferredLanguageError = false;
         this.preferredLanguageError = '';
         if (this.registerForm?.get('preferredLanguage')?.errors?.required) {
@@ -334,6 +343,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('genderInfo')?.valueChanges.subscribe((res: any) => {
       this.hasGenderInfoError = false;
       this.genderInfoError = '';
+      this.flag = false;
       if (this.registerForm?.get('genderInfo')?.errors?.required) {
         this.hasGenderInfoError = true;
         this.genderInfoError += 'Gender is mandatory';
@@ -348,6 +358,7 @@ export class AppComponent implements OnInit {
     this.registerForm
       .get('profilePhotoURI')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasProfilePhotoURIError = false;
         this.profilePhotoURIError = '';
         if (this.registerForm?.get('profilePhotoURI')?.errors?.required) {
@@ -368,6 +379,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('cif')?.valueChanges.subscribe((res: any) => {
       this.hasCifError = false;
       this.cifError = '';
+      this.flag = false;
       if (this.registerForm?.get('cif')?.errors?.required) {
         this.hasCifError = true;
         this.cifError += 'CIF is mandatory';
@@ -385,6 +397,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('dateOfBirth')?.valueChanges.subscribe((res: any) => {
       this.hasDateOfBirthError = false;
       this.dateOfBirthError = '';
+      this.flag = false;
       if (this.registerForm?.get('dateOfBirth')?.errors?.required) {
         this.hasDateOfBirthError = true;
         this.dateOfBirthError += 'DOB is mandatory';
@@ -402,6 +415,7 @@ export class AppComponent implements OnInit {
     this.registerForm.get('mobile')?.valueChanges.subscribe((res: any) => {
       this.contactNumber = res;
       if (res.length === 13) {
+        this.flag = false;
         if (res[0] === '+') {
           this.showVerifyNumber = true;
         } else {
@@ -501,18 +515,23 @@ export class AppComponent implements OnInit {
   }
 
   checkUnique() {
-    this.isLoading = true;
-    this.registerService.checkUnique().subscribe((res: any) => {
-      this.isLoading = false;
-      if (res.status === 'FAILED') {
-        this.hasEmailIdError = true;
-        this.emailIdError = 'Email already exists';
-      }
-      if (res.status === 'SUCCEEDED') {
-        this.hasEmailIdError = false;
-        this.emailIdError = '';
-      }
-    });
+    if (this.registerForm.value.emailId.length > 0) {
+      this.isLoading = true;
+      this.registerService.checkUnique().subscribe((res: any) => {
+        this.isLoading = false;
+        if (res.status === 'FAILED') {
+          this.hasEmailIdError = true;
+          this.emailIdError = 'Email already exists';
+        }
+        if (res.status === 'SUCCEEDED') {
+          this.hasEmailIdError = false;
+          this.emailIdError = '';
+        }
+      });
+    } else {
+      this.hasEmailIdError = true;
+      this.emailIdError = 'Email is mandatory';
+    }
   }
 
   next() {
