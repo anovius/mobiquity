@@ -18,6 +18,7 @@ export class AddressComponent implements OnInit {
   hasCountryError: boolean = false;
   hasStateError: boolean = false;
   hasCityError: boolean = false;
+  flag: boolean = true;
   address1Error: string = '';
   address2Error: string = '';
   countryError: string = '';
@@ -126,6 +127,7 @@ export class AddressComponent implements OnInit {
 
   address1ValueChanges() {
     this.registerForm.get('address1')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasAddress1Error = false;
       this.address1Error = '';
       if (this.registerForm?.get('address1')?.errors?.required) {
@@ -143,6 +145,7 @@ export class AddressComponent implements OnInit {
 
   address2ValueChanges() {
     this.registerForm.get('address2')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasAddress2Error = false;
       this.address2Error = '';
       if (this.registerForm?.get('address2')?.errors?.required) {
@@ -160,6 +163,7 @@ export class AddressComponent implements OnInit {
 
   countryValueChanges() {
     this.registerForm.get('country')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasCountryError = false;
       this.countryError = '';
       console.log(this.registerForm?.get('country')?.errors);
@@ -175,6 +179,7 @@ export class AddressComponent implements OnInit {
 
   stateValueChanges() {
     this.registerForm.get('state')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasStateError = false;
       this.stateError = '';
       if (this.registerForm?.get('state')?.errors?.required) {
@@ -189,6 +194,8 @@ export class AddressComponent implements OnInit {
 
   cityValueChanges() {
     this.registerForm.get('city')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
+
       this.hasCityError = false;
       this.cityError = '';
       if (this.registerForm?.get('city')?.errors?.required) {
