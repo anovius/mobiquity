@@ -52,6 +52,7 @@ export class KycDetailsComponent implements OnInit {
   hasKycIdValidToError: boolean = false;
   hasKycIdIssueDateError: boolean = false;
   hasKycIdValidFromError: boolean = false;
+  flag: boolean = true;
   kycIdIssueDateError: string = '';
   kycIdIssueCountryError: string = '';
   kycIdValidFromError: string = '';
@@ -130,6 +131,7 @@ export class KycDetailsComponent implements OnInit {
 
   kycIdTypeValueChanges() {
     this.registerForm.get('kycIdType')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasKycIdTypeError = false;
       this.kycIdTypeError = '';
       if (this.registerForm?.get('kycIdType')?.errors?.required) {
@@ -144,6 +146,7 @@ export class KycDetailsComponent implements OnInit {
 
   kycIdValueValueChanges() {
     this.registerForm.get('kycIdValue')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasKycIdValueError = false;
       this.kycIdValueError = '';
       if (this.registerForm?.get('kycIdValue')?.errors?.required) {
@@ -164,6 +167,7 @@ export class KycDetailsComponent implements OnInit {
     this.registerForm
       .get('kycGracePeriod')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasKycGracePeriodError = false;
         this.kycGracePeriodError = '';
         if (this.registerForm?.get('kycGracePeriod')?.errors?.required) {
@@ -183,6 +187,7 @@ export class KycDetailsComponent implements OnInit {
     this.registerForm
       .get('kycIdIssueCountry')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasKycIdIssueCountryError = false;
         this.kycIdIssueCountryError = '';
         if (this.registerForm?.get('kycIdIssueCountry')?.errors?.required) {
@@ -204,6 +209,7 @@ export class KycDetailsComponent implements OnInit {
     this.registerForm
       .get('kycIdIssueDate')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasKycIdIssueDateError = false;
         this.kycIdIssueDateError = '';
         if (this.registerForm?.get('kycIdIssueDate')?.errors?.required) {
@@ -223,6 +229,7 @@ export class KycDetailsComponent implements OnInit {
     this.registerForm
       .get('kycIdValidFrom')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasKycIdValidFromError = false;
         this.kycIdValidFromError = '';
         if (this.registerForm?.get('kycIdValidFrom')?.errors?.required) {
@@ -242,6 +249,7 @@ export class KycDetailsComponent implements OnInit {
     this.registerForm
       .get('kycIdValidTo')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasKycIdValidToError = false;
         this.kycIdValidToError = '';
         if (this.registerForm?.get('kycIdValidTo')?.errors?.required) {
@@ -259,6 +267,7 @@ export class KycDetailsComponent implements OnInit {
 
   kycImageUrlValueChanges() {
     this.registerForm.get('kycImageUrl')?.valueChanges.subscribe((res: any) => {
+      this.flag = false;
       this.hasKycImageUrlError = false;
       this.kycImageUrlError = '';
       if (this.registerForm?.get('kycImageUrl')?.errors?.required) {
@@ -279,6 +288,7 @@ export class KycDetailsComponent implements OnInit {
     this.registerForm
       .get('isPrimaryKYCId')
       ?.valueChanges.subscribe((res: any) => {
+        this.flag = false;
         this.hasIsPrimaryKYCIdError = false;
         this.isPrimaryKYCIdError = '';
         if (this.registerForm?.get('isPrimaryKYCId')?.value === false) {
