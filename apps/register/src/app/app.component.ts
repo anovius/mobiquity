@@ -29,37 +29,6 @@ export class AppComponent implements OnInit {
   isEmailVerified = false;
   // selectedTitle!: number;
   hasError: boolean = false;
-
-  titleOptions = [
-    {
-      value: 'Ms',
-      key: 'PR_MISS',
-    },
-    {
-      value: 'M/S',
-      key: 'PR_MS',
-    },
-    {
-      value: 'Mr',
-      key: 'PR_MR',
-    },
-    {
-      value: 'Mrs',
-      key: 'PR_MRS',
-    },
-  ];
-
-  preferredLanguageOptions = [
-    {
-      name: 'en',
-      display: 'English',
-    },
-    {
-      name: 'ar',
-      display: 'Arabic',
-    },
-  ];
-
   hasFirstNameError = false;
   hasLastNameError = false;
   hasProfilePhotoURIError: boolean = false;
@@ -90,6 +59,36 @@ export class AppComponent implements OnInit {
   categoryProfileData: any;
   uploadedFileUrl: any;
   flag = true;
+
+  titleOptions = [
+    {
+      value: 'Ms',
+      key: 'PR_MISS',
+    },
+    {
+      value: 'M/S',
+      key: 'PR_MS',
+    },
+    {
+      value: 'Mr',
+      key: 'PR_MR',
+    },
+    {
+      value: 'Mrs',
+      key: 'PR_MRS',
+    },
+  ];
+
+  preferredLanguageOptions = [
+    {
+      name: 'en',
+      display: 'English',
+    },
+    {
+      name: 'ar',
+      display: 'Arabic',
+    },
+  ];
 
   constructor(
     private translationService: TranslationService,
@@ -180,7 +179,6 @@ export class AppComponent implements OnInit {
     this.profilePhotoURIValueChanges();
     this.dateOfBirthValueChanges();
     // this.mobileValueChanges();
-    // });
   }
 
   duplicateEmailValidator(control: FormControl) {

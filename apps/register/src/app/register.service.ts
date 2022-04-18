@@ -22,7 +22,8 @@ export class RegisterService {
 
   getCategoryProfile() {
     return this.apiService.get(
-      'https://demo2819413.mockable.io/categoryProfile'
+      'http://172.25.48.35:9911/mobiquitypay/v1/view/user_registration_mapping_en?categoryCode=SUBS&bearerCode=WEB'
+      // 'https://demo2819413.mockable.io/categoryProfile'
     );
   }
 

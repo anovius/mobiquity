@@ -27,58 +27,22 @@ export class AddressComponent implements OnInit {
 
   countryOptions = [
     {
-      value: 'Ms',
-      key: 'PR_MISS',
-    },
-    {
-      value: 'M/S',
-      key: 'PR_MS',
-    },
-    {
-      value: 'Mr',
-      key: 'PR_MR',
-    },
-    {
-      value: 'Mrs',
-      key: 'PR_MRS',
+      value: 'None',
+      key: 'node',
     },
   ];
 
   stateOptions = [
     {
-      value: 'Ms',
-      key: 'PR_MISS',
-    },
-    {
-      value: 'M/S',
-      key: 'PR_MS',
-    },
-    {
-      value: 'Mr',
-      key: 'PR_MR',
-    },
-    {
-      value: 'Mrs',
-      key: 'PR_MRS',
+      value: 'none',
+      key: 'none',
     },
   ];
 
   cityOptions = [
     {
-      value: 'Ms',
-      key: 'PR_MISS',
-    },
-    {
-      value: 'M/S',
-      key: 'PR_MS',
-    },
-    {
-      value: 'Mr',
-      key: 'PR_MR',
-    },
-    {
-      value: 'Mrs',
-      key: 'PR_MRS',
+      value: 'none',
+      key: 'none',
     },
   ];
 
