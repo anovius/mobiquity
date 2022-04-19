@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '@mobiquity/shared';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RegisterService {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private http: HttpClient) {}
+
+  appUrl = "http://125.16.139.20:8076";
 
   setToken() {
-    // let body = { grant_type: 'client_credentials' };
-    return this.apiService.get(
-      'http://172.25.48.35:9911/mobiquitypay/ums/v1/user/auth/web/system-token'
-    );
-    // return this.apiService.post('https://demo5894535.mockable.io/token', body);
+    // let body = new FormData();
+    // body.append('grant_type', 'client_credentials');
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'multipart/x-www-form-urlencoded;',
+    //     'Accept' : '*/*',
+    //     'Authorization': 'Basic ' + btoa('CoreWeb:adayfcSWcI')
+    //   })
+    // };
+    
+    return this.http.get(this.appUrl+ '/mobiquitypay/ums/v1/user/auth/web/system-token');
   }
 
   refreshToken() {
     let body = { grant_type: 'client_credentials' };
-    return this.apiService.post('https://demo5894535.mockable.io/token', body);
+    return this.apiService.post(this.appUrl + '/mobiquitypay/ums/v1/user/auth/web/system-token', body);
   }
 
   getCategoryProfile() {
     return this.apiService.get(
-      'http://172.25.48.35:9911/mobiquitypay/v1/view/user_registration_mapping_en?categoryCode=SUBS&bearerCode=WEB'
-      // 'https://demo2819413.mockable.io/categoryProfile'
+      this.appUrl + '/mobiquitypay/app-config-subscriber/en'
     );
   }
 
