@@ -202,8 +202,8 @@
                                     <span
                                         class="block text-blue-400 font-normal mt-2">{{translation?.cols[1]?.parts[0].div[10].span[1]}}</span>
                                 </div>
-                            </div> <input type="file" formControlName="profilePhotoURI" pattern="^[a-zA-Z0-9:/.-]*$"
-                                class="cursor-pointer h-full w-full opacity-0" name="">
+                            </div> <input type="file" formControlName="profilePhotoURI" (change)="fileUrlChange($event)"
+                                pattern="^[a-zA-Z0-9:/.-]*$" class="cursor-pointer h-full w-full opacity-0" name="">
                         </div>
                         <p class="text-sm text-gray-400 mt-3">{{translation?.cols[1]?.parts[0].div[10].p}}</p>
                         <p *ngIf="hasProfilePhotoURIError" class="error-message">{{profilePhotoURIError}}</p>

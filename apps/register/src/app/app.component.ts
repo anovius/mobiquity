@@ -90,6 +90,7 @@ export class AppComponent implements OnInit {
       display: 'Arabic',
     },
   ];
+  fileUrl: any;
 
   constructor(
     private translationService: TranslationService,
@@ -1304,8 +1305,6 @@ export class AppComponent implements OnInit {
         ],
       },
     ];
-
-    console.log(this.schema);
   }
 
   init() {
@@ -1441,7 +1440,7 @@ export class AppComponent implements OnInit {
           this.hasReferralCodeError = true;
           this.referralCodeError += 'Referral Code is Invalid';
         } else if (this.registerForm?.get('referralCode')?.errors === null) {
-          this.showVerifyEmail = true;
+          // this.showVerifyEmail = true;
         } else {
           this.showVerifyEmail = false;
           this.hasReferralCodeError = false;
@@ -1561,11 +1560,12 @@ export class AppComponent implements OnInit {
         if (this.registerForm?.get('profilePhotoURI')?.errors?.required) {
           this.hasProfilePhotoURIError = true;
           this.profilePhotoURIError += 'Profile Photo URI is mendatory';
-        } else if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
-          this.hasProfilePhotoURIError = true;
-          this.profilePhotoURIError += 'Profile Photo URI is invalid';
-        } else {
-          this.uploadFile();
+        }
+        //  else if (this.registerForm?.get('profilePhotoURI')?.errors?.pattern) {
+        //   this.hasProfilePhotoURIError = true;
+        //   this.profilePhotoURIError += 'Profile Photo URI is invalid';
+        // }
+        else {
           this.hasProfilePhotoURIError = false;
           this.profilePhotoURIError = '';
         }
@@ -1697,6 +1697,9 @@ export class AppComponent implements OnInit {
   }
 
   uploadFile() {
+    console.log('Uploading file', this.registerForm.value.profilePhotoURI);
+    console.log(this.registerForm.value);
+
     this.registerService
       .uploadFile(this.registerForm.value.profilePhotoURI)
       .subscribe((res: any) => {
@@ -1705,6 +1708,20 @@ export class AppComponent implements OnInit {
           this.uploadedFileUrl = res.url;
         }
       });
+  }
+
+  fileUrlChange(event: any) {
+    if (event.target.files.length > 0) {
+      console.log(event.target.files);
+      this.fileUrl = event.target.files[0];
+      this.registerForm.value.profilePhotoURI = this.fileUrl;
+      this.registerService.uploadFile(this.fileUrl).subscribe((res: any) => {
+        console.log(res);
+        if (res.status === 'SUCCEEDED') {
+          this.uploadedFileUrl = res.url;
+        }
+      });
+    }
   }
 
   onOtpChange(otp: any) {
@@ -1718,17 +1735,21 @@ export class AppComponent implements OnInit {
         .checkUnique(this.registerForm.value.emailId)
         .subscribe((res: any) => {
           this.isLoading = false;
+          console.log(res);
           if (res.status === 'FAILED') {
+            this.email = '';
             this.hasEmailIdError = true;
             this.emailIdError = 'Email already exists';
           }
           if (res.status === 'SUCCEEDED') {
+            this.email = this.registerForm.value.emailId;
             this.isEmailVerified = true;
             this.hasEmailIdError = false;
             this.emailIdError = '';
           }
         });
     } else {
+      this.email = '';
       this.hasEmailIdError = true;
       this.emailIdError = 'Email is mandatory';
     }

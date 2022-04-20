@@ -47,8 +47,9 @@ export class RegisterService {
   }
 
   uploadFile(file: any) {
-    file = {};
-    return this.apiService.post('https://demo2819413.mockable.io/upload', file);
+    console.log('upload', file);
+    return this.http.post(this.appUrl + '/mobiquitypay/dms/v3/doc', file);
+    // return this.apiService.post(this.appUrl + `/mobiquitypay/dms/v3/doc`, file);
   }
 
   verifyNumber(contactNumber: string) {
