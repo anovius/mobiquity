@@ -8,7 +8,7 @@ import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 export class RegisterService {
   constructor(private apiService: ApiService, private http: HttpClient) {}
 
-  appUrl = "http://125.16.139.20:8076";
+  appUrl = 'http://125.16.139.20:8076';
 
   setToken() {
     // let body = new FormData();
@@ -20,18 +20,29 @@ export class RegisterService {
     //     'Authorization': 'Basic ' + btoa('CoreWeb:adayfcSWcI')
     //   })
     // };
-    
-    return this.http.get(this.appUrl+ '/mobiquitypay/ums/v1/user/auth/web/system-token');
+
+    return this.http.get(
+      this.appUrl + '/mobiquitypay/ums/v1/user/auth/web/system-token'
+    );
   }
 
   refreshToken() {
     let body = { grant_type: 'client_credentials' };
-    return this.apiService.post(this.appUrl + '/mobiquitypay/ums/v1/user/auth/web/system-token', body);
+    return this.apiService.post(
+      this.appUrl + '/mobiquitypay/ums/v1/user/auth/web/system-token',
+      body
+    );
   }
 
   getCategoryProfile() {
     return this.apiService.get(
       this.appUrl + '/mobiquitypay/app-config-subscriber/en'
+    );
+  }
+
+  getCities() {
+    return this.apiService.get(
+      this.appUrl + '/mobiquitypay/self-registration/data/en'
     );
   }
 

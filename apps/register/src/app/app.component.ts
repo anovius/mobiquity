@@ -108,6 +108,7 @@ export class AppComponent implements OnInit {
     });
 
     this.registerFormValueChanges();
+    this.getCities();
   }
 
   init() {
@@ -179,6 +180,17 @@ export class AppComponent implements OnInit {
     this.profilePhotoURIValueChanges();
     this.dateOfBirthValueChanges();
     // this.mobileValueChanges();
+  }
+
+  getCities() {
+    this.registerService.getCities().subscribe(
+      (res: any) => {
+        console.log(res);
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   duplicateEmailValidator(control: FormControl) {
@@ -476,7 +488,7 @@ export class AppComponent implements OnInit {
   setToken() {
     this.registerService.setToken().subscribe((res: any) => {
       window.localStorage.setItem('access_token', res.token.access_token);
-      this.getCategoryProfile();
+      // this.getCategoryProfile();
     });
   }
 
