@@ -64,7 +64,8 @@
                 </div>
                 <p class="pl-3 text-xs font-medium">{{translation?.cols[1]?.parts[2]?.sh[0]}}</p>
                 <div class="flex flex-wrap">
-                    <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[0]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[0]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium"
                             for="">{{translation?.cols[1]?.parts[2]?.fields[0]?.label}}</label>
                         <ng-select [items]="kycIdTypeOptions" bindLabel="value" bindValue="key"
@@ -83,7 +84,8 @@
                                 {{translation?.cols[1]?.parts[2]?.fields[0]?.options[3]}}</option>
                         </select> -->
                     </div>
-                    <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[1]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[1]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium"
                             for="">{{translation?.cols[1]?.parts[2]?.fields[1]?.label}}</label>
                         <input
@@ -92,7 +94,8 @@
                             placeholder="{{translation?.cols[1]?.parts[2]?.fields[1]?.placeholder}}">
                         <p *ngIf="hasKycIdValueError" class="error-message">{{kycIdValueError}}</p>
                     </div>
-                    <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[2]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[2]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">KYC Grace Period
                             (Days)</label>
                         <input
@@ -100,28 +103,32 @@
                             formControlName="kycGracePeriod" type="text" placeholder="Enter KYC Grace Period (Days)">
                         <p *ngIf="hasKycGracePeriodError" class="error-message">{{kycGracePeriodError}}</p>
                     </div>
-                    <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[3]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[3]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Country Issued In</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdIssueCountry" type="text" placeholder="Enter Country Issued In">
                         <p *ngIf="hasKycIdIssueCountryError" class="error-message">{{kycIdIssueCountryError}}</p>
                     </div>
-                    <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[4]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[4]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Date Issued On</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdIssueDate" type="date" placeholder="KYC ID Issued On">
                         <p *ngIf="hasKycIdIssueDateError" class="error-message">{{kycIdIssueDateError}}</p>
                     </div>
-                    <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[5]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[5]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Valid From</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
                             formControlName="kycIdValidFrom" type="date" placeholder="KYC ID Valid From">
                         <p *ngIf="hasKycIdValidFromError" class="error-message">{{kycIdValidFromError}}</p>
                     </div>
-                    <div class="flex flex-col p-3 w-full md:w-1/2">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[6]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[6]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Valid Thru</label>
                         <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
@@ -131,7 +138,8 @@
                     <div class="w-full ml-3">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Upload Documents</label>
                     </div>
-                    <div class="p-3 w-full md:w-1/3">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[7]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[7]?.show !== 'Y'}"
+                        class="p-3 w-full md:w-1/3">
                         <div class="my-2">
                             <div
                                 class="relative h-20 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
@@ -152,7 +160,8 @@
                     <div class="w-full ml-3 -mt-3">
                         <p class="text-xs text-gray-400">{{translation?.cols[1]?.parts[2]?.p}}</p>
                     </div>
-                    <div class="flex flex-col p-3 w-full ">
+                    <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[8]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[8]?.show !== 'Y'}"
+                        class="flex flex-col p-3 w-full ">
                         <div class="flex">
                             <div class="text-dropdown-custom text-xs mb-2 p-3 font-medium">
                                 <input class="border rounded-md bg-input-custom outline-none border-input-border"
