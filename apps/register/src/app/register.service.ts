@@ -63,9 +63,11 @@ export class RegisterService {
     );
   }
 
-  checkUnique() {
+  checkUnique(emailId: string) {
+    console.log('emailId', emailId);
     return this.apiService.get(
-      'https://demo2819413.mockable.io/UniqueMobileError'
+      this.appUrl +
+        `/mobiquitypay/v1/user-management/validate/uniqueness?bearerCode=WEB&uniqueIdType=emailId&uniqunessValue=${emailId}&language=en&workspaceId=SUBSCRIBER`
     );
   }
 
