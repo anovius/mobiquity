@@ -1383,8 +1383,9 @@ export class SetPinComponent implements OnInit {
     };
 
     this.registerService.register(register).subscribe((res) => {
+      console.log(res);
       if (res.status === 'FAILED') {
-        this.router.navigate(['/']);
+        // this.router.navigate(['/']);
       } else if (res.status === 'SUCCEEDED') {
         this.router.navigate(['/login']);
       }

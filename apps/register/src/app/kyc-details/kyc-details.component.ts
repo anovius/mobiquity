@@ -1278,6 +1278,7 @@ export class KycDetailsComponent implements OnInit {
   }
 
   init() {
+    // Validators.pattern('^[a-zA-Z]*$');
     this.registerForm = this.fb.group({
       kycIdType: ['', Validators.required],
       kycIdValue: [
@@ -1288,22 +1289,10 @@ export class KycDetailsComponent implements OnInit {
         '',
         [Validators.required, Validators.pattern('^[0-9]*$')],
       ],
-      kycIdIssueCountry: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z]*$')],
-      ],
-      kycIdIssueDate: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z]*$')],
-      ],
-      kycIdValidFrom: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z]*$')],
-      ],
-      kycIdValidTo: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z]*$')],
-      ],
+      kycIdIssueCountry: ['', [Validators.required]],
+      kycIdIssueDate: ['', [Validators.required]],
+      kycIdValidFrom: ['', [Validators.required]],
+      kycIdValidTo: ['', [Validators.required]],
       kycImageUrl: [
         '',
         [Validators.required, Validators.pattern('^[a-zA-Z0-9:/.,$-]*$')],

@@ -99,7 +99,7 @@ export class RegisterService {
 
   register(body: any) {
     return this.apiService.post(
-      'https://demo2819413.mockable.io/registerCustomer',
+      this.appUrl + `/mobiquitypay/v1/ums/user/self`,
       body
     );
   }
