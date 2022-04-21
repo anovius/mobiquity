@@ -40,7 +40,7 @@ export class RegisterService {
     );
   }
 
-  getCities() {
+  getCountries() {
     return this.apiService.get(
       this.appUrl + '/mobiquitypay/self-registration/data/en'
     );

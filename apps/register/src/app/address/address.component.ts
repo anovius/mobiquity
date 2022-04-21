@@ -27,12 +27,7 @@ export class AddressComponent implements OnInit {
 
   schema: any = [];
 
-  countryOptions = [
-    {
-      value: 'None',
-      key: 'node',
-    },
-  ];
+  countryOptions = [];
 
   stateOptions = [
     {
@@ -43,8 +38,8 @@ export class AddressComponent implements OnInit {
 
   cityOptions = [
     {
-      value: 'none',
-      key: 'none',
+      value: 'None',
+      key: 'node',
     },
   ];
 
@@ -64,7 +59,7 @@ export class AddressComponent implements OnInit {
     });
 
     this.registerFormValueChanges();
-    this.getCities();
+    this.getCountries();
     this.schema = [
       {
         label: 'Basic',
@@ -1286,10 +1281,10 @@ export class AddressComponent implements OnInit {
     this.cityValueChanges();
   }
 
-  getCities() {
-    this.registerService.getCities().subscribe(
+  getCountries() {
+    this.registerService.getCountries().subscribe(
       (res: any) => {
-        console.log(res);
+        this.countryOptions = res.countryList;
       },
       (err: any) => {
         console.log(err);
@@ -1338,7 +1333,6 @@ export class AddressComponent implements OnInit {
       this.flag = false;
       this.hasCountryError = false;
       this.countryError = '';
-      console.log(this.registerForm?.get('country')?.errors);
       if (this.registerForm?.get('country')?.errors?.required) {
         this.hasCountryError = true;
         this.countryError += 'Country is mandatory';

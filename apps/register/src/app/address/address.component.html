@@ -92,7 +92,8 @@
                     class="flex flex-col p-3 w-full md:w-1/2">
                     <label
                         class="text-blue text-xs font-medium mb-2">{{translation?.cols[1]?.parts[1]?.fields[6]?.label}}</label>
-                    <ng-select [items]="countryOptions" bindLabel="value" bindValue="key" formControlName="country">
+                    <ng-select [items]="countryOptions" bindLabel="displayName" bindValue="countryCode"
+                        formControlName="country">
                     </ng-select>
                     <p *ngIf="hasCountryError" class="error-message">{{countryError}}</p>
                     <!-- <select formControlName="country" name="country" id=""
