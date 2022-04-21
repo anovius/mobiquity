@@ -106,9 +106,13 @@
                     <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[3]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[3]?.show !== 'Y'}"
                         class="flex flex-col p-3 w-full md:w-1/2">
                         <label class="text-dropdown-custom text-xs mb-2 font-medium" for="">Country Issued In</label>
-                        <input
+                        <!-- <input
                             class="pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                            formControlName="kycIdIssueCountry" type="text" placeholder="Enter Country Issued In">
+                            formControlName="kycIdIssueCountry" type="text" placeholder="Enter Country Issued In"> -->
+
+                        <ng-select [items]="countryOptions" bindLabel="displayName" bindValue="countryCode"
+                            placeholder="Enter Country Issued In" formControlName="kycIdIssueCountry">
+                        </ng-select>
                         <p *ngIf="hasKycIdIssueCountryError" class="error-message">{{kycIdIssueCountryError}}</p>
                     </div>
                     <div [ngClass]="{'block':  this.schema[1]?.sections[0]?.fields[4]?.show === 'Y','hide': this.schema[1]?.sections[0]?.fields[4]?.show !== 'Y'}"

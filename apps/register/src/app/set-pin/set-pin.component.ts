@@ -65,6 +65,9 @@ export class SetPinComponent implements OnInit {
   marketingProfileError: string = '';
   flag = true;
   schema: any;
+  openModalSuccess: boolean = false;
+  openModalFailure: boolean = false;
+  failureError: any;
 
   constructor(
     private translationService: TranslationService,
@@ -1361,21 +1364,6 @@ export class SetPinComponent implements OnInit {
   }
 
   submit() {
-    // if (res.status === 'FAILED') {
-    //   if (res.errors[0].code === 'FTL01') {
-    //     this.router.navigate(['/reset-pin']);
-    //   }
-    // } else if (res.status === 'PAUSED') {
-    //   this.isLoading = true;
-    //   this.loginService
-    //     .generateOtp(this.loginForm.value.mobile)
-    //     .subscribe((res) => {
-    //       this.isLoading = false;
-    //       window.localStorage.setItem('serviceRequestId', res.serviceRequestId);
-    //       this.router.navigate(['/otp']);
-    //     });
-    // } else if (res.status === 'SUCCEEDED') {
-
     let retrievedObject: any = window.localStorage.getItem('register');
     this.registerP4 = JSON.parse(retrievedObject);
     let register = {
@@ -1383,18 +1371,30 @@ export class SetPinComponent implements OnInit {
       ...this.registerForm.value,
     };
 
-    // console.log(register);
-    register.isPrimaryKYCId = 'Yes';
-    register.kycIdType = 'PAN_CARD';
-    register.kycIdValue = 'ABCD7772993531';
-
     this.registerService.register(register).subscribe((res) => {
-      console.log(res);
       if (res.status === 'FAILED') {
-        // this.router.navigate(['/']);
+        this.openModalFailure = true;
+        this.failureError = res.errors[0].message;
       } else if (res.status === 'SUCCEEDED') {
-        this.router.navigate(['/login']);
+        this.openModalSuccess = true;
       }
     });
+  }
+
+  goBack() {
+    this.openModalSuccess = false;
+    this.openModalFailure = false;
+  }
+
+  goLogin() {
+    this.router.navigate(['/login']);
+    this.openModalSuccess = false;
+    this.openModalFailure = false;
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
+    this.openModalSuccess = false;
+    this.openModalFailure = false;
   }
 }

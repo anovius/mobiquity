@@ -173,9 +173,69 @@
                 <div class="mx-1 cursor-pointer my-2 w-2 h-2 rounded-full bg-gray-300"></div>
                 <div class="mx-1 cursor-pointer my-2 w-2 h-2 rounded-full bg-gray-300"></div>
                 <div class="mx-1 cursor-pointer my-2 w-2 h-2 rounded-full bg-gray-300"></div>
-
             </div>
         </div>
     </div>
+</div>
 
+<div *ngIf="openModalSuccess" class="modal-full">
+    <div style="max-width: 480px; background-color: white"
+        class="rounded-md border border-gray-300 shadow-sm shadow-gray-300 mt-9 mx-auto p-7">
+        <div class="flex items-center justify-between pb-5 pt-1 border-b border-gray-200">
+            <div>
+                <h3 class="font-bold text-base text-mobile-ver">Document</h3>
+            </div>
+            <div class="cursor-pointer" (click)="goBack()">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="10" stroke="#DBDBDB" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M14 8L8 14" stroke="#DBDBDB" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M8 8L14 14" stroke="#DBDBDB" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+
+            </div>
+        </div>
+        <div class="pt-6 flex flex-col justify-center items-center">
+            <h3>Registered Successfully</h3>
+            <p>Please login to continue.</p>
+        </div>
+        <div class="text-center">
+            <button
+                class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-4 hover:bg-progress hover:text-indigo-200 transition-all"
+                (click)="goLogin()">Login
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="openModalFailure" class="modal-full">
+    <div style="max-width: 480px; background-color: white"
+        class="rounded-md border border-gray-300 shadow-sm shadow-gray-300 mt-9 mx-auto p-7">
+        <div class="flex items-center justify-between pb-5 pt-1 border-b border-gray-200">
+            <div>
+                <h3 class="font-bold text-base text-mobile-ver">Document</h3>
+            </div>
+            <div class="cursor-pointer" (click)="goBack()">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="10" stroke="#DBDBDB" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M14 8L8 14" stroke="#DBDBDB" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M8 8L14 14" stroke="#DBDBDB" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+        <div class="pt-6 flex flex-col justify-center items-center">
+            <h3>ERROR</h3>
+            <p>{{failureError}}</p>
+        </div>
+        <div class="text-center">
+            <button
+                class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-4 hover:bg-progress hover:text-indigo-200 transition-all"
+                (click)="goHome()">Login
+            </button>
+        </div>
+    </div>
 </div>

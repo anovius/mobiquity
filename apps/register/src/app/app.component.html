@@ -66,7 +66,7 @@
                         <p (click)="verifyNumber()" class="text-small text-wrong-otp font-medium"
                             style="margin-top:12px; margin-left: 2px; padding: 2px; cursor: pointer;"
                             *ngIf="showVerifyNumber">verify</p>
-                        <p style="color:green" *ngIf="isContactVerified">ICON</p>
+                        <p style="color:green" *ngIf="isContactVerified"><i class="fa-solid fa-circle-check"></i></p>
                     </div>
                     <p *ngIf="hasMobileNumberError" class="error-message">{{mobileNumberError}}</p>
                     <div *ngIf="isLoading">
@@ -336,7 +336,6 @@
             <div class="text-center w-full mt-16">
                 <button [disabled]="otp?.length!==6" (click)="verifyNumberOTP()"
                     class="bg-login-btn-custom px-14 font-medium text-sm text-indigo-900 rounded-md py-3 hover:bg-progress hover:text-indigo-200 transition-all">
-
                     <span *ngIf="!isLoading"> {{otpTranslation?.buttons[0]}}</span>
                     <span *ngIf="isLoading">
                         <div class="sp sp-circle"></div>

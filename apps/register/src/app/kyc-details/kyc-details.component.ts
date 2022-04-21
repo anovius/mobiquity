@@ -64,6 +64,8 @@ export class KycDetailsComponent implements OnInit {
   isPrimaryKYCIdError: string = '';
   uploadedFileUrl: any;
   schema: any;
+  countryOptions = [];
+
 
   constructor(
     private translationService: TranslationService,
@@ -81,6 +83,8 @@ export class KycDetailsComponent implements OnInit {
     this.init();
 
     this.registerFormValueChanges();
+
+    this.getCountries()
     this.schema = [
       {
         label: 'Basic',
@@ -1297,6 +1301,17 @@ export class KycDetailsComponent implements OnInit {
       // , Validators.pattern('^[a-zA-Z0-9:/.,$-]*$')
       isPrimaryKYCId: [false, [Validators.required]],
     });
+  }
+
+  getCountries() {
+    this.registerService.getCountries().subscribe(
+      (res: any) => {
+        this.countryOptions = res.countryList;
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   registerFormValueChanges() {
