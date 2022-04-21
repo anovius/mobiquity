@@ -48,7 +48,21 @@ export class RegisterService {
 
   uploadFile(file: any) {
     console.log('upload', file);
-    return this.http.post(this.appUrl + '/mobiquitypay/dms/v3/doc', file);
+
+    let body = new FormData();
+    body.append('file', file);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':
+          'multipart/x-www-form-urlencoded;boundary=----WebKitFormBoundary5ei6dMazusTAvZNB',
+      }),
+    };
+
+    return this.http.post(
+      this.appUrl + '/mobiquitypay/dms/v3/doc',
+      file,
+      httpOptions
+    );
     // return this.apiService.post(this.appUrl + `/mobiquitypay/dms/v3/doc`, file);
   }
 
