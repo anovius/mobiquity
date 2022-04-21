@@ -95,6 +95,8 @@ export class AppComponent implements OnInit {
   fileUrl: any;
   hasOTPError: boolean = false;
   OTPError = '';
+  mobileNumberVerifyError: string = '';
+  hasMobileNumberVerifyError: boolean = false;
 
   constructor(
     private translationService: TranslationService,
@@ -1348,7 +1350,7 @@ export class AppComponent implements OnInit {
         '',
         [Validators.required, Validators.pattern('^[a-zA-Z0-9:/.-]*$')],
       ],
-      mobileNumber: ['', Validators.required],
+      mobileNumber: ['', [Validators.required, Validators.pattern('\\d{10}')]],
       // middleName: ['', Validators.required],
       // paymentID: ['', Validators.required],
     });
@@ -1379,7 +1381,7 @@ export class AppComponent implements OnInit {
     this.cifValueChanges();
     this.profilePhotoURIValueChanges();
     this.dateOfBirthValueChanges();
-    // this.mobileValueChanges();
+    this.mobileValueChanges();
   }
 
   duplicateEmailValidator(control: FormControl) {
@@ -1616,16 +1618,21 @@ export class AppComponent implements OnInit {
     this.registerForm
       .get('mobileNumber')
       ?.valueChanges.subscribe((res: any) => {
-        this.contactNumber = res;
-        if (res.length === 13) {
-          this.flag = false;
-          if (res[0] === '+') {
-            this.showVerifyNumber = true;
-          } else {
-            this.contactError = 'Invalid mobile number format';
-          }
-        } else {
+        this.hasMobileNumberError = false;
+        this.mobileNumberError = '';
+        this.flag = false;
+        if (this.registerForm?.get('mobileNumber')?.errors?.required) {
           this.showVerifyNumber = false;
+          this.hasMobileNumberError = true;
+          this.mobileNumberError += 'mobileNumber is mandatory';
+        } else if (this.registerForm?.get('mobileNumber')?.errors?.pattern) {
+          this.showVerifyNumber = false;
+          this.hasMobileNumberError = true;
+          this.mobileNumberError += 'Invalid mobile number format';
+        } else {
+          this.showVerifyNumber = true;
+          this.hasMobileNumberError = false;
+          this.mobileNumberError = '';
         }
       });
   }
@@ -1725,14 +1732,14 @@ export class AppComponent implements OnInit {
           console.log(res);
           if (res.status === 'FAILED') {
             this.contactNumber = '';
-            this.hasMobileNumberError = true;
-            this.mobileNumberError = 'Mobile Number already exists';
+            this.hasMobileNumberVerifyError = true;
+            this.mobileNumberVerifyError = 'Mobile Number already exists';
             this.showVerifyNumber = false;
           } else if (res.status === 'SUCCEEDED') {
             this.showVerifyNumber = true;
             this.contactNumber = this.registerForm.value.mobileNumber;
-            this.hasMobileNumberError = false;
-            this.mobileNumberError = '';
+            this.hasMobileNumberVerifyError = false;
+            this.mobileNumberVerifyError = '';
           }
         });
     }

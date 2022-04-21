@@ -65,10 +65,11 @@
                             placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
                         <p (click)="verifyNumber()" class="text-small text-wrong-otp font-medium"
                             style="margin-top:12px; margin-left: 2px; padding: 2px; cursor: pointer;"
-                            *ngIf="showVerifyNumber">verify</p>
+                            *ngIf="showVerifyNumber&&!hasMobileNumberError&&!hasMobileNumberVerifyError">verify</p>
                         <p style="color:green" *ngIf="isContactVerified"><i class="fa-solid fa-circle-check"></i></p>
                     </div>
                     <p *ngIf="hasMobileNumberError" class="error-message">{{mobileNumberError}}</p>
+                    <p *ngIf="hasMobileNumberVerifyError" class="error-message">{{mobileNumberVerifyError}}</p>
                     <div *ngIf="isLoading">
                         <div class="sp sp-circle"></div>
                     </div>
