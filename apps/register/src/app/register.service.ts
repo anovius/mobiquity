@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '@mobiquity/shared';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -67,13 +68,26 @@ export class RegisterService {
   }
 
   verifyNumber(contactNumber: string) {
-    return this.apiService.get('https://demo2819413.mockable.io/UniqueMobile');
+    return this.apiService.post(this.appUrl + `/mobiquitypay/v2/otp/generate`);
+  }
+
+  generateOtp(phone: any) {
+    let body = {
+      identifierType: environment.constants.identifierType,
+      otpServiceCode: environment.constants.otpServiceCode,
+      identifierValue: phone,
+    };
+
+    return this.apiService.post(
+      this.appUrl + `/mobiquitypay/v2/otp/generate`,
+      body
+    );
   }
 
   verifyNumberOTP(body: any) {
     console.log(body);
     return this.apiService.post(
-      'https://demo9362630.mockable.io/validateOTP',
+      this.appUrl + `/mobiquitypay/v1/otp/validate`,
       body
     );
   }
@@ -83,6 +97,14 @@ export class RegisterService {
     return this.apiService.get(
       this.appUrl +
         `/mobiquitypay/v1/user-management/validate/uniqueness?bearerCode=WEB&uniqueIdType=emailId&uniqunessValue=${emailId}&language=en&workspaceId=SUBSCRIBER`
+    );
+  }
+
+  checkMobileUniqueness(mobileNumber: any) {
+    console.log('mobileNumber', mobileNumber);
+    return this.apiService.get(
+      this.appUrl +
+        `/mobiquitypay/v1/user-management/validate/uniqueness?bearerCode=WEB&uniqueIdType=mobileNumber&uniqunessValue=${mobileNumber}&language=en&workspaceId=SUBSCRIBER`
     );
   }
 

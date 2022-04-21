@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   constructor(
     private translationService: TranslationService,
     private forgotPinService: ForgotPinService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -28,26 +28,35 @@ export class AppComponent implements OnInit {
 
     this.translationService.getLang().subscribe((res: any) => {
       this.language = res;
-    })
+    });
   }
 
   goBack() {
     window.history.back();
   }
 
-  forgotPin(){
+  forgotPin() {
     window.localStorage.setItem('mobile', this.mobile);
     this.isLoading = true;
-    this.forgotPinService.forgotPin({mobile: this.mobile, language: this.language}).subscribe((res: any) => {
-      if(res.status === "PAUSED"){
-        this.forgotPinService.generateOtp(this.mobile).subscribe((res: any) => {
-          this.isLoading = false;
-          if(res.status === "SUCCEEDED"){
-            window.localStorage.setItem('serviceRequestId', res.serviceRequestId);
-            this.router.navigate(['/otp'], {queryParams: {isForgotPassword: true }});
-          }
-        })
-      }
-    });
+    this.forgotPinService
+      .forgotPin({ mobile: this.mobile, language: this.language })
+      .subscribe((res: any) => {
+        if (res.status === 'PAUSED') {
+          this.forgotPinService
+            .generateOtp(this.mobile)
+            .subscribe((res: any) => {
+              this.isLoading = false;
+              if (res.status === 'SUCCEEDED') {
+                window.localStorage.setItem(
+                  'serviceRequestId',
+                  res.serviceRequestId
+                );
+                this.router.navigate(['/otp'], {
+                  queryParams: { isForgotPassword: true },
+                });
+              }
+            });
+        }
+      });
   }
 }

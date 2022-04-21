@@ -41,6 +41,8 @@ export class AppComponent implements OnInit {
   hasPreferredLanguageError: boolean = false;
   hasDateOfBirthError: boolean = false;
   hasGenderInfoError: boolean = false;
+  hasMobileNumberError: boolean = false;
+  mobileNumberError: string = '';
   firstNameError = '';
   lastNameError = '';
   profilePhotoURIError: string = '';
@@ -91,6 +93,8 @@ export class AppComponent implements OnInit {
     },
   ];
   fileUrl: any;
+  hasOTPError: boolean = false;
+  OTPError = '';
 
   constructor(
     private translationService: TranslationService,
@@ -1609,67 +1613,21 @@ export class AppComponent implements OnInit {
   }
 
   mobileValueChanges() {
-    this.registerForm.get('mobile')?.valueChanges.subscribe((res: any) => {
-      this.contactNumber = res;
-      if (res.length === 13) {
-        this.flag = false;
-        if (res[0] === '+') {
-          this.showVerifyNumber = true;
+    this.registerForm
+      .get('mobileNumber')
+      ?.valueChanges.subscribe((res: any) => {
+        this.contactNumber = res;
+        if (res.length === 13) {
+          this.flag = false;
+          if (res[0] === '+') {
+            this.showVerifyNumber = true;
+          } else {
+            this.contactError = 'Invalid mobile number format';
+          }
         } else {
-          this.contactError = 'Invalid mobile number format';
-        }
-      } else {
-        this.showVerifyNumber = false;
-      }
-    });
-  }
-
-  showModal() {
-    this.openModal = true;
-  }
-
-  verifyNumber() {
-    this.isLoading = true;
-    this.isVerifyNumberCalled = true;
-    this.registerService
-      .verifyNumber(this.contactNumber)
-      .subscribe((res: any) => {
-        this.isLoading = false;
-        if (res.status === 'SUCCEEDED') {
           this.showVerifyNumber = false;
-          this.showModal();
-          // this.router.navigate(['/register/address']);
-        } else {
-          this.contactError = 'Mobile Number Already Exists';
         }
       });
-  }
-
-  verifyEmail() {
-    this.isLoading = true;
-    this.isVerifyNumberCalled = true;
-    this.registerService
-      .verifyEmail(this.email, this.registerForm.value.referralCode)
-      .subscribe((res: any) => {
-        this.isLoading = false;
-        if (res.status === 'SUCCEEDED') {
-          this.showVerifyEmail = false;
-          this.isEmailVerified = true;
-        }
-      });
-  }
-
-  verifyNumberOTP() {
-    this.isLoading = true;
-    this.registerService.verifyNumberOTP(this.otp).subscribe((res: any) => {
-      this.isLoading = false;
-      if (res.status === 'FAILED') {
-        this.hasError = true;
-      } else if (res.status === 'SUCCEEDED') {
-        this.openModal = false;
-        this.isContactVerified = true;
-      }
-    });
   }
 
   setToken() {
@@ -1693,7 +1651,9 @@ export class AppComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['..']);
+    // this.router.navigate(['..']);
+    this.openModal = false;
+    this.showVerifyNumber = true;
   }
 
   uploadFile() {
@@ -1753,6 +1713,106 @@ export class AppComponent implements OnInit {
       this.hasEmailIdError = true;
       this.emailIdError = 'Email is mandatory';
     }
+  }
+
+  checkMobileUniqueness() {
+    if (this.registerForm.value.mobileNumber.length > 0) {
+      this.isLoading = true;
+      this.registerService
+        .checkMobileUniqueness(this.registerForm.value.mobileNumber)
+        .subscribe((res: any) => {
+          this.isLoading = false;
+          console.log(res);
+          if (res.status === 'FAILED') {
+            this.contactNumber = '';
+            this.hasMobileNumberError = true;
+            this.mobileNumberError = 'Mobile Number already exists';
+            this.showVerifyNumber = false;
+          } else if (res.status === 'SUCCEEDED') {
+            this.showVerifyNumber = true;
+            this.contactNumber = this.registerForm.value.mobileNumber;
+            this.hasMobileNumberError = false;
+            this.mobileNumberError = '';
+          }
+        });
+    }
+  }
+
+  showModal() {
+    this.openModal = true;
+  }
+
+  verifyNumber() {
+    this.isLoading = true;
+    // this.isVerifyNumberCalled = true;
+    this.registerService
+      .generateOtp(this.registerForm.value.mobileNumber)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.isLoading = false;
+        if (res.status === 'SUCCEEDED') {
+          this.showVerifyNumber = false;
+          window.localStorage.setItem(
+            'serviceRequestIdAuth',
+            res.serviceRequestId
+          );
+          this.showModal();
+          // this.router.navigate(['/register/address']);
+        } else {
+          this.hasMobileNumberError = true;
+          this.mobileNumberError = 'Mobile Number is not Correct';
+        }
+      });
+  }
+
+  verifyEmail() {
+    this.isLoading = true;
+    this.isVerifyNumberCalled = true;
+    this.registerService
+      .verifyEmail(this.email, this.registerForm.value.referralCode)
+      .subscribe((res: any) => {
+        this.isLoading = false;
+        if (res.status === 'SUCCEEDED') {
+          this.showVerifyEmail = false;
+          this.isEmailVerified = true;
+        }
+      });
+  }
+
+  verifyNumberOTP() {
+    this.isLoading = true;
+
+    let body = {
+      otp: this.otp,
+      resumeServiceRequestId: window.localStorage.getItem(
+        'serviceRequestIdAuth'
+      ),
+    };
+
+    this.registerService.verifyNumberOTP(body).subscribe(
+      async (res: any) => {
+        console.log(res);
+        this.isLoading = false;
+        if (res.status === 'FAILED') {
+          this.hasOTPError = true;
+          this.OTPError = 'OTP entered is incorrect. Please try again';
+        } else if (res.status === 'SUCCEEDED') {
+          this.hasOTPError = false;
+          this.OTPError = '';
+          this.openModal = false;
+          this.isContactVerified = true;
+        } else {
+          this.hasOTPError = false;
+          this.OTPError = '';
+        }
+      },
+      (err: any) => {
+        console.log(err);
+        this.isLoading = false;
+        this.hasOTPError = true;
+        this.OTPError = 'OTP entered is incorrect. Please try again';
+      }
+    );
   }
 
   next() {
