@@ -1293,10 +1293,8 @@ export class KycDetailsComponent implements OnInit {
       kycIdIssueDate: ['', [Validators.required]],
       kycIdValidFrom: ['', [Validators.required]],
       kycIdValidTo: ['', [Validators.required]],
-      kycImageUrl: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z0-9:/.,$-]*$')],
-      ],
+      kycImageUrl: ['', [Validators.required]],
+      // , Validators.pattern('^[a-zA-Z0-9:/.,$-]*$')
       isPrimaryKYCId: [false, [Validators.required]],
     });
   }
@@ -1461,7 +1459,7 @@ export class KycDetailsComponent implements OnInit {
         this.hasKycImageUrlError = true;
         this.kycImageUrlError += 'Upload Documents is invalid';
       } else {
-        this.uploadFile();
+        // this.uploadFile();
         this.hasKycImageUrlError = false;
         this.kycImageUrlError = '';
       }

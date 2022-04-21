@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslationService, UserService } from '@mobiquity/shared';
+import { environment } from '../../../../../environment';
 import { RegisterService } from '../register.service';
 
 @Component({
@@ -1381,6 +1382,8 @@ export class SetPinComponent implements OnInit {
       ...this.registerP4,
       pin: this.registerForm.value.pin,
     };
+
+    console.log(register);
 
     this.registerService.register(register).subscribe((res) => {
       console.log(res);

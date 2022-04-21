@@ -1,0 +1,55 @@
+{
+  "payload": {
+    "profileDetails": {
+      "authProfile": "",
+      "marketingProfile": "SUBSDefaultMP",
+      "regulatoryProfile": "NO_KYC",
+      "securityProfile": "SP.100011"
+    },
+    "userInformation": {
+      "basicInformation": {
+        "gender": "GEN_MAL",
+        "authenticationValue": "1357",
+        "authenticationIdType": "MSISDN",
+        "firstName": "Subscriber",
+        "middleName": "Self",
+        "dateOfBirth": "2001-01-28",
+        "address1": "Bangalore",
+        "address2": "bangalore",
+        "city": "Bangalore",
+        "state": "Karnataka",
+        "country": "IN",
+        "postalCode": "563462",
+        "mobileNumber": 7772993531,
+        "emailId": "SUBS7772993531@comviva.com",
+        "title": "PR_MR",
+        "referenceId": "",
+        "preferredLanguage": "en",
+        "referralCode": "VL2YQ3U6",
+        "lastName": "User"
+      },
+      "workspaceInformation": {
+        "categoryCode": "SUBS",
+        "workspace": "SUBSCRIBER",
+        "categoryName": "Subscriber"
+      }
+    },
+    "kycs": [
+      {
+        "isPrimaryKYCId": "Yes",
+        "kycIdValidTo": "2031-01-01",
+        "kycIdType": "PAN_CARD",
+        "kycIdValue": "ABCD7772993531",
+        "kycGracePeriod": "60"
+      }
+    ],
+    "deviceInfo": {
+      "isPublicDevice": "N",
+      "deviceId": "53E3B76E-130A-4353-92C5-4452FCD7E75E",
+      "model": "iPhone12,1",
+      "os": "14.0",
+      "appVersion": "1.2.0"
+    }
+  },
+  "source": "MOBILE"
+}

@@ -1673,14 +1673,14 @@ export class AppComponent implements OnInit {
   fileUrlChange(event: any) {
     if (event.target.files.length > 0) {
       console.log(event.target.files);
-      this.fileUrl = event.target.files[0];
+      this.fileUrl = event.target.files[0].name;
       this.registerForm.value.profilePhotoURI = this.fileUrl;
-      this.registerService.uploadFile(this.fileUrl).subscribe((res: any) => {
-        console.log(res);
-        if (res.status === 'SUCCEEDED') {
-          this.uploadedFileUrl = res.url;
-        }
-      });
+      // this.registerService.uploadFile(this.fileUrl).subscribe((res: any) => {
+      //   console.log(res);
+      //   if (res.status === 'SUCCEEDED') {
+      //     this.uploadedFileUrl = res.url;
+      //   }
+      // });
     }
   }
 
