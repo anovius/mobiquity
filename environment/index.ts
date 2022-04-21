@@ -19,7 +19,7 @@ export const environment = {
       os: '',
     },
     profileDetails: {
-      authProfile: '',
+      authProfile: 'profile',
       marketingProfile: 'SUBSDefaultMP',
       regulatoryProfile: 'NO_KYC',
       securityProfile: 'SP.100011',

@@ -31,15 +31,39 @@ export class AddressComponent implements OnInit {
 
   stateOptions = [
     {
-      value: 'none',
-      key: 'none',
+      value: 'Karnataka',
+      key: 'Karnataka',
+    },
+    {
+      value: 'Andhra pradesh',
+      key: 'Andhra pradesh',
+    },
+    {
+      value: 'Kerala',
+      key: 'Kerala',
+    },
+    {
+      value: 'Maharashtra',
+      key: 'Maharashtra',
     },
   ];
 
   cityOptions = [
     {
-      value: 'None',
-      key: 'node',
+      value: 'Mumbai',
+      key: 'Mumbai',
+    },
+    {
+      value: 'Bangalore',
+      key: 'Bangalore',
+    },
+    {
+      value: 'Chennai',
+      key: 'Chennai',
+    },
+    {
+      value: 'Pune',
+      key: 'Pune',
     },
   ];
 

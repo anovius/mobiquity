@@ -1380,10 +1380,13 @@ export class SetPinComponent implements OnInit {
     this.registerP4 = JSON.parse(retrievedObject);
     let register = {
       ...this.registerP4,
-      pin: this.registerForm.value.pin,
+      ...this.registerForm.value,
     };
 
-    console.log(register);
+    // console.log(register);
+    register.isPrimaryKYCId = 'Yes';
+    register.kycIdType = 'PAN_CARD';
+    register.kycIdValue = 'ABCD7772993531';
 
     this.registerService.register(register).subscribe((res) => {
       console.log(res);

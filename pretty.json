@@ -1,55 +1,44 @@
 {
+  "source": "WEB",
+  "currency": "101",
   "payload": {
-    "profileDetails": {
-      "authProfile": "",
-      "marketingProfile": "SUBSDefaultMP",
-      "regulatoryProfile": "NO_KYC",
-      "securityProfile": "SP.100011"
-    },
     "userInformation": {
-      "basicInformation": {
-        "gender": "GEN_MAL",
-        "authenticationValue": "1357",
-        "authenticationIdType": "MSISDN",
-        "firstName": "Subscriber",
-        "middleName": "Self",
-        "dateOfBirth": "2001-01-28",
-        "address1": "Bangalore",
-        "address2": "bangalore",
-        "city": "Bangalore",
-        "state": "Karnataka",
-        "country": "IN",
-        "postalCode": "563462",
-        "mobileNumber": 7772993531,
-        "emailId": "SUBS7772993531@comviva.com",
-        "title": "PR_MR",
-        "referenceId": "",
-        "preferredLanguage": "en",
-        "referralCode": "VL2YQ3U6",
-        "lastName": "User"
-      },
       "workspaceInformation": {
-        "categoryCode": "SUBS",
         "workspace": "SUBSCRIBER",
-        "categoryName": "Subscriber"
+        "categoryName": "Subscriber",
+        "categoryCode": "SUBS"
+      },
+      "basicInformation": {
+        "title": "PR_MR",
+        "firstName": "Nadeem",
+        "lastName": "Abdul",
+        "preferredLanguage": "en",
+        "loginId": "7771011019",
+        "dateOfBirth": "1993-12-21",
+        "emailId": "nadeemag@gmail.com",
+        "mobileNumber": "7771011019",
+        "address1": "102",
+        "address2": "123",
+        "country": "IN",
+        "state": "Karnataka",
+        "city": "Bangalore"
       }
     },
     "kycs": [
       {
-        "isPrimaryKYCId": "Yes",
-        "kycIdValidTo": "2031-01-01",
         "kycIdType": "PAN_CARD",
-        "kycIdValue": "ABCD7772993531",
-        "kycGracePeriod": "60"
+        "kycIdValue": "AMFGO083838",
+        "kycGracePeriod": "40",
+        "kycIdIssueCountry": "IN",
+        "kycImageUrl": "62618badff16542dfa0a0b5c",
+        "isPrimaryKYCId": "Yes"
       }
     ],
-    "deviceInfo": {
-      "isPublicDevice": "N",
-      "deviceId": "53E3B76E-130A-4353-92C5-4452FCD7E75E",
-      "model": "iPhone12,1",
-      "os": "14.0",
-      "appVersion": "1.2.0"
+    "profileDetails": {
+      "securityProfile": "SP.31161646848704283",
+      "authProfile": "SUBS-163118-574153",
+      "regulatoryProfile": "MasterKYC",
+      "marketingProfile": "b0c570b2A"
     }
-  },
-  "source": "MOBILE"
+  }
 }

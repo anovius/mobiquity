@@ -130,63 +130,116 @@ export class RegisterService {
   }
 
   register(data: any) {
+    {
+      // let oldBody = {
+      //   payload: {
+      //     profileDetails: {
+      //       authProfile: '',
+      //       marketingProfile:
+      //         environment.constants.profileDetails.marketingProfile,
+      //       regulatoryProfile:
+      //         environment.constants.profileDetails.regulatoryProfile,
+      //       securityProfile:
+      //         environment.constants.profileDetails.securityProfile,
+      //     },
+      // userInformation: {
+      //   basicInformation: {
+      //     gender: data.genderInfo,
+      //     authenticationValue: '1357',
+      //     authenticationIdType: 'MSISDN',
+      //     firstName: data.firstName,
+      //     middleName: '',
+      //     dateOfBirth: data.dateOfBirth,
+      //     address1: data.address1,
+      //     address2: data.address2,
+      //     city: data.city,
+      //     state: data.state,
+      //     country: data.country,
+      //     postalCode: '',
+      //     mobileNumber: data.mobileNumber,
+      //     emailId: data.emailId,
+      //     title: data.title,
+      //     referenceId: '',
+      //     preferredLanguage: data.preferredLanguage,
+      //     referralCode: data.referralCode,
+      //     lastName: data.lastName,
+      //     loginId: data.loginId,
+      //   },
+      //       workspaceInformation: {
+      //         categoryCode: 'SUBS',
+      //         workspace: 'SUBSCRIBER',
+      //         categoryName: 'Subscriber',
+      //       },
+      // },
+      // kycs: [
+      //   {
+      //     isPrimaryKYCId: data.isPrimaryKYCId,
+      //     kycIdValidTo: data.kycIdValidTo,
+      //     kycIdType: data.kycIdType,
+      //     kycIdValue: data.kycIdValue,
+      //     kycGracePeriod: data.kycGracePeriod,
+      //   },
+      // ],
+      // deviceInfo: {
+      //   isPublicDevice: environment.constants.deviceInfo.isPublicDevice,
+      //   deviceId: '53E3B76E-130A-4353-92C5-4452FCD7E75E',
+      //   // deviceId: this.deviceInfo.device,
+      //   model: 'iPhone12,1',
+      //   os: '14.0',
+      //   // os: environment.constants.deviceInfo.os,
+      //   appVersion: environment.constants.deviceInfo.appVersion,
+      // },
+      //   },
+      //   source: this.deviceInfo.deviceType,
+      // };
+    }
     let body = {
+      source: 'WEB',
+      currency: '101',
       payload: {
-        profileDetails: {
-          authProfile: environment.constants.profileDetails.authProfile,
-          marketingProfile:
-            environment.constants.profileDetails.marketingProfile,
-          regulatoryProfile:
-            environment.constants.profileDetails.regulatoryProfile,
-          securityProfile: environment.constants.profileDetails.securityProfile,
-        },
         userInformation: {
-          basicInformation: {
-            gender: data.genderInfo,
-            authenticationValue: '1357',
-            authenticationIdType: 'MSISDN',
-            firstName: data.firstName,
-            middleName: '',
-            dateOfBirth: data.dateOfBirth,
-            address1: data.address1,
-            address2: data.address2,
-            city: data.city,
-            state: data.state,
-            country: data.country,
-            postalCode: '',
-            mobileNumber: data.mobileNumber,
-            emailId: data.emailId,
-            title: data.title,
-            referenceId: '',
-            preferredLanguage: data.preferredLanguage,
-            referralCode: data.referralCode,
-            lastName: data.lastName,
-          },
           workspaceInformation: {
-            categoryCode: 'SUBS',
             workspace: 'SUBSCRIBER',
             categoryName: 'Subscriber',
+            categoryCode: 'SUBS',
+          },
+          basicInformation: {
+            title: data.title,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            preferredLanguage: data.preferredLanguage,
+            loginId: '7771011019',
+            dateOfBirth: data.dateOfBirth,
+            emailId: data.emailId,
+            mobileNumber: data.mobileNumber,
+            address1: data.address1,
+            address2: data.address2,
+            country: data.country,
+            city: data.city,
+            state: data.state,
           },
         },
         kycs: [
           {
-            isPrimaryKYCId: data.isPrimaryKYCId,
-            kycIdValidTo: data.kycIdValidTo,
-            kycIdType: data.kycIdType,
-            kycIdValue: data.kycIdValue,
-            kycGracePeriod: data.kycGracePeriod,
+            kycIdType: 'PAN_CARD',
+            kycIdValue: 'AMFGO083838',
+            kycGracePeriod: '40',
+            kycIdIssueCountry: 'IN',
+            kycImageUrl: '62618badff16542dfa0a0b5c',
+            isPrimaryKYCId: 'Yes',
           },
         ],
-        deviceInfo: {
-          isPublicDevice: environment.constants.deviceInfo.isPublicDevice,
-          deviceId: this.deviceInfo.device,
-          model: 'iPhone12,1',
-          os: environment.constants.deviceInfo.os,
-          appVersion: environment.constants.deviceInfo.appVersion,
+        profileDetails: {
+          securityProfile: 'SP.31161646848704283',
+          authProfile: 'SUBS-163118-574153',
+          regulatoryProfile: 'MasterKYC',
+          marketingProfile: 'b0c570b2A',
         },
       },
-      source: this.deviceInfo.deviceType,
     };
+
+    console.log('body', body);
+
     return this.apiService.post(
       this.appUrl + `/mobiquitypay/v1/ums/user/self`,
       body
