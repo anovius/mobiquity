@@ -1624,7 +1624,7 @@ export class AppComponent implements OnInit {
         if (this.registerForm?.get('mobileNumber')?.errors?.required) {
           this.showVerifyNumber = false;
           this.hasMobileNumberError = true;
-          this.mobileNumberError += 'mobileNumber is mandatory';
+          this.mobileNumberError += 'Mobile Number is mandatory';
         } else if (this.registerForm?.get('mobileNumber')?.errors?.pattern) {
           this.showVerifyNumber = false;
           this.hasMobileNumberError = true;

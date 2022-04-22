@@ -19,7 +19,8 @@ export class RegisterService {
     console.log('deviceInfo', this.deviceInfo);
   }
 
-  appUrl = 'http://125.16.139.20:8076';
+  // appUrl = 'http://125.16.139.20:8076';
+  appUrl = 'http://172.25.48.35:9911';
 
   setToken() {
     // let body = new FormData();
