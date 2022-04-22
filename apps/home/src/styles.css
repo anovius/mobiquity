@@ -1050,6 +1050,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 16.666667%;
 }
 
+.w-90 {
+  width: 90%;
+}
+
 .w-48 {
   width: 12rem;
 }

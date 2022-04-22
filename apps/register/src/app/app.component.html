@@ -58,15 +58,19 @@
                     <label class="text-blue font-medium text-sm mb-2"
                         for="">{{translation?.cols[1]?.parts[0].div[0].label}}<span
                             class="text-red-700">{{translation?.cols[1]?.parts[0].div[0].span}}</span></label>
-                    <div class="flex">
-                        <input
-                            class="text-sm pr-9 p-3 border rounded-md bg-input-custom outline-none w-full border-input-border"
-                            type="text" (blur)="checkMobileUniqueness()" formControlName="mobileNumber"
+                    <div
+                        class="flex  border rounded-md bg-input-custom outline-none w-full border-input-border items-center">
+                        <input class="text-sm pr-9 p-3 w-90" type="text" (blur)="checkMobileUniqueness()"
+                            formControlName="mobileNumber"
                             placeholder="{{translation?.cols[1]?.parts[0].div[0].placeholder}}">
-                        <p (click)="verifyNumber()" class="text-small text-wrong-otp font-medium"
-                            style="margin-top:12px; margin-left: 2px; padding: 2px; cursor: pointer;"
+                        <p (click)="verifyNumber()" class="text-small text-wrong-otp cursor-pointer font-medium"
                             *ngIf="showVerifyNumber&&!hasMobileNumberError&&!hasMobileNumberVerifyError">verify</p>
-                        <p style="color:green" *ngIf="isContactVerified"><i class="fa-solid fa-circle-check"></i></p>
+                        <p style="color:green" *ngIf="isContactVerified">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </p>
+                        <p style="color:red" *ngIf="hasMobileNumberError">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        </p>
                     </div>
                     <p *ngIf="hasMobileNumberError" class="error-message">{{mobileNumberError}}</p>
                     <p *ngIf="hasMobileNumberVerifyError" class="error-message">{{mobileNumberVerifyError}}</p>
