@@ -218,6 +218,14 @@ export class AddressComponent implements OnInit {
     });
   }
 
+  goBack() {
+    history.back();
+  }
+
+  skip() {
+    this.router.navigate(['/register/kyc-details']);
+  }
+
   next() {
     // if (res.status === 'FAILED') {
     //   if (res.errors[0].code === 'FTL01') {

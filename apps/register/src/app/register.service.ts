@@ -51,14 +51,14 @@ export class RegisterService {
     //For Mock
 
     //By Client
-    // return this.apiService.get(
-    //   'https://demo2819413.mockable.io/categoryProfile'
-    // );
+    return this.apiService.get(
+      'https://demo2819413.mockable.io/categoryProfile'
+    );
 
     // For Testing
-    return this.apiService.get(
-      'http://demo0837734.mockable.io/getCateoryByFaizy'
-    );
+    // return this.apiService.get(
+    //   'http://demo0837734.mockable.io/getCateoryByFaizy'
+    // );
 
     //For Actual
     // return this.apiService.get(

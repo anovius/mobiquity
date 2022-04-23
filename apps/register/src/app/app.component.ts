@@ -165,6 +165,7 @@ export class AppComponent implements OnInit {
   getCategoryProfile() {
     this.registerService.getCategoryProfile().subscribe(
       (res: any) => {
+        console.log('category profile', res);
         this.categoryProfileData = res.payload.schema;
         console.log(this.categoryProfileData);
       },
