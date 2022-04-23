@@ -7,8 +7,9 @@ import { environment } from '../../../../../environment';
 })
 export class LoginService {
   deviceInfo: any;
-  // appUrl = 'http://125.16.139.20:8076';
-  appUrl = 'http://172.25.48.35:9911';
+  // appUrl = 'http://125.16.139.20:8076';  //For Flow
+  // appUrl = 'http://172.25.48.35:9911';  //For Postman
+  appUrl = 'http://125.16.139.20:8076'; //For APP
 
   constructor(private apiService: ApiService) {
     this.deviceInfo = this.apiService.deviceInfo();
