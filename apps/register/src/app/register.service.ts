@@ -19,8 +19,9 @@ export class RegisterService {
     console.log('deviceInfo', this.deviceInfo);
   }
 
-  // appUrl = 'http://125.16.139.20:8076';
-  appUrl = 'http://172.25.48.35:9911';
+  // appUrl = 'http://125.16.139.20:8076';  //For Flow
+  // appUrl = 'http://172.25.48.35:9911';  //For Postman
+  appUrl = 'http://125.16.139.20:8076'; //For APP
 
   setToken() {
     // let body = new FormData();
@@ -47,9 +48,23 @@ export class RegisterService {
   }
 
   getCategoryProfile() {
+    //For Mock
+
+    //By Client
+    // return this.apiService.get(
+    //   'https://demo2819413.mockable.io/categoryProfile'
+    // );
+
+    // For Testing
     return this.apiService.get(
-      this.appUrl + '/mobiquitypay/app-config-subscriber/en'
+      'http://demo0837734.mockable.io/getCateoryByFaizy'
     );
+
+    //For Actual
+    // return this.apiService.get(
+    //   this.appUrl +
+    //     '/mobiquitypay/v1/view/user_registration_mapping_en?categoryCode=SUBS&bearerCode=WEB'
+    // );
   }
 
   getCountries() {
